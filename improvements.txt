@@ -1,0 +1,28 @@
+switch N with M and vice versa to maintain alphabetical order (mainly for differential manifolds' names)
+
+---
+
+decide a clear distinction between \id and \bigone
+
+---
+
+improve math environments with:
+
+\begin{subequations} \label{eq}
+	\begin{align}
+		a &= b \label{subeq1} \\
+		&= c \label{subeq2}
+	\end{align}
+\end{subequations}
+
+---
+
+i.e. -> i.e.\@ for setting the period w/o the long space
+
+---
+
+check this
+
+https://tex.stackexchange.com/questions/4728/how-do-i-number-equations-only-if-they-are-referred-to-in-the-text
+
+even if it means you cant reference to specific equations outside of the compilation of the pdf (e.g. talking irl)
