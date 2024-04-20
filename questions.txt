@@ -1,0 +1,3 @@
+DOMANDE GEOMETRIA DIFFERENZIALE
+
+- B.27: non riesco a dimostrare che \rp{3} sia orientabile tramite lo jacobiano dei cambi di carta perché mi esce che il determinante è positivo solo per la metà delle trasformazioni
