@@ -1,0 +1,524 @@
+\exer{Unione disgiunta di spazi topologici come spazio topologico}
+{BONUS2-1}
+{
+Verificare che l'unione disgiunta di spazi topologici
+
+\begin{equation}
+	A = \bigsqcup_{j \in J} A_{j} \equiv \bigcup_{j \in J} A_{j} \times \{j\}
+\end{equation}
+
+è uno spazio topologico, sapendo che $ U $ è aperto in $ A $ se e solo se $ U \cap A_{j} $ è aperto in $ A_{j} $ per qualsiasi $ j \in J $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Atlante differenziabile per $ \S^{n} $ con $ 2(n+1) $ carte}
+{exer2-1}
+{
+Sia $ \S^{n} $ la sfera unitaria in $ \R^{n+1} $. Trovare un atlante differenziabile di $ \S^{n} $ con $ 2(n+1) $ carte.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Equivalenza tra strutture differenziabili su $ \S^{n} $}
+{exer2-2}
+{
+Dimostrare che la struttura differenziabile su $ \S^{n} $ definita nell’esercizio precedente e quella definita dalle proiezioni stereografiche coincidono.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Grassmanniana come spazio topologico connesso e compatto}
+{exer2-5}
+{
+Dimostrare che la Grassmanniana $ G(k,n) $ è uno spazio topologico connesso e compatto.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Restrizione di funzione liscia su varietà}
+{exer2-7}
+{
+Sia $ \S^{1} $ il cerchio unitario di $ \R^{2} $. Dimostrare che una funzione liscia $ f : \R^{2} \to \R $ si restringe a una funzione liscia $ \eval{f}_{\S^{1}} : \S^{1} \to \R $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Inclusione come funzione liscia tra varietà}
+{exer2-6}
+{
+Siano $ M $ e $ N $ due varietà differenziabili e $ q_{0} \in N $. Dimostrare che
+
+\map{i_{q_{0}}}
+	{M}{M \times N}
+	{p}{(p,q_{0})}
+
+è un'applicazione liscia.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Coefficienti campo di vettori}
+{exer2-8}
+{
+Siano un punto $ p = (x,y) \in \R^{2} $ e un'applicazione
+
+\map{F}
+	{\R^{2}}{\R^{3}}
+	{(x,y)}{(x,y,xy)}
+
+Trovare $ a,b,c \in \R $ tali che:
+
+\begin{equation}
+	F_{*p} \left( \eval{ \pdv{x} }_{p} \right) = a \eval{ \pdv{u} }_{F(p)} + b \eval{ \pdv{v} }_{F(p)} + c \eval{ \pdv{w} }_{F(p)}
+\end{equation}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Coefficienti cambio di base}
+{exer2-9}
+{
+Siano $ x $ e $ y $ le coordinate standard su $ \R^{2} $ e $ U = \R^{2} \setminus \{(0,0)\} $. In $ U $ le coordinate polari $ (\rho, \theta) $ con $ \rho > 0 $ e $ \theta \in (0,2\pi) $ sono definite come
+
+\begin{equation}
+	\begin{cases}
+		x = \rho \cos(\theta) \\
+		y = \rho \sin(\theta)
+	\end{cases}
+\end{equation}
+
+Si scrivano $ \pdv*{\rho} $ e $ \pdv*{\theta} $ in funzione di $ \pdv*{x} $ e $ \pdv*{y} $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Vettore tangente a una curva}
+{exer2-10}
+{
+Sia $ p = (x,y) $ un punto di $ \R^{2} $. Allora
+
+\begin{equation}
+	c_{p}(t) = \bmqty{ \cos(2t) & - \sin(2t) \\ \\ \sin(2t) & \cos(2t) } \bmqty{ x \\ y }
+\end{equation}
+
+è una curva liscia in $ \R^{2} $ che inizia in $ p $. Calcolare $ c'(0) $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Isomorfismo prodotto spazi tangenti}
+{exer2-11}
+{
+Siano $ N $ e $ M $ varietà differenziabili e $ \pi_{N} : N \times M \to N $ e $ \pi_{M} : N \times M \to M $ le proiezioni naturali. Dimostrare che per $ (p,q) \in N \times M $ l'applicazione
+
+\begin{equation}
+	(\pi_{N_{*p}},\pi_{M_{*q}}) : T_{(p,q)}(N \times M) \to T_{p}(N) \times T_{q}(M)
+\end{equation}
+
+è un isomorfismo.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Prodotto di sottovarietà}
+{exer2-12}
+{
+Siano $ S $ e $ P $ due sottovarietà di due varietà differenziabili $ N $ e $ M $ rispettivamente. Dimostrare che $ S \times P $ è una sottovarietà di $ N \times M $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Preimmagine di applicazione come sottovarietà}
+{exer2-13}
+{
+Sia l'applicazione
+
+\map{F}
+	{\R^{2}}{\R}
+	{(x,y)}{x^{2}-6xy+y^{2}}
+
+Trovare i $ c \in \R $ tali che $ F^{-1}(c) $ sia una sottovarietà di $ \R^{2} $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Sottovarietà tramite condizioni}
+{exer2-14}
+{
+Dire se le soluzioni del sistema
+
+\begin{equation}
+	\begin{cases}
+		x^{3} + y^{3} + z^{3} = 1 \\
+		z = xy
+	\end{cases}
+\end{equation}
+
+costituiscono una sottovarietà di $ \R^{3} $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Spazio tangente a sottovarietà}
+{BONUS2-3}
+{
+Sia la sottovarietà di $ \R^{3} $
+
+\begin{equation}
+	S = \{ (x,y,z) \in \R^{3} \mid x^{3} + y^{3} + z^{3} = 1 \, \wedge \, x + y + z = 0 \} \subset \R^{3}
+\end{equation}
+
+Calcolare lo spazio tangente $ T_{p}(S) $ con $ p \in S $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Sottovarietà e spazio dei polinomi omogenei}
+{exer2-15}
+{
+Un polinomio $ F(x_{1},\dots,x_{n}) \in \R[x_{1},\dots,x_{n}] $ è omogeneo di grado $ k $ se è combinazione lineare di monomi $ x_{1}^{i_{1}} \cdots x_{n}^{i_{m}} $ di grado $ k $ tale che $ \sum_{j=1}^{m} i_{j} = k $. Dimostrare che
+
+\begin{equation}
+	\sum_{i=1}^{n} x_{i} \, \pdv{F}{x_{i}} = k F
+\end{equation}
+
+Dedurre che $ F^{-1}(c) $ con $ c \neq 0 $ è una sottovarietà di $ \R^{n} $ di dimensione $ n-1 $. Dimostrare inoltre che per $ c,d>0 $ si ha che $ F^{-1}(c) \stackrel{diff}{\simeq} F^{-1}(d) $ e lo stesso vale per $ c,d<0 $. \\
+\textit{Suggerimento per la prima parte: usare l'uguaglianza}
+
+\begin{equation}
+	F(\lambda x_{1},\dots,\lambda x_{n}) = \lambda^{k} F(x_{1},\dots,x_{n}) %
+	\qcomma \forall \lambda \in \R
+\end{equation}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Gruppo lineare speciale complesso come sottovarietà}
+{exer2-16}
+{
+Dimostrare che
+
+\begin{equation}
+	SL_{n}(\C) = \{ A \in M_{n}(\C) \mid \det(A) = 1 \} \subset M_{n}(\C)
+\end{equation}
+
+è una sottovarietà di $ M_{n}(\C) $ con $ \dim(SL_{n}(\C)) = 2 n^{2} - 2 $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Punti regolari come aperto del dominio}
+{exer2-17}
+{
+Sia $ F : N \to M $ un'applicazione liscia tra varietà differenziabili. Dimostrare che l'insieme $ \PR_{F} $ dei punti regolari di $ F $ è un aperto di $ N $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Valori regolari come aperto del codominio}
+{exer2-18}
+{
+Sia $ F : N \to M $ un'applicazione liscia tra varietà differenziabili. Dimostrare che se $ F $ è chiusa allora l'insieme $ \mathcal{VR}_{F} $ dei valori regolari di $ F $ è un aperto in $ M $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Embedding liscio (1)}
+{exer2-19}
+{
+Dimostrare che l'applicazione
+
+\map{F}
+	{\R}{\R^{3}}
+	{t}{(t,t^{2},t^{3})}
+
+è un embedding liscio e scrivere $ F(\R) $ come zero di funzioni.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Embedding liscio (2)}
+{exer2-20}
+{
+Dimostrare che l'applicazione
+
+\map{F}
+	{\R}{\R^{2}}
+	{t}{(\cosh(t),\sinh(t))}
+
+è un embedding liscio e che
+
+\begin{equation}
+	F(\R) = \{ (x,y) \in \R^{2} \mid x^{2}-y^{2} = 1 \}
+\end{equation}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Composizione e prodotto cartesiano di immersioni}
+{exer2-21}
+{
+Dimostrare che la composizione di immersioni è un’immersione e che il prodotto cartesiano di due immersioni è un’immersione.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Dominio di immersione ristretto a sottovarietà}
+{exer2-22}
+{
+Dimostrare che se $ F : N \to M $ è un'immersione e $ S \subset N $ è una sottovarietà di $ N $ allora $ \eval{F}_{S} : S \to M $ è un'immersione.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Embedding liscio (proiettivo reale)}
+{exer2-23}
+{
+Dimostrare che l'applicazione
+
+\map{F}
+	{\S^{2}}{\R^{4}}
+	{(x,y,z)}{(x^{2}-y^{2},xy,xz,yz)}
+
+induce un embedding liscio da $ \rp{2} $ a $ \R^{4} $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Immersione iniettiva propria come embedding liscio}
+{exer2-24}
+{
+Dimostrare che un'immersione iniettiva e propria è un embedding liscio. Mostrare che esistono embedding lisci che non sono applicazione proprie. \\ \\
+Ricordare che un'applicazione continua $ f : X \to Y $ tra spazi topologici è propria se $ f^{-1}(K) $ è compatto in $ X $ per ogni compatto $ K $ di $ Y $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Fibrato tangente di sottovarietà come sottovarietà}
+{exer2-25}
+{
+Sia $ N $ una sottovarietà di una varietà differenziabile $ M $. Dimostrare che $ T(N) $ è una sottovarietà di $ T(M) $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Parallelizzabilità sfera $ \S^{1} $}
+{BONUS2-4}
+{
+Verificare che la sfera $ \S^{1} $ sia parallelizzabile.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Varietà orientabili}
+{exer2-26}
+{
+Una varietà differenziabile $ M $ è detta \textit{orientabile} se esiste un atlante di $ M $ rispetto al quale il determinante jacobiano dei cambi di carte è positivo. Dimostrare che:
+
+\begin{enumerate}
+	\item $ \rp{3} $ è una varietà orientabile;
+	\item il fibrato tangente $ T(M) $ di una varietà differenziabile $ M $ è orientabile.
+\end{enumerate}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Funtore differenziale su varietà differenziabili}
+{exer2-27}
+{
+Dimostrare che l'applicazione $ \mathcal{F}_{*} $ che associa a ogni varietà differenziabile il suo fibrato tangente e a ogni applicazione $ F : M \to N $ tra varietà differenziabili l'applicazione $ F_{*} : T(M) \to T(N) $ definita come
+
+\begin{equation}
+	\mathcal{F}_{*}(p,v) = (F(p), F_{*p}(v)) \qcomma \forall (p,v) \in T(M)
+\end{equation}
+
+definisce un funtore covariante dalla categoria delle varietà differenziabili in sé stessa.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Commutatore e derivazione di algebra di Lie}
+{exer2-28}
+{
+Una \textit{derivazione} di un'algebra di Lie $ (V,[\cdot,\cdot]) $ su un campo $ \K $ è un'applicazione lineare $ D : V \to V $ tale che
+
+\begin{equation}
+	D([Y,Z]) = [DY,Z] + [Y,DZ] \qcomma \forall Y,Z \in V
+\end{equation}
+
+Dimostrare che, dato $ X \in V $, l'applicazione
+
+\map{D_{X}}
+	{V}{V}
+	{Y}{[X,Y]}
+
+è una derivazione.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Curva integrale}
+{exer2-29}
+{
+Siano $ M = \R \setminus \{0\} $ e $ X = \pdv*{x} \in \chi(M) $. Trovare la curva integrale di $ X $ massimale che inizia in un generico punto $ p \in \R $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Flusso locale e gruppo di diffeomorfismi a un parametro}
+{exer2-30}
+{
+Trovare il flusso (locale) dei seguenti campi di vettori in $ \chi(\R^{2}) $:
+
+\begin{equation}
+	\begin{cases}
+		X = x \, \dpdv{x} - y \, \dpdv{y} \\ \\
+		Y = x \, \dpdv{x} + y \, \dpdv{y} \\ \\
+		Z = \dpdv{x} + y \, \dpdv{y}
+	\end{cases}
+\end{equation}
+
+Nel caso siano completi, calcolare il loro gruppo di diffeomorfismi a un parametro.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Campo di vettori non completo}
+{exer2-31}
+{
+Dimostrare che il campo di vettori $ X = \pdv*{x} \in \chi(\R^{2} \setminus \{(0,0)\}) $ non è completo.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Curva integrale costante}
+{exer2-32}
+{
+Siano $ M $ una varietà differenziabile e $ X \in \chi(M) $ un campo di vettori liscio tale che $ X(p) = 0 $ in un punto $ p \in M $. Dimostrare che la curva integrale di $ X $ che inizia in $ p $ è la curva costante $ c(t) = p $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Gruppo di diffeomorfismi a un parametro per campo di vettori nullo}
+{exer2-33}
+{
+Sia $ M $ una varietà differenziabile e $ X \in \chi(M) $ il campo di vettori nullo, i.e. $ X = 0 $. Descrivere il gruppo dei diffeomorfismi a un parametro associato a $ X $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Pushforward di prodotto tra funzione e campo}
+{exer2-34}
+{
+Siano $ F : N \to M $ un diffeomorfismo tra varietà differenziabili, $ X \in \chi(N) $ e $ f \in C^{\infty}(N) $. Dimostrare che
+
+\begin{equation}
+	F_{*}(f X) = (f \circ F^{-1}) \, F_{*} X
+\end{equation}
+}
+{
+\textit{soluzione}
+}

@@ -1,0 +1,232 @@
+\exer{Prodotto diretto di gruppi di Lie}
+{exer3-1}
+{
+Dimostrare che il prodotto diretto di due gruppi di Lie è un gruppo di Lie.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Topologie sul toro}
+{exer3-2}
+{
+Siano la proiezione
+
+\map{\pi}
+	{\R^{2}}{\T^{2} = \S^{1} \times \S^{1}}
+	{(t,s)}{(e^{2 \pi i t},e^{2 \pi i s})}
+
+l'insieme
+
+\begin{equation}
+	L = \{ (t,\alpha t) \in \R^{2} \mid \alpha \in \R \setminus \Q \}
+\end{equation}
+
+e la restrizione di $ \pi $ a $ L $, i.e.
+
+\begin{equation}
+	f = \eval{\pi}_{L} : L \to \S^{1} \times \S^{1}
+\end{equation}
+
+Siano
+
+\begin{itemize}
+	\item $ \tau_{f} $ la topologia indotta da $ f $ su $ H = \pi(L) $;
+	
+	\item $ \tau_{s} $ la topologia indotta dall'inclusione $ H \subset \S^{1} \times \S^{1} $
+\end{itemize}
+
+Dimostrare che $ \tau_{s} \subset \tau_{f} $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Esponenziale di matrice}
+{exer3-3}
+{
+Sia la matrice
+
+\begin{equation}
+	X = \bmqty{ %
+				0 & 1 \\
+				1 & 0 %
+				}
+\end{equation}
+
+Dimostrare che
+
+\begin{equation}
+	e^{X} = \bmqty{ %
+					\cosh(1) & \sinh(1) \\ \\
+					\sinh(1) & \cosh(1) %
+					}
+\end{equation}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Esponenziale di somma di matrici}
+{exer3-4}
+{
+Trovare due matrici $ A $ e $ B $ tali che
+
+\begin{equation}
+	e^{A+B} \neq e^{A} e^{B}
+\end{equation}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Matrici unitarie come insieme compatto}
+{exer3-5}
+{
+Dimostrare che il gruppo unitario $ U(n) $ è compatto per ogni $ n \geqslant 1 $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Proprietà componente connessa $ G_{0} $ di un gruppo di Lie}
+{exer3-6}
+{
+Siano $ G $ un gruppo di Lie e $ G_{0} $ la componente connessa di $ G $ che contiene $ e $ (elemento neutro di $ G $). Se $ \mu $ e $ i $ denotano rispettivamente la moltiplicazione e l'inversione in $ G $, provare che:
+
+\begin{enumerate}
+	\item $ \mu(\{g\} \times G_{0}) \subset G_{0} $ per qualsiasi $ g \in G_{0} $;
+	
+	\item $ i(G_{0}) \subset G_{0} $;
+	
+	\item $ G_{0} $ è un sottoinsieme aperto di $ G $;
+	
+	\item $ G_{0} $ è un sottogruppo di Lie di $ G $.
+\end{enumerate}
+}
+{
+\textit{soluzione}
+}
+}
+
+%=======================================================================================
+
+\exer{Diffeomorfismo $ SO(2) \simeq \S^{1} $}
+{BONUS3-1}
+{
+Verificare che $ SO(2) $ sia diffeomorfo a $ \S^{1} $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Diffeomorfismo $ SU(2) \simeq \S^{3} $}
+{BONUS3-2}
+{
+Verificare che $ SU(2) $ sia diffeomorfo a $ \S^{3} $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Differenziale moltiplicazione gruppo di Lie}
+{exer3-7}
+{
+Sia $ G $ un gruppo di Lie con moltiplicazione $ \mu : G \times G \to G $. Dimostrare che
+
+\begin{equation}
+	\mu_{*(a,b)}(X_{a},Y_{b}) = (R_{b})_{*a}(X_{a}) + (L_{a})_{*b}(Y_{b}) %
+	\qcomma \forall (a,b) \in G \times G, \, \forall X_{a} \in T_{a}(G), \, \forall Y_{b} \in T_{b}(G)
+\end{equation}
+
+dove $ L_{a} $ (risp. $ R_{b} $) denota la traslazione a sinistra (risp. a destra) associata ad $ a $ (risp. $ b $).
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Differenziale inversione gruppo di Lie}
+{exer3-8}
+{
+Sia $ G $ un gruppo di Lie con inversione $ i : G \to G $. Dimostrare che
+
+\begin{equation}
+	i_{*a}(Y_{a}) = -(R_{a^{-1}})_{*e}(L_{a^{-1}})_{*a} (Y_{a}) %
+	\qcomma \forall a \in G, \, \forall Y_{a} \in T_{a}(G)
+\end{equation}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Commutatore matriciale per algebre di Lie}
+{exer3-9}
+{
+Verificare che il commutatore tra matrici
+
+\begin{equation}
+	[A,B] = AB - BA
+\end{equation}
+
+definisce un'algebra di Lie sullo spazio tangente all'identità dei gruppi: $ O(n) $, $ SO(n) $, $ U(n) $, $ SU(n) $, $ SL_{n}(\R) $, $ SL_{n}(\C) $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Esponenziale per gruppi di Lie}
+{exer3-10}
+{
+Verificare che l'esponenziale di una matrice definisce un'applicazione
+
+\map{e}
+	{T_{I}(G)}{G}
+	{A}{e^{A}}
+
+per i gruppi di Lie: $ GL_{n}(\R) $, $ GL_{n}(\C) $, $ SL_{n}(\R) $, $ SL_{n}(\C) $, $ O(n) $, $ SO(n) $, $ U(n) $, $ SU(n) $
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Algebra di Lie di prodotto diretto di gruppi di Lie}
+{exer3-11}
+{
+Sia $ G = G_{1} \times \cdots \times G_{s} $ il prodotto diretto di gruppi di Lie. Dimostrare che l'algebra di Lie di $ G $ è isomorfa alla somma diretta delle algebre di Lie dei $ G_{i} $ con $ i=1,\dots,s $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Parallelizzabilità dei gruppi di Lie}
+{exer3-12}
+{
+Dimostrare che ogni gruppo di Lie è parallelizzabile.
+}
+{
+\textit{soluzione}
+}

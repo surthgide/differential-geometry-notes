@@ -1,0 +1,179 @@
+\exer{Funzione $ C^{k}(\R) $ ma non $ C^{k+1}(\R) $}
+{exer1-1}
+{%
+Per ogni numero naturale $ k \in \N $ costruire una funzione $ C^{k}(\R) $ ma non $ C^{k+1}(\R) $. %
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Funzione liscia ma non reale analitica}
+{exer1-2}
+{
+Dimostrare che la funzione
+
+\map{f}
+	{\R}{\R}
+	{x}{%
+		\begin{cases}
+			e^{\sfrac{-1}{x^{2}}} & x \neq 0 \\
+			0 & x = 0
+		\end{cases}
+	}
+
+risulta essere liscia ma non reale analitica.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Intervalli diffeomorfi a $ \R $}
+{exer1-3}
+{
+Siano $ a,b,c,d \in \R $ tale che $ a<b $. Dimostrare che i seguenti intervalli sono tutti diffeomorfi tra loro e diffeomorfi a $ \R $:
+
+\begin{equation}
+	\begin{cases}
+		(a,b) \\
+		(c,+\infty) \\
+		(-\infty,d)
+	\end{cases}
+\end{equation}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Diffeomorfismo tra $ B_{r}(c) $ e $ \R^{n} $}
+{exer1-4}
+{
+Dimostrare che l'applicazione
+
+\map{h}
+	{B_{1}(0)}{\R^{n}}
+	{x}{\left( \dfrac{x^{1}}{\sqrt{1 - \norm{x}^{2}}}, \cdots, \dfrac{x^{n}}{\sqrt{1 - \norm{x}^{2}}} \right)}
+
+definisce un diffeomorfismo tra la palla aperta unitaria centrata nell'origine di $ \R^{n} $ ed $ \R^{n} $. Dedurre che la palla aperta di centro $ c \in \R^{n} $ e raggio $ r > 0 $ in $ \R^{n} $ è diffeomorfa a $ \R^{n} $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Teorema di Taylor con resto per funzione a due variabili}
+{exer1-5}
+{
+Sia $ f \in C^{\infty}(\R^{2}) $. Usando il teorema di Taylor con resto, dimostrare che esistono $ g_{11},g_{12},g_{22} \in C^{\infty}(\R^{2}) $ tali che
+
+\begin{equation}
+	f(x,y) = f(0,0) + x \, \dfrac{\partial f}{\partial x} (0,0) + y \, \dfrac{\partial f}{\partial y} (0,0) + x^{2} \, g_{11}(x,y) + x y \, g_{12}(x,y) + y^{2} \, g_{22}(x,y)
+\end{equation}
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Funzione liscia tramite incollamento}
+{exer1-6}
+{
+Sia $ f \in C^{\infty} (\R^{2}) $ tale che
+
+\begin{equation}
+	f(0,0) = \pdv{f}{x} \, (0,0) = \pdv{f}{y} \, (0,0) = 0
+\end{equation}
+
+Sia l'applicazione
+
+\map{g}
+	{\R^{2}}{\R}
+	{(t,u)}{%
+			\begin{cases}
+				\dfrac{f(t,tu)}{t} & t \neq 0 \\ \\
+				0 & t = 0
+			\end{cases}
+			}
+
+Dimostrare che $ g \in C^{\infty}(\R^{2}) $.
+}
+{
+\textit{soluzione}
+}
+}
+
+%=======================================================================================
+
+\exer{$ C_{p}^{\infty}(\R^{n}) $ come algebra commutativa e unitaria}
+{exer1-7}
+{
+Dimostrare che l'insieme $ C_{p}^{\infty}(\R^{n}) $ dei germi delle funzioni lisce intorno a $ p \in \R^{n} $ con le operazioni di somma e di prodotto definite negli appunti è un'algebra commutativa e unitaria.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{$ \der_{p}(C_{p}^{\infty}(\R^{n})) $ come spazio vettoriale su $ \R $}
+{exer1-8}
+{
+Dimostrare che l'insieme $ \der_{p}(C_{p}^{\infty}(\R^{n})) $ delle derivazioni puntuali con le operazioni definite negli appunti è uno spazio vettoriale su $ \R $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{$ \chi(U) $ come spazio vettoriale su $ \R $ e $ C^{\infty} $-modulo}
+{exer1-9}
+{
+Dimostrare che l'insieme dei campi di vettori lisci $ \chi(U) $ su un aperto $ U \subset \R^{n} $ con le operazioni definite negli appunti è uno spazio vettoriale su $ \R $ e un $ C^{\infty} $-modulo.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{$ \der(A) $ come spazio vettoriale su $ \K $}
+{exer1-10}
+{
+Sia $ A $ un'algebra su un campo $ \K $. Dimostrare che le operazioni
+
+\begin{equation}
+	\begin{cases}
+		(D_{1}+D_{2})(a) = D_{1}(a) + D_{2}(a) \\
+		(\lambda D)(a) = \lambda D(a)
+	\end{cases} %
+	\qquad \forall \lambda \in \K, \, \forall D_{1},D_{2},D \in \der(A)
+\end{equation}
+
+dotano $ \der(A) $ della struttura di spazio vettoriale su $ \K $.
+}
+{
+\textit{soluzione}
+}
+
+%=======================================================================================
+
+\exer{Commutatore come derivazione}
+{exer1-11}
+{
+Siano $ D_{1} $ e $ D_{2} $ due derivazioni di un'algebra $ A $ su un campo $ \K $, i.e. $ D_{1},D_{2} \in \der(A) $. Mostrare che $ D_{1} \circ D_{2} $ non è necessariamente una derivazione di $ A $ mentre
+
+\begin{equation}
+	D_{1} \circ D_{2} - D_{2} \circ D_{1} \in \der(A)
+\end{equation}
+}
+{
+\textit{soluzione}
+}

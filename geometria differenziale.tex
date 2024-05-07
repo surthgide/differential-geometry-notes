@@ -1,0 +1,328 @@
+% Appunti di Geometria differenziale di Simone Iovine
+
+\documentclass[12pt]{report}
+
+\usepackage[utf8]{inputenc}
+\usepackage[italian]{babel}
+\usepackage{datetime}
+\usepackage{mathtools,amsthm,amssymb}
+\usepackage{mathtools}
+\usepackage{cases}
+\usepackage{centernot}
+\usepackage[makeroom]{cancel}
+\usepackage{graphics,graphicx}
+\graphicspath{ {C:/Users/simon/Desktop/Simo/"geometria differenziale"/images/} }
+\usepackage[a4paper,width=170mm,top=25mm,bottom=25mm]{geometry}
+\usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{float}
+\usepackage[svgnames]{xcolor}
+\usepackage{tikz,pgfplots,tikz-3dplot}
+%\usepackage{blindtext}
+%\usepackage{pgfplots}
+\usetikzlibrary{3d,calc,decorations.pathmorphing,patterns}
+\usepackage{xfrac}
+\usepackage{multirow,multicol}
+\usepackage{physics}
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\usepackage{enumitem}
+\usepackage{bbm}
+\usepackage[toc]{appendix}
+\usepackage{parskip}
+\usepackage{tikz-cd}
+\usepackage{ifthen}
+
+% symbols definition
+
+\newcommand{\id}{\operatorname{id}}
+\newcommand{\bigone}{\mathbbm{1}}
+\newcommand{\der}{\operatorname{Der}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\ob}{\operatorname{Ob}}
+\newcommand{\mor}{\operatorname{Mor}}
+\newcommand{\st}{\, \middle| \,}
+\newcommand{\hatapp}{\; \hat{} \;}
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+
+%\newcommand{\ie}{i.e. \phantom{$ \!\! $}}
+
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\T}{\mathbb{T}}
+\renewcommand{\S}{\mathbb{S}}
+
+\newcommand{\rp}[1]{\R\mathcal{P}^{#1}}
+\newcommand{\B}{\mathcal{B}}
+
+\newcommand{\PC}{\mathcal{PC}}
+\newcommand{\PR}{\mathcal{PR}}
+\newcommand{\VC}{\mathcal{VC}}
+\newcommand{\VR}{\mathcal{VR}}
+
+\newcommand{\g}{\mathfrak{g}}
+\newcommand{\h}{\mathfrak{h}}
+\newcommand{\so}{\mathfrak{so}}
+\newcommand{\su}{\mathfrak{su}}
+
+\newcommand{\notimplies}{\centernot\implies}
+\newcommand{\E}{\exists \;}
+\newcommand{\ps}{\mathcal{P}}
+
+\newcommand{\hal}{\hspace{13px}}
+
+\DeclareDocumentCommand\dpdv{}{\displaystyle\partialderivative}
+\DeclareDocumentCommand\ddv{}{\displaystyle\derivative}
+
+% map definition
+
+\newcommand{\map}[5]{
+	\begin{align}
+		\begin{split}
+			#1 : #2 &\to #3 \\
+			#4 &\mapsto #5
+		\end{split}
+	\end{align}
+}
+
+% map w/o equation number
+
+\newcommand{\maps}[5]{
+	\begin{align*}
+		\begin{split}
+			#1 : #2 &\to #3 \\
+			#4 &\mapsto #5
+		\end{split}
+	\end{align*}
+}
+
+% image definition
+
+\newcommand{\img}[2]{
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=#1\textwidth,keepaspectratio]{#2}
+	\end{figure}
+}
+
+% diagram definition
+
+% mind this link for why & -> \&:
+% https://tex.stackexchange.com/questions/15093/single-ampersand-used-with-wrong-catcode-error-using-tikz-matrix-in-beamer
+
+\newcommand{\diagr}[1]{
+	\begin{figure}[H]
+		\centering
+		\begin{tikzcd}[ampersand replacement=\&]
+			#1
+		\end{tikzcd}
+	\end{figure}
+}
+
+% side-by-side (two neighbouring boxes)
+
+% \sbs{[width left box]}{[content left box]}{[width right box]}{[content right box]}
+
+\newcommand{\sbs}[4]{
+	\noindent\begin{minipage}[c]{#1\textwidth}
+		#2
+	\end{minipage}
+	\begin{minipage}[c]{#3\textwidth}
+		#4
+	\end{minipage}
+}
+
+%
+
+% exercise macro
+
+\newcounter{solutions}
+\setcounter{solutions}{42} % change this number from 42 to whatever to hide solutions
+
+% \exer{[title]}{[label]}{[exercise text]}{[solution]}
+
+\newcommand{\exer}[4]{
+	\section{#1}\label{#2}
+	
+	\begin{tcolorbox}
+		#3
+	\end{tcolorbox}
+	
+	\ifthenelse{\thesolutions = 42}
+	{#4}
+	{}
+	
+	%
+	
+	\newpage
+}
+
+%
+
+\renewcommand{\contentsname}{Indice}
+
+\makeatletter
+\renewcommand{\@chapapp}{Capitolo}
+\makeatother
+
+% environments names
+
+\newtheorem{theorem}{Teorema}
+\newtheorem{corollary}{Corollario}[theorem]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem*{remark}{Osservazione}
+\newtheorem{definition}{Proposizione}[theorem]
+
+\renewcommand*{\proofname}{Dimostrazione}
+\renewcommand\qedsymbol{$\square$}
+
+% \highlight[<colour>]{<stuff>}
+
+\newcommand{\highlight}[2][yellow]{\mathchoice%
+	{\colorbox{#1}{$\displaystyle#2$}}%
+	{\colorbox{#1}{$\textstyle#2$}}%
+	{\colorbox{#1}{$\scriptstyle#2$}}%
+	{\colorbox{#1}{$\scriptscriptstyle#2$}}}%
+
+\definecolor{hlc}{RGB}{204,241,202} % hlc = highlight colour
+
+\newcommand{\hl}[1]{%
+	\highlight[hlc]{#1}}
+
+% blue links for footsnotes and stuff
+
+\usepackage[
+	bookmarksnumbered = true,
+	linktocpage = true
+]{hyperref}
+
+\hypersetup{
+	colorlinks = true,
+	linkcolor = blue,
+	anchorcolor = blue,
+	citecolor = blue,
+	filecolor = blue,
+	urlcolor = blue
+}
+
+% page layout
+
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{ \markboth{#1}{} }
+
+\fancyhead{}
+\fancyhead[R]{Appunti di Geometria differenziale}
+\fancyhead[L]{\leftmark}
+\fancyfoot{}
+\fancyfoot[L]{Simone Iovine}
+\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\renewcommand{\footnoterule}{\vfill\kern -3pt \hrule width 0.4\columnwidth \kern 2.6pt}
+
+% bibliography
+
+\usepackage[
+	backend = bibtex,
+	style = nature,
+	natbib = true,
+	sorting = none,
+	autocite = inline
+]{biblatex}
+% bibliography is sorted in the same order in which the articles are cited
+
+\addbibresource{chapters/biblio} % imports bibliography file
+
+% table of contents
+
+\setcounter{tocdepth}{3}
+%\setcounter{secnumdepth}{3}
+
+% title page stuff
+
+\title{\textbf{Appunti di Geometria differenziale}}
+\author{Simone Iovine}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+%
+
+\pagenumbering{roman}
+
+%
+
+\tableofcontents
+
+%
+
+\chapter*{Note}
+\addcontentsline{toc}{chapter}{Note}
+\input{chapters/note}
+
+%
+
+\chapter*{Notazione}
+\addcontentsline{toc}{chapter}{Notazione}
+\input{chapters/notation}
+
+%
+
+\newpage
+
+%
+
+\pagenumbering{arabic}
+
+%
+
+\chapter{Geometria differenziale negli spazi euclidei}
+\input{chapters/geodiffeucl}
+
+%
+
+\chapter{Varietà differenziabili}
+\input{chapters/vardiff}
+
+%
+
+\chapter{Gruppi e algebre di Lie}
+\input{chapters/gruppialglie}
+
+%
+
+\appendix
+
+\makeatletter
+\renewcommand{\@chapapp}{Esercizi}
+\makeatother
+
+\chapter{Esercizi: Geometria differenziale negli spazi euclidei}
+\input{chapters/eserciziA}
+
+%
+
+\chapter{Esercizi: Varietà differenziabili}
+\input{chapters/eserciziB}
+
+%
+
+\chapter{Esercizi: Gruppi e algebre di Lie}
+\input{chapters/eserciziC}
+
+%
+
+\addcontentsline{toc}{chapter}{Bibliografia}
+
+\printbibliography[
+	title={Bibliografia}
+]
+
+\end{document}

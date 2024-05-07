@@ -1,0 +1,5691 @@
+\section{Gruppi di Lie}\label{sec:lie-groups}
+
+Un gruppo $ (G,\mu) \equiv G $ è un \textit{gruppo di Lie} se:
+
+\begin{itemize}
+	\item L'insieme $ G $ del gruppo è una varietà differenziabile;
+	
+	\item $ (G,\mu) $ è un gruppo algebrico;
+	
+	\item sono lisce le sue operazioni di prodotto e inversione
+\end{itemize}
+
+\sbs{0.5}{%
+			\map{\mu}
+				{G \times G}{G}
+				{(a,b)}{a b}
+			}
+	{0.5}{%
+			\map{i}
+				{G}{G}
+				{a}{a^{-1}}
+			}
+		
+Preso un elemento $ a \in G $, possiamo considerare delle restrizioni della moltiplicazione, chiamate traslazione a sinistra $ L_{a} $ e traslazione a destra $ R_{a} $:
+
+\sbs{0.5}{%
+			\map{L_{a}}
+				{G}{G}
+				{b}{a b}
+			}
+	{0.5}{%
+			\map{R_{a}}
+				{G}{G}
+				{b}{b a}
+			}
+
+Queste sono lisce in quanto restrizioni di applicazioni lisce:
+
+\begin{gather}
+	L_{a} \doteq \mu(a,\cdot) = \eval{\mu}_{\{a\} \times G} \\
+	R_{a} \doteq \mu(\cdot,a)  = \eval{\mu}_{G \times \{a\}}
+\end{gather}
+
+Sono inoltre diffeomorfismi, in quanto sono lisce le inverse:
+
+\begin{gather}
+	L_{a}^{-1} = L_{a^{-1}} \\
+	R_{a}^{-1} = R_{a^{-1}}
+\end{gather}
+
+\subsubsection{\textit{Esempi}}
+
+\paragraph{1) Gruppo lineare $ GL_{n}(\R) $}
+
+Sia il gruppo delle matrici invertibili
+
+\begin{equation}
+	GL_{n}(\R) = \{ A \in M_{n}(\R) \mid \det(A) \neq 0 \} \subset M_{n}(\R) = \R^{n^{2}}
+\end{equation}
+
+Questo è aperto in $ M_{n}(\R) = \R^{n^{2}} $, dunque ha la struttura differenziale ereditata da quest'ultimo e perciò è un gruppo di Lie rispetto alla moltiplicazione e l'inversione definite come
+
+\sbs{0.5}{%
+			\map{\mu}
+				{GL_{n}(\R) \times GL_{n}(\R)}{GL_{n}(\R)}
+				{(A,B)}{A B}
+			}
+	{0.5}{%
+			\map{i}
+				{GL_{n}(\R)}{GL_{n}(\R)}
+				{A}{A^{-1}}
+		}
+
+le quali sono lisce.
+
+\paragraph{2) Gruppo lineare speciale $ SL_{n}(\R) $}
+
+Il gruppo delle matrici con determinante unitario
+
+\begin{equation}
+	SL_{n}(\R) = \{ A \in M_{n}(\R) \mid \det(A) = 1 \} \subset M_{n}(\R) = \R^{n^{2}}
+\end{equation}
+
+è un gruppo di Lie rispetto alla moltiplicazione e l'inversione
+
+\sbs{0.5}{%
+			\map{\mu}
+				{SL_{n}(\R) \times SL_{n}(\R)}{SL_{n}(\R)}
+				{(A,B)}{A B}
+			}
+	{0.5}{%
+			\map{i}
+				{SL_{n}(\R)}{SL_{n}(\R)}
+				{A}{A^{-1}}
+			}
+
+in quanto sottovarietà di $ GL_{n}(\R) $ (e quindi una varietà) di dimensione $ n^{2}-1 $ e gruppo algebrico rispetto alle sue operazioni, le quali sono lisce. \\
+Dimostriamo ora che la moltiplicazione è liscia\footnote{%
+	Questa dimostrazione è già stata fatta nell'Esempio \ref{example:slnr-smooth}.%
+}: prendiamo la moltiplicazione (liscia) in $ GL_{n}(\R) $
+
+\map{F}
+	{GL_{n}(\R) \times GL_{n}(\R)}{GL_{n}(\R)}
+	{(A,B)}{A B}
+
+e l'inclusione liscia
+
+\begin{equation}
+	i \times i : SL_{n}(\R) \times SL_{n}(\R) \to GL_{n}(\R) \times GL_{n}(\R)
+\end{equation}
+
+L'applicazione $ G = F \circ (i \times i) $ è dunque liscia perché composizione di applicazione lisce. Siccome il prodotto di due matrici con determinante unitario (i.e. in $ SL_{n}(\R) $) è ancora una matrice con determinante unitario, vale per l'immagine di $ G $
+
+\begin{equation}
+	G(SL_{n}(\R) \times SL_{n}(\R)) \subset SL_{n}(\R)
+\end{equation}
+
+A questo punto, dato che $ SL_{n}(\R) $ è una sottovarietà di $ GL_{n}(\R) $ (ipotesi del Teorema \ref{thm:smooth-restriction-subman} che permette di mantenere l'applicazione liscia), possiamo considerare la restrizione del codominio della funzione $ G $
+
+\map{\tilde{G}}
+	{SL_{n}(\R) \times SL_{n}(\R)}{SL_{n}(\R)}
+	{(A,B)}{A B}
+
+la quale è identica a $ \mu $, dunque $ \mu \in C^{\infty}(SL_{n}(\R) \times SL_{n}(\R)) $. \\
+Per dimostrare che l'inversione sia liscia, consideriamo l'inversione in $ GL_{n}(\R) $
+
+\map{F}
+	{GL_{n}(\R)}{GL_{n}(\R)}
+	{A}{A^{-1}}
+
+la quale è liscia e, analogamente per la moltiplicazione, definiamo $ G = F \circ i $
+
+\map{G}
+	{SL_{n}(\R)}{GL_{n}(\R)}
+	{A}{A^{-1}}
+
+e dunque la restrizione del suo codominio a $ SL_{n}(\R) $ (sottovarietà di $ GL_{n}(\R) $)
+
+\map{\tilde{G}}
+	{SL_{n}(\R)}{SL_{n}(\R)}
+	{A}{A^{-1}}
+
+funzione che coincide con l'inversione $ i $ in $ SL_{n}(\R) $, rendendola dunque liscia.
+
+\paragraph{3) Gruppo ortogonale $ O(n) $}\label{example:on-group-lie}
+
+Il gruppo delle matrici ortogonali
+
+\begin{equation}
+	O(n) = \{ A \in GL_{n}(\R) \mid A^{T} A = I \} \subset GL_{n}(\R)
+\end{equation}
+
+è una sottovarietà di $ GL_{n}(\R) $ (dal teorema della preimmagine di un'applicazione di rango costante). \\
+Il ragionamento per cui $ O(n) $ sia un gruppo di Lie rispetto alla moltiplicazione e l'inversione
+
+\sbs{0.5}{%
+			\map{\mu}
+				{O(n) \times O(n)}{O(n)}
+				{(A,B)}{A B}
+			}
+	{0.5}{%
+			\map{i}
+				{O(n)}{O(n)}
+				{A}{A^{-1}}
+			}
+
+è analogo a quello fatto per $ SL_{n}(\R) $. \\
+Calcoliamo ora la dimensione di $ O(n) $ come varietà e il suo spazio tangente nell'identità $ T_{I}(O(n)) $. Consideriamo l'insieme delle matrici simmetriche di ordine $ n $
+
+\begin{equation}
+	S(n) = \{ B \in M_{n}(\R) \mid B^{T} = B \}
+\end{equation}
+
+e l'applicazione liscia
+
+\map{f}
+	{GL_{n}(\R)}{S(n)}
+	{A}{A^{T} A}
+
+dove
+
+\begin{equation}
+	(A^{T} A)^{T} = A^{T} A \implies %
+	A^{T} A \in S(n) \qcomma \forall A \in GL_{n}(\R)
+\end{equation}
+
+$  $. Dimostrando che $ I \in \VR_{f} $, per il teorema della preimmagine di un valore regolare, avremo che $ O(n) $ è una sottovarietà di $ GL_{n}(\R) $ con dimensione
+
+\begin{equation}
+	\dim(O(n)) = \dim(GL_{n}(\R)) - \dim(S(n))
+\end{equation}
+
+dove $ S(n) $ è uno spazio vettoriale su $ \R $ e anche un sottospazio vettoriale di $ M_{n}(\R) $, la cui dimensione è data da $ n^{2} $ meno le condizioni necessarie al fine di determinare una matrice simmetrica, i.e.
+
+\begin{equation}
+	\dim(S(n)) = \dfrac{n^{2} - n}{2} + n = \dfrac{n (n+1)}{2}
+\end{equation}
+
+Siccome $ \dim(GL_{n}(\R)) = n^{2} $, otteniamo che
+
+\begin{equation}
+	\dim(O(n)) = n^{2} - \dfrac{n (n+1)}{2} = \dfrac{n (n-1)}{2}
+\end{equation}
+
+Verifichiamo ora che $ I \in \VR_{f} $: per fare ciò, dobbiamo calcolare il differenziale di $ f $ e controllare che tutti i punti che stanno nell'immagine di $ I $ attraverso $ f_{*} $ siano punti regolari
+
+\begin{equation}
+	f_{*A} : T_{A}(GL_{n}(\R)) \to T_{f(A)}(S(n))
+\end{equation}
+
+possiamo identificare $ T_{A}(GL_{n}(\R)) = M_{n}(\R) $ e $ T_{f(A)}(S(n)) = S(n) $ (in quanto $ S(n) $ è uno spazio vettoriale), perciò $ f_{*} $ porta matrici in matrici simmetriche. Calcoliamo dunque il differenziale $ f_{*A}(X) $ prendendo una curva che passi per $ A $ in 0 e il cui vettore tangente sia $ X $, i.e.
+
+\begin{equation}
+	\begin{cases}
+		c : (-\varepsilon,\varepsilon) \to GL_{n}(\R) \\
+		c(0) = A \\
+		c'(0) = \dot{c}(0) = X
+	\end{cases}
+\end{equation}
+
+dove
+
+\begin{equation}
+	T_{A}(GL_{n}(\R)) = M_{n}(\R) \implies c'(0) = \dot{c}(0)
+\end{equation}
+
+perciò
+
+\begin{align}
+	\begin{split}
+		f_{*A}(X) &= \dv{t} (f \circ c) (0) \\
+		&= \eval{ \dv{t} f(c(t)) }_{t=0} \\
+		&= \eval{ \dv{t} \left( c(t)^{T} c(t) \right) }_{t=0} \\
+		&= \dot{c}(0)^{T} c(0) + c(0)^{T} \dot{c}(0) \\
+		&= X^{T} A + A^{T} X
+	\end{split}
+\end{align}
+
+i.e.
+
+\map{f_{*A}}
+	{M_{n}(\R)}{S(n)}
+	{X}{X^{T} A + A^{T} X}
+
+Vale la condizione
+
+\begin{equation}
+	I \in \VR_{f} %
+	\iff %
+	f_{*A} : M_{n}(\R) \to S(n) \text{ suriettiva} \qcomma \forall A \in f^{-1}(I) = O_{n}
+\end{equation}
+
+Perché $ f_{*A} $ sia suriettiva
+
+\begin{equation}
+	\forall A \in O(n), \, \forall B \in S(n), \E X \in M_{n}(\R) \mid X^{T} A + A^{T} X = B
+\end{equation}
+
+è sufficiente dunque prendere $ X = A B / 2 $, i.e.
+
+\begin{align}
+	\begin{split}
+		X^{T} A + A^{T} X &= \left( \dfrac{1}{2} A B \right)^{T} A + \dfrac{1}{2} A^{T} A B \\
+		&= \dfrac{1}{2} B^{T} A^{T} A + \dfrac{1}{2} B \\
+		&= \dfrac{1}{2} B^{T} + \dfrac{1}{2} B \\
+		&= \dfrac{1}{2} B + \dfrac{1}{2} B \\
+		&= B
+	\end{split}
+\end{align}
+
+dunque $ I \in \VR_{f} $ e $ \dim(O(n)) = n(n-1)/2 $. Da questo ragionamento, otteniamo anche lo spazio tangente a $ O(n) $ in $ I $ poiché, sempre per il teorema della preimmagine di un valore regolare, vale la seguente uguaglianza
+
+\begin{equation}
+	T_{A}(f^{-1}(I)) = T_{A}(O(n)) = \ker(f_{*A}) \qcomma A \in f^{-1}(I)
+\end{equation}
+
+Siccome
+
+\begin{equation}
+	f_{*I}(X) = X^{T} + X
+\end{equation}
+
+abbiamo che
+
+\begin{equation}
+	T_{I}(O(n)) = \ker(f_{*I}) = \{ X \in M_{n}(\R) \mid X^{T} = -X \}
+\end{equation}
+
+ovvero lo spazio tangente di $ O(n) $ è formato dalle matrici antisimmetriche (spazio vettoriale), il quale ha dimensione esattamente $ \dim(T_{I}(O(n))) = n(n-1)/2 $.
+
+\subsection{Omomorfismi e isomorfismi}
+
+Un \textit{omomorfismo} di gruppi\footnote{%
+	Omomorfismo e omeomorfismo sono due concetti differenti legati a due parti differenti della matematica.%
+} è un'applicazione (non necessariamente liscia) che preserva le moltiplicazioni di un gruppo nell'altro, i.e. per un omomorfismo $ F : G \to H $ vale
+
+\begin{equation}
+	F(g_{1} g_{2}) = F(g_{1}) \, F(g_{2}) \in H \qcomma \forall g_{1},g_{2} \in G
+\end{equation}
+
+\begin{remark}
+Siano $ F : G \to H $ un omomorfismo, $ e_{G} \in G $ ed $ e_{H} \in H $ gli elementi neutri dei rispettivi gruppi, allora $ F(e_{G}) = e_{H} $.
+\end{remark}
+
+\begin{definition}
+	Sia $ F : G \to H $ un omomorfismo di gruppi, vale la relazione
+	
+	\begin{equation}
+		F \circ L_{g} = L_{F(g)} \circ F \qcomma \forall g \in G
+	\end{equation}
+\end{definition}
+
+\begin{proof}
+	Essendo $ F $ un omomorfismo, è preservata la moltiplicazione, perciò presi due elementi qualsiasi $ g,h \in G $ vale
+	
+	\begin{align}
+		\begin{split}
+			F(g h) &= F(g) \, F(h) \\
+			F(L_{g}(h)) &= L_{F(g)}(F(h)) \\
+			(F \circ L_{g})(h) &= (L_{F(g)} \circ F)(h) \\
+			F \circ L_{g} &= L_{F(g)} \circ F
+		\end{split}
+	\end{align}
+\end{proof}
+
+Un omomorfismo di due gruppi di Lie $ H $ e $ G $ è un'applicazione liscia $ F : H \to G $ tale che sia un omomorfismo di gruppi. \\
+Un \textit{isomorfismo di Lie} è un omomorfismo di gruppi che sia anche un diffeomorfismo.
+
+\subsection{Sottogruppi di Lie}
+
+Siano $ G $ un gruppo di Lie e $ H \neq \emptyset $ un suo sottoinsieme, diremo che $ H $ è un \textit{sottogruppo di Lie} (immerso) di $ G $ se:
+
+\begin{enumerate}
+	\item $ H $ è un sottogruppo algebrico di $ G $, in notazione $ H < G $;
+	
+	\item $ H $ è una sottovarietà immersa di $ G $, i.e. $ H $ è l'immagine di un'immersione iniettiva che sia contenuta in $ G $ (la topologia di $ H $ non è necessariamente la topologia indotta da $ G $);
+	
+	\item Le operazioni di moltiplicazione e inversione su $ H $, indotte da $ G $, sono lisce.
+\end{enumerate}
+
+\begin{definition}\label{prop:lie-group-cond}
+	Se $ H $ è un sottogruppo algebrico di $ G $ e una sottovarietà di $ G $, allora la terza condizione è superflua.
+\end{definition}
+
+\begin{proof}
+	Consideriamo la moltiplicazione e l'inclusione in $ G $
+	
+	\begin{gather}
+		\mu_{G} : G \times G \to G \\
+		i : H \to G
+	\end{gather}
+
+	La loro composizione
+	
+	\begin{equation}
+		\nu \doteq \mu_{G} \circ (i \times i) : H \times H \to G
+	\end{equation}
+
+	ha come immagine $ \nu (H \times H) \subset H $ perciò possiamo restringere il codominio di questa al solo insieme $ H $, ottenendo dunque la moltiplicazione per $ H $
+	
+	\begin{equation}
+		\tilde{\nu} = \mu_{H} : H \times H \to H
+	\end{equation}
+
+	la quale è liscia per i teoremi sulle sottovarietà; il ragionamento è analogo per l'inversione.
+\end{proof}
+
+Se $ H < G $ è un  sottogruppo algebrico e $ H \subset G $ è una sottovarietà di $ G $, diremo che $ H $ è un \textit{sottogruppo di Lie embedded}. \\ \\
+%
+Ad esempio, $ SL_{n}(\R) $ e $ O(n) $ sono sottogruppi di Lie embedded di $ GL_{n}(\R) $, perché sottovarietà di quest'ultimo.
+
+\begin{theorem}[Cartan]\label{thm:liesub-var}
+	Siano $ G $ e $ H $ varietà differenziabili, se $ H < G $ sottogruppo algebrico e $ H $ è chiuso in $ G $ (come sottospazio topologico) allora $ H $ è un sottogruppo di Lie embedded di $ G $.
+\end{theorem}
+
+Da questo teorema, possiamo ancora derivare che $ SL_{n}(\R) $ e $ O(n) $ siano sottogruppi di Lie embedded di $ GL_{n}(\R) $ (e quindi sottovarietà) in quanto varietà e chiusi:
+
+\begin{itemize}
+	\item $ SL_{n}(\R) $ è un chiuso in $ GL_{n}(\R) $ in quanto controimmagine di 1 (chiuso in $ \R $) tramite l'applicazione continua (porta chiusi in chiusi)
+	
+	\map{f}
+		{GL_{n}(\R)}{\R}
+		{A}{\det(A)}
+	
+	\item $ O(n) $ è un chiuso in $ GL_{n}(\R) $ in quanto controimmagine di $ I $ (chiuso in $ S(n) $) tramite l'applicazione
+	
+	\map{f}
+		{GL_{n}(\R)}{S(n)}
+		{A}{A^{T} A}
+\end{itemize}
+
+\subsubsection{\textit{Esempio}}
+
+Questo esempio è riferito a un sottogruppo di Lie immerso importante, il resto dei sottogruppi considerati in questo testo saranno sottogruppi di Lie embedded. \\
+Consideriamo i gruppi di Lie $ (\R,+) $ e il toro\footnote{%
+	Siccome $ \S^{1} $ è un gruppo di Lie, il prodotto diretto di due $ \S^{1} $ è ancora un gruppo di Lie; vedi Esercizio \ref{exer3-1}.%
+} $ \T^{2} = \S^{1} \times \S^{1} $ con le operazioni naturali (moltiplicazione di $ \S^{1} $). Inoltre, prendiamo l'applicazione
+
+\map{F}
+	{\R}{\T^{2}}
+	{t}{(e^{2 \pi i t},e^{2 \pi i \alpha t})}
+
+dove $ \alpha \in \R \setminus \Q $, i.e. $ \alpha $ è irrazionale; questa applicazione è un'immersione iniettiva\footnote{%
+	Vedi Esempio \ref{example:embed-torus}.%
+} e un omomorfismo di gruppi, in quanto
+
+\begin{align}
+	\begin{split}
+		F(t+s) &= (e^{2 \pi i (t+s)},e^{2 \pi i \alpha (t+s)}) \\
+		&= (e^{2 \pi i t} e^{2 \pi i s},e^{2 \pi i \alpha t} e^{2 \pi i \alpha s}) \\
+		&= (e^{2 \pi i t},e^{2 \pi i \alpha t}) (e^{2 \pi i s},e^{2 \pi i \alpha s}) \\
+		&= F(t) \, F(s)
+	\end{split}
+\end{align}
+
+L'immagine di $ \R $ tramite $ F $ è un sottogruppo di $ \T^{2} $, i.e. $ F(\R) < \T^{2} $, è una sottovarietà immersa di $ \T^{2} $ ($ F $ non è un embedding) e le operazioni su $ F(\R) $ sono lisce, dunque $ F(\R) $ è un sottogruppo di Lie (immerso) di $ \T^{2} $.
+
+\section{Esponenziale di una matrice}
+
+Sia una matrice quadrata $ X \in M_{n}(\R) $, definiamo l'\textit{esponenziale di matrice} come
+
+\begin{equation}
+	e^{X} = \sum_{i=0}^{+\infty} \dfrac{X^{i}}{i!} \qcomma X \in M_{n}(\R)
+\end{equation}
+
+In particolare abbiamo che $ X^{0} = I $. \\
+La definizione dell'esponenziale di matrice segue la falsa riga delle serie di potenze
+
+\begin{equation}
+	e^{x} = \sum_{i=0}^{+\infty} \dfrac{x^{i}}{i!} \qcomma x \in \R
+\end{equation}
+
+Non è però chiaro se la serie di matrici considerata sia convergente e dunque se $ e^{X} \in M_{n}(\R) $: questo è facilmente dimostrabile se la matrice all'esponente è
+
+\begin{itemize}
+	\item la matrice nulla $ X = 0_{n} $ da cui $ e^{0_{n}} = I_{n} = I $;
+	
+	\item la matrice è un multiplo della matrice identità $ X = x I_{n} $, i.e. $ X^{i} = x^{i} I_{n} $, da cui $ e^{X} = e^{x} I_{n} $.
+\end{itemize}
+
+Per dimostrarlo in generale, facciamo una digressione su concetti di analisi utili alla dimostrazione.
+
+\subsection{Spazi vettoriali e algebre normati}
+
+\paragraph{Spazi vettoriali normati}
+
+Uno spazio vettoriale $ V $ sui reali $ \R $ è detto \textit{normato} se esiste un'applicazione
+
+\map{\norm{}}
+	{V}{\R}
+	{v}{\norm{v}}
+
+chiamata \textit{norma} tale che siano soddisfatte le condizioni:
+
+\begin{equation}
+	\begin{cases}
+		\begin{cases}
+			\norm{v} \geqslant 0 \\
+			\norm{v} = 0 \iff v = 0 \in V
+		\end{cases} & \text{definita positiva} \\
+		\norm{\lambda v} = \abs{\lambda} \norm{v} & \text{omogeneità} \\
+		\norm{v + w} \leqslant \norm{v} + \norm{w} & \text{subadditività}
+	\end{cases}
+\end{equation}
+
+per qualsiasi $ \lambda \in \R $ e qualsiasi $ v,w \in V $. \\
+La condizione di subadditività deriva dalla \textit{disuguaglianza di Cauchy-Schwarz}:
+
+\begin{equation}
+	\norm{v \cdot w} \leqslant \norm{v} \norm{w} \qcomma \forall v,w \in \R^{n}
+\end{equation}
+
+Consideriamo in particolare lo spazio vettoriale delle matrici quadrate sui reali $ M_{n}(\R) $ di dimensione $ n^{2} $ e come norma
+
+\map{\norm{}}
+	{M_{n}(\R)}{\R}
+	{X = [x_{ij}]_{i,j=1,\dots,n}}{\left( \sum_{i,j=1}^{n} x_{ij}^{2} \right)^{1/2}}
+	
+la quale corrisponde alla norma usuale in $ \R^{n^{2}} $: da ciò deriva che questa norma soddisfa le condizioni poste sopra, rendendo quindi $ M_{n}(\R) $ uno spazio vettoriale normato. \\
+
+\paragraph{Algebre normate}
+
+Una tripletta $ (V,\cdot,\norm{}) $ è un'\textit{algebra normata} se $ V $ è uno spazio vettoriale su $ \R $, $ (V,\cdot) $ è un'algebra su $ \R $ e $ (V,\norm{}) $ è uno spazio vettoriale normato tali che valga la proprietà di submoltiplicatività
+
+\begin{equation}
+	\norm{v \cdot w} \leqslant \norm{v} \norm{w} \qcomma v,w \in V
+\end{equation}
+
+che lega l'operazione dell'algebra $ \cdot $ e la norma $ \norm{} $. \\
+La tripletta $ (M_{n}(\R),\cdot,\norm{}) $ con $ \cdot $ la moltiplicazione tra matrici e $ \norm{} $ la norma sopra definita per $ M_{n}(\R) $ è un'algebra normata: per verificarlo dobbiamo dimostrare che il prodotto tra matrici e la norma soddisfino la proprietà di submoltiplicatività (in quanto le altre condizioni sono già soddisfatte). \\
+Siano le matrici quadrate $ X = [x_{ij}] $ e $ Y = [y_{ij}] $, utilizzando la disuguaglianza di Cauchy-Schwarz e la positività della norma, otteniamo la disuguaglianza
+
+\begin{align}
+	\norm{v \cdot w} &\leqslant \norm{v} \norm{w} \\
+	\norm{v \cdot w}^{2} &\leqslant \norm{v}^{2} \norm{w}^{2} \\
+	((X Y)_{ij})^{2} = \left( \sum_{k=1}^{n} x_{ik} y_{kj} \right)^{2} &\leqslant \left( \sum_{i,k=1}^{n} x_{ik}^{2} \right) \left( \sum_{j,k=1}^{n} y_{kj}^{2} \right)
+\end{align}
+
+Se consideriamo dunque la norma al quadrato
+
+\begin{align}
+	\begin{split}
+		\norm{X Y}^{2} &= \sum_{i,j=1}^{n} ((X Y)_{ij})^{2} \\
+		&= \sum_{i,j=1}^{n} \left( \sum_{k=1}^{n} x_{ik} y_{kj} \right)^{2} \\
+		&\leqslant \sum_{i,j=1}^{n} \left( \sum_{k=1}^{n} x_{ik}^{2} \right) \left( \sum_{k=1}^{n} y_{kj}^{2} \right) \\
+		&= \left( \sum_{i,k=1}^{n} x_{ik}^{2} \right) \left( \sum_{j,k=1}^{n} y_{kj}^{2} \right) \\
+		&= \norm{X}^{2} \norm{Y}^{2}
+	\end{split}
+\end{align}
+
+da cui $ \norm{X Y} \leqslant \norm{X} \norm{Y} $.
+
+\begin{definition}
+	Sia $ (V,\cdot,\norm{}) $ un'algebra normata, allora
+	
+	\begin{itemize}
+		\item Se $ s_{n} \in V $ è una successione convergente, i.e. $ s_{n} \to s \in V $, allora
+		
+		\begin{equation}
+			s_{n} \to s \implies a s_{n} \to a s \qcomma \forall a \in V
+		\end{equation}
+	
+		\item Se consideriamo la serie
+		
+		\begin{equation}
+			\sum_{n=0}^{+\infty} s_{n} = s %
+			\implies %
+			\begin{cases}
+				\displaystyle \sum_{n=0}^{+\infty} a s_{n} = a s \\ \\
+				\displaystyle \sum_{n=0}^{+\infty} s_{n} a = s a
+			\end{cases}
+			\qquad \forall a \in V
+		\end{equation}
+	
+		dove $ a s $ ed $ s a $ implicano la moltiplicazione dell'algebra.
+	\end{itemize}
+\end{definition}
+
+Per definizione, la notazione $ s_{n} \to s $ implica l'equazione
+
+\begin{equation}
+	\lim_{n \to \infty} \norm{s_{n} - s} = 0
+\end{equation}
+
+\begin{proof}
+	Per la prima proprietà
+	
+	\begin{equation}
+		\begin{cases}
+			\norm{a s_{n} - a s} = \norm{a (s_{n} - s)} \\ \\
+			\lim\limits_{n \to \infty} \norm{s_{n} - s} = 0
+		\end{cases}
+		\implies%
+		\begin{cases}
+			\norm{a s_{n} - a s} = \abs{a} \norm{s_{n} - s} \\ \\
+			s_{n} \to s
+		\end{cases}
+		\implies%
+		a s_{n} \to a s
+	\end{equation}
+
+	Per la seconda: per definizione, una serie converge se la successione delle somme parziali converge allo stesso valore, i.e.
+	
+	\begin{equation}
+		\sum_{n=0}^{+\infty} s_{n} = s %
+		\iff %
+		\begin{cases}
+			\displaystyle \tilde{s}_{k} = \sum_{n=0}^{k} s_{n} \\ \\
+			\tilde{s}_{k} \to s
+		\end{cases}
+	\end{equation}
+
+	dunque per la proprietà
+	
+	\begin{equation}
+		\sum_{n=0}^{+\infty} a s_{n} = a s %
+		\iff %
+		\begin{cases}
+			\displaystyle a \tilde{s}_{k} = \sum_{n=0}^{k} a s_{n} \\ \\
+			a \tilde{s}_{k} \to a s
+		\end{cases}
+	\end{equation}
+
+	dove per la prima proprietà
+	
+	\begin{equation}
+		\sum_{n=0}^{+\infty} s_{n} = s %
+		\iff%
+		\tilde{s}_{k} \to s%
+		\implies%
+		a \tilde{s}_{n} \to a \tilde{s} %
+		\iff%
+		\sum_{n=0}^{+\infty} a s_{n} = a s
+	\end{equation}
+
+	Il ragionamento è analogo per la moltiplicazione per $ a $ a destra.
+\end{proof}
+
+Una serie è \textit{assolutamente convergente} se è convergente la stessa serie considerando le norme degli addendi, i.e.
+
+\begin{equation}
+	\sum_{n=0}^{+\infty} s_{n} \text{ assolutamente convergente} =\joinrel= \sum_{n=0}^{+\infty} \norm{s_{n}} \text{ convergente}
+\end{equation}
+
+Una successione $ s_{n} $ è una \textit{successione di Cauchy} se
+
+\begin{equation}
+	s_{n} \text{ di Cauchy} \iff \forall \varepsilon > 0, \E p,q,N_{\varepsilon} \in \N \mid \norm{s_{p} - s_{q}} \leqslant \epsilon \qcomma \forall p,q \geqslant N_{\varepsilon}
+\end{equation}
+
+\begin{remark}
+	Una successione convergente è di Cauchy\footnote{%
+		Per dimostrarlo è sufficiente prendere una differenza tra gli addendi arbitrariamente piccola e sfruttare la subadditività.%
+	}, ma non è necessariamente vero che una successione di Cauchy sia convergente.
+\end{remark}
+
+\subsection{Spazi vettoriali e algebre completi}
+
+Uno spazio normato $ (V,\norm{}) $ è detto \textit{completo} se ogni sua successione di Cauchy è convergente. Uno spazio normato e completo si chiama \textit{spazio di Banach}. \\
+Analogamente, un'algebra normata $ (V,\cdot,\norm{}) $ è \textit{completa} se $ (V,\norm{}) $ è completo. Un'algebra normata e completa si chiama \textit{algebra di Banach}. \\ \\
+%
+Possiamo prendere come esempio di algebra di Banach $ (M_{n}(\R),\cdot,\norm{}) $, in quanto $ (M_{n}(\R),\norm{}) $ è uno spazio completo perché lo è $ \R^{n^{2}} $ e questo si identifica con lo spazio delle matrici quadrate $ M_{n}(\R) = \R^{n^{2}} $.
+
+\begin{definition}
+	Sia $ (V,\norm{}) $ uno spazio completo, se una serie è assolutamente convergente, allora è anche convergente (strettamente), i.e.
+	
+	\begin{equation}
+		\sum_{n=0}^{+\infty} \norm{s_{n}} \text{ convergente} \implies \sum_{n=0}^{+\infty} s_{n} \text{ convergente}
+	\end{equation}
+\end{definition}
+
+Come controesempio dell'implicazione inversa, la serie in $ \R $
+
+\begin{equation}
+	\sum_{n=0}^{+\infty} \dfrac{(-1)^{n}}{n}
+\end{equation}
+
+è convergente ma non assolutamente convergente se si prende la norma in $ \R $ (valore assoluto).
+
+\begin{proof}
+	Consideriamo la successione di serie parziali $ \tilde{s}_{k} \in V $ e $ p,q \in \N $ con $ p > q $. Per ipotesi la serie è assolutamente convergente perciò
+	
+	\begin{equation}
+		\norm{\tilde{s}_{p} - \tilde{s}_{q}} = \norm{ \sum_{n=q+1}^{p} \tilde{s}_{n} } \leqslant \sum_{n=q+1}^{p} \norm{\tilde{s}_{n}} < \varepsilon %
+		\qcomma \forall p,q > N_{\varepsilon} \in \N
+	\end{equation}
+
+	dove nel secondo passaggio abbiamo utilizzato la subadditività, dunque $ \tilde{s}_{k} $ è di Cauchy. Essendo $ V $ completo, la successione $ \tilde{s}_{k} $ è convergente strettamente dunque anche la serie è convergente.
+\end{proof}
+
+\subsection{Definizione di esponenziale di matrice}
+
+Mostriamo ora che la serie
+%
+\begin{equation}
+	e^{X} = \sum_{i=0}^{+\infty} \dfrac{X^{i}}{i!} \qcomma X \in M_{n}(\R)
+\end{equation}
+
+sia convergente in $ M_{n}(\R) $. \\
+Essendo lo spazio $ M_{n}(\R) $ completo, è sufficiente verificare la serie sia assolutamente convergente. Utilizzando la submoltiplicatività
+
+\begin{equation}
+	\sum_{i=0}^{+\infty} \norm{ \dfrac{X^{i}}{i!} } = %
+	\sum_{i=0}^{+\infty} \dfrac{1}{i!} \norm{X^{i}} \leqslant %
+	\sum_{i=0}^{+\infty} \dfrac{1}{i!} \norm{X}^{i} = %
+	e^{\norm{X}}
+\end{equation}
+
+dove $ \norm{X} \in \R $, dunque la serie converge. \\
+Per un esempio di calcolo di esponenziale di matrice, vedi Esercizio \ref{exer3-3}.
+
+\subsection{Proprietà dell'esponenziale di matrice}
+
+Valgono le tre seguenti proprietà:
+
+\begin{equation}
+	\begin{cases}
+		[A,B] = 0 \implies e^{A + B} = e^{A} e^{B} = e^{B} e^{A}, & \forall A,B \in M_{n}(\R) \\ \\
+		e^{A} \in GL_{n}(\R), & \forall A \in M_{n}(\R) \\ \\
+		\ddv{t}  e^{t X} = X e^{t X} = e^{t X} X, & \forall X\in M_{n}(\R), \, \forall t \in \R
+	\end{cases}
+\end{equation}
+
+\begin{proof}[Dimostrazione (1)]
+	Considerando che $ [A,B] = 0 $, possiamo utilizzare la formula binomiale, dunque
+	
+	\begin{align}
+		\begin{split}
+			e^{A + B} &= \sum_{k=0}^{+\infty} \dfrac{1}{k!} (A+B)^{k} \\
+			&= \sum_{k=0}^{+\infty} \dfrac{1}{k!} \left( \sum_{j=0}^{k} \binom{k}{j} A^{k-j} B^{j} \right) \\
+			&= \sum_{k=0}^{+\infty} \sum_{j=0}^{k} \dfrac{1}{k!} \dfrac{k!}{(k-j)! \, j!} A^{k-j} B^{j} \\
+			&= \sum_{k=0}^{+\infty} \sum_{j=0}^{k} \dfrac{A^{k-j} B^{j}}{(k-j)! \, j!} \\
+			&= \sum_{m=0}^{+\infty} \sum_{j=0}^{m} \dfrac{A^{m} B^{j}}{m! \, j!} \\
+			&= \left( \sum_{m=0}^{+\infty} \dfrac{A^{m}}{m!} \right) \left( \sum_{j=0}^{+\infty} \dfrac{B^{j}}{j!} \right) \\
+			&= e^{A} e^{B}
+		\end{split}
+	\end{align}
+
+	dove nel secondo passaggio abbiamo usato la commutatività delle matrici, nel quinto abbiamo definito un nuovo indice $ m \doteq k-j $, e nel sesto abbiamo usato il prodotto di Cauchy\footnote{%
+		Il prodotto di Cauchy è definito come la convoluzione discreta di due serie infinite; la sua formula generale è la seguente
+		
+		\begin{equation*}
+			\left( \sum_{i=0}^{+\infty} a^{i} \right) \left( \sum_{j=0}^{+\infty} b^{j} \right) = \sum_{k=0}^{+\infty} c^{k} %
+			\qq{dove} %
+			c^{k} \doteq \sum_{m=0}^{k} a^{m} b^{k-m}
+		\end{equation*}%
+	}.
+\end{proof}
+
+Per un esempio di matrici che non rispettano questa proprietà, vedi Esercizio \ref{exer3-4}.
+
+\begin{proof}[Dimostrazione (2)]
+	La matrice $ e^{A} $ è invertibile con inversa $ e^{-A} $ (dalla prima proprietà) in quanto
+	
+	\begin{equation}
+		e^{A} e^{-A} = e^{-A} e^{A} = e^{A-A} = e^{0_{n}} = I
+	\end{equation}
+\end{proof}
+
+\begin{proof}[Dimostrazione (3)]
+	\begin{align}
+		\begin{split}
+			\dv{t} e^{t X} &= \dv{t} \left( \sum_{j=0}^{+\infty} \dfrac{(t X)^{j}}{j!} \right) \\
+			&= \sum_{j=0}^{+\infty} \dv{t} \left( \dfrac{(t X)^{j}}{j!} \right) \\
+			&= \sum_{j=0}^{+\infty} \left( \dfrac{j X (t X)^{j-1}}{j!} \right) \\
+			&= X \sum_{j=0}^{+\infty} \left( \dfrac{j (t X)^{j-1}}{j (j-1)!} \right) \\
+			&= X \sum_{j=0}^{+\infty} \dfrac{(t X)^{j-1}}{(j-1)!} \\
+			&= X \sum_{k=0}^{+\infty} \dfrac{(t X)^{k}}{k!} \\
+			&= X e^{t X}
+		\end{split}
+	\end{align}
+	
+	dove nel quarto passaggio abbiamo usato il fatto che
+	
+	\begin{equation}
+		s_{n} \to s \implies a s_{n} \to a s
+	\end{equation}
+\end{proof}
+
+\begin{remark}
+	Se consideriamo il campo dei numeri complessi $ \C $ al posto di $ \R $ per gli spazi vettoriali e dunque la norma di una matrice con entrate complesse come
+	
+	\map{\norm{}}
+		{M_{n}(\C)}{\R}
+		{X = [x_{ij}]_{i,j=1,\dots,n}}{\left( \sum_{i,j=1}^{n} \abs{x_{ij}}^{2} \right)^{1/2}}
+		
+	tutti i ragionamenti fatti in questa sezione sono validi, e.g. l'esponenziale di una matrice qualunque è ancora una matrice invertibile, i.e.
+	
+	\begin{equation}
+		e^{X} \in GL_{n}(\C) \qcomma \forall X \in M_{n}(\C)
+	\end{equation}
+\end{remark}
+
+\section{Richiami di algebra lineare}
+
+\subsection{Prodotti scalari ed hermitiani}
+
+Nell'algebra $ (\R^{n},\cdot) $, presi due vettori $ v,w \in \R^{n} $, il loro prodotto scalare $ v \cdot w \in \R $ è definito come
+
+\begin{equation}
+	v \cdot w = (v^{1},\dots,v^{n}) \cdot (w^{1},\dots,w^{n}) \doteq \sum_{j=1}^{n} v^{j} w^{j}
+\end{equation}
+
+Considerando tutti i vettori come matrici con $ n $ righe e una colonna, possiamo pensare al prodotto scalare come il prodotto di un vettore riga per un vettore colonna
+
+\begin{equation}
+	v \cdot w = v^{T} w = %
+	\bmqty{ v^{1} & \cdots & v^{n} } \bmqty{ w^{1} \\ \vdots \\ w^{n} }
+\end{equation}
+
+Per vettori in campo complesso, i.e. nell'algebra $ (\C^{n},\cdot) $, definiamo il \textit{prodotto hermitiano} $ v \cdot w \in \C $ come
+
+\begin{equation}
+	v \cdot w \doteq \sum_{j=1}^{n} v^{j} \bar{w}^{j} = v^{T} \bar{w}
+\end{equation}
+
+con $ v,w \in \C^{n} $ e $ \bar{w} $ indica il coniugato di $ w $ (sia per la componente che per tutte le componenti dell'intero vettore colonna). Per il prodotto hermitiano vale
+
+\begin{equation}
+	v \cdot v = \sum_{j=1}^{n} v^{j} \bar{v}^{j} = \sum_{j=1}^{n} \abs{v}^{j}
+\end{equation}
+
+Essendo $ v \cdot v \in \R $ ha senso dire che $ v \cdot v \geqslant 0 $ e che
+
+\begin{equation}
+	v \cdot v = 0 \iff v = 0 \in \C^{n}
+\end{equation}
+
+cioè il prodotto hermitiano è definito positivo. \\
+Il prodotto hermitiano non è bilineare come il prodotto scalare, ma lineare per la prima entrata e sesquilineare per la seconda, i.e.
+
+\begin{equation}
+	\begin{cases}
+		(\lambda v_{1} + \mu v_{2}) \cdot w = \lambda (v_{1} \cdot w) + \mu (v_{2} \cdot w) \\
+		v \cdot (\lambda w_{1} + \mu w_{2}) = \bar{\lambda} (v \cdot w_{1}) + \bar{\mu} (v \cdot w_{2})
+	\end{cases} %
+	\qquad \forall \lambda,\mu \in \C, \, \forall v,w \in \C^{n}
+\end{equation}
+
+dunque non è nemmeno simmetrico ma vale l'uguaglianza
+
+\begin{equation}
+	v \cdot w = \overline{w \cdot v}
+\end{equation}
+
+\subsection{Matrici ortogonali e unitarie}
+
+Utilizzando come entrate i numeri reali, le matrici ortogonali $ O(n) $ sono definite come
+
+\begin{equation}
+	O(n) = \{ A \in M_{n}(\R) \mid A^{T} A = I \}
+\end{equation}
+
+In campo complesso, si parla invece di \textit{matrici unitarie}, definite come
+
+\begin{equation}
+	U(n) = \{ A \in M_{n}(\C) \mid A^{*} A = I \}
+\end{equation}
+
+dove $ A^{*} \doteq \bar{A}^{T} \equiv A ^{-1} $. \\
+Analogamente come le matrici ortogonali hanno colonne ortogonali tra loro e di norma unitaria (entrambi rispetto al prodotto scalare), anche le matrici unitarie hanno colonne ortogonali tra loro e di norma unitaria (entrambi rispetto al prodotto hermitiano): svolgendo il prodotto matriciale nella definizione di $ U(n) $
+
+\begin{equation}
+	A^{*} A = %
+	\bmqty{ %
+			\bar{a}_{11} & \bar{a}_{21} & \cdots & \bar{a}_{n1} \\ %
+			\bar{a}_{12} & \bar{a}_{22} & \cdots & \bar{a}_{n2} \\ %
+			\vdots & \vdots & \ddots & \vdots \\ %
+			\bar{a}_{1n} & \bar{a}_{2n} & \cdots & \bar{a}_{nn}
+			}
+	\bmqty{ %
+			a_{11} & a_{12} & \cdots & a_{1n} \\ %
+			a_{21} & a_{22} & \cdots& a_{2n} \\ %
+			\vdots & \vdots & \ddots & \vdots \\ %
+			a_{n1} & a_{n2} & \cdots & a_{nn}
+			}
+\end{equation}
+
+se consideriamo solo la prima entrata della matrice prodotto, otteniamo
+
+\begin{equation}
+	\abs{a_{11}}^{2} + \abs{a_{21}}^{2} + \cdots + \abs{a_{n1}}^{2} = 1
+\end{equation}
+
+e così per il resto degli elementi nella diagonale, mentre tutti gli altri prodotti hermitiani tra il resto delle colonne è nullo, i.e. le colonne sono tra loro ortonormali.
+
+\begin{definition}
+	Le colonne di una matrice unitaria sono una base ortonormale per l'algebra $ (\C^{n},\cdot) $, i.e. prese due colonne $ v_{i} $ e $ v_{j} $ di una matrice unitaria, vale $ v_{i} \cdot v_{j} = \delta_{ij} $.
+\end{definition}
+
+
+\begin{definition}
+	La dimensione di un sottospazio $ W \subset \C^{n} $ in $ \C^{n} $ è doppia rispetto alla dimensione che questo avrebbe sui numeri reali $ \R $, in quanto si identificano $ \C^{n} = \R^{2n} $, i.e.
+
+	\begin{equation}
+		\dim_{\C}(W) = 2 \dim_{\R}(W)
+	\end{equation}
+\end{definition}
+
+\subsection{Matrici simili}
+
+Siano due matrici $ A,B \in M_{n}(\C) $, diremo che $ A $ è \textit{simile} a $ B $ se esiste una matrice invertibile $ S \in GL_{n}(\C) $ tale che valga la relazione
+
+\begin{equation}
+	B = S^{-1} A S
+\end{equation}
+
+Le stesse due matrici sono \textit{unitariamente simili} se la matrice $ S $ della relazione è unitaria.
+
+\subsection{Altre proprietà}
+
+\begin{definition}
+	Siano $ A,B \in M_{n}(\C) $, allora $ A $ è simile a $ B $ se e solo se esiste un'applicazione lineare $ T : \C^{n} \to \C^{n} $ per la quale $ A $ e $ B $ rappresentino l'immagine di $ T $ rispetto a due basi di $ \C^{n} $.
+\end{definition}
+
+\begin{definition}
+	Siano $ A,B \in M_{n}(\C) $, allora $ A $ è unitariamente simile a $ B $ se e solo se esiste un'applicazione lineare $ T : \C^{n} \to \C^{n} $ per la quale $ A $ e $ B $ rappresentino l'immagine di $ T $ rispetto a due basi ortonormali di $ \C^{n} $.
+\end{definition}
+
+Questi due risultati derivano dal fatto che, prese due basi $ \mathcal{A} $ e $ \mathcal{B} $ per $ \C^{n} $ con la matrice $ S $ che rappresenta il cambio di base, i.e.
+
+\begin{equation}
+	\begin{cases}
+		x' = S x \\
+		[T(x)]_{\mathcal{B}} = S [T(x)]_{\mathcal{A}}
+	\end{cases}
+\end{equation}
+
+abbiamo che l'applicazione lineare $ T $ applicata a un vettore $ x $ ha due immagini a seconda della base in cui sono espresse
+
+\begin{align}
+	\begin{split}
+		T : \C^{n} &\to \C^{n} \\
+		x &\stackrel{\mathcal{A}}{\mapsto} [T(x)]_{\mathcal{A}} = A x \\
+		x' &\stackrel{\mathcal{B}}{\mapsto} [T(x)]_{\mathcal{B}} = B x'
+	\end{split}
+\end{align}
+
+le quali sono legate da
+
+\begin{align}
+	\begin{split}
+		[T(x)]_{\mathcal{B}} &= B x' \\
+		S [T(x)]_{\mathcal{A}} &= B S x \\
+		[T(x)]_{\mathcal{A}} &= S^{-1} B S x \\
+		[T(x)]_{\mathcal{A}} &= A x
+	\end{split}
+\end{align}
+
+da cui
+
+\begin{equation}
+	A = S^{-1} B S
+\end{equation}
+
+il quale rende le due matrici simili.
+
+\begin{definition}
+	Siano $ A,B \in M_{n}(\C) $, allora "$ A $ è (unitariamente) simile a $ B $" è una relazione di equivalenza in $ M_{n}(\C) $, i.e. $ A \sim B $.
+\end{definition}
+
+\begin{definition}\label{prop:similar-matrix-properties}
+	Siano $ A,B \in M_{n}(\C) $, se $ A \sim B $ allora $ A $ e $ B $ hanno stessi traccia, rango, determinante e polinomio caratteristico.
+\end{definition}
+
+\begin{proof}
+	\begin{itemize}
+		\item Per quanto riguarda la traccia:
+
+		\begin{equation}
+			\tr(A) = \tr(S^{-1} B S) = \tr(B S^{-1} S) = \tr(B)
+		\end{equation}
+
+		\item Il rango di una matrice non cambia se la si moltiplica per una matrice invertibile
+
+		\item Per quanto riguarda il determinante, per Binet:
+
+		\begin{equation}
+			\det(A) = \det(S^{-1} B S) %
+			= \det(S^{-1}) \det(B) \det(S) %
+			= \det(B) \det(S^{-1} S) %
+			= \det(B)
+		\end{equation}
+
+		\item Per quanto riguarda il polinomio caratteristico, per Binet:
+		
+		\begin{align}
+			\begin{split}
+				P_{\lambda}(A) &= \det(A - \lambda I) \\
+				&= \det(S^{-1} B S - \lambda I) \\
+				&= \det(S^{-1} B S - S^{-1} S \lambda I) \\
+				&= \det(S^{-1} B S - S^{-1} \lambda I S) \\
+				&= \det(S^{-1} (B - \lambda I) S) \\
+				&= \det(S^{-1}) \det(B - \lambda I) \det(S) \\
+				&= \det(B - \lambda I) \\
+				&= P_{\lambda}(B)
+			\end{split}
+		\end{align}
+	
+			dove nel settimo passaggio abbiamo usato la proprietà $ \det(S^{-1}) = \det(S)^{-1} $.
+	\end{itemize}
+\end{proof}
+
+\subsection{Teorema di Schur e teorema spettrale}
+
+\begin{theorem}(Teorema di Schur)
+	Data una matrice $ A \in M_{n}(\C) $, esiste una matrice $ U \in U(n) $ tale che
+	
+	\begin{equation}
+		U^{*} A U = T = %
+		\bmqty{ %
+				\dmat{ %
+						\lambda_{1},
+						& & K \\ & \ddots & \\ 0 & & ,
+						\lambda_{n}
+						}
+				}
+	\end{equation}
+
+	con $ T $ matrice triangolare (superiore), i.e. una matrice che ha tutte entrate nulle sotto la diagonale principale ($ K \neq 0 $). \\
+	In altre parole, una qualunque matrice quadrata $ A $ è unitariamente simile a una matrice triangolare (superiore), il che rende gli elementi della diagonale della matrice triangolare $ \lambda_{1},\dots,\lambda_{n} $ gli autovalori di $ A $.
+\end{theorem}
+
+\begin{proof}
+	La dimostrazione di questo teorema è fatta per induzione su $ n $. \\
+	Per $ n=1 $, le matrici diventano numeri e il teorema è dimostrato in quanto questi sono già "diagonali". \\
+	Supponiamo dunque che sia vero per $ n-1 $ e dimostriamo per $ n $: dimostrare che $ A $ è simile a una matrice triangolare superiore è equivalente a trovare una base ortonormale $ \{v_{1},\dots,v_{n}\} $ (rispetto al prodotto hermitiano, i.e. $ v_{i}^{T} \bar{v}_{j} = \delta_{ij} $ con $ i,j=1,\dots,n $) di $ \C^{n} $ tale che $ A v_{k} $ sia combinazione lineare dei vettori di base. \\
+	Siano $ \lambda_{1} \in \C $ un autovalore per $ A $ e $ v_{1} \neq 0 $ il corrispondente autovettore, i.e. $ A v_{1} = \lambda_{1} v_{1} $. Sia lo spazio dei vettori generati da $ v_{1} $
+	
+	\begin{equation}
+		W = \ev{v_{1}}_{\C} = \{ \lambda v_{1} \mid \lambda \in \C \} \subset \C
+	\end{equation}
+	
+	il quale avrà $ \dim_{\C}(W) = 1 $. \\
+	Consideriamo ora il suo \textit{complemento ortogonale}
+	
+	\begin{equation}
+		W^{\perp} = \{ v\in \C^{n} \mid v \cdot w = 0, \, \forall w \in W \} \subset \C^{n-1}
+	\end{equation}
+
+	con $ \dim_{\C}(W^{\perp}) = n-1 $ e la proiezione $ \pi_{W^{\perp}} : \C^{n} \to W^{\perp} $. Consideriamo infine l'applicazione lineare
+	
+	\map{\pi_{W^{\perp}} \circ A}
+		{W^{\perp}}{W^{\perp}}
+		{w}{\pi_{W^{\perp}}(A w)}
+	
+	Per ipotesi induttiva, esiste una base ortonormale $ \{v_{2},\dots,v_{n}\} $ di $ W^{\perp} $ tale che $ (\pi_{W^{\perp}} \circ A)(v_{k}) $ è combinazione lineare di $ v_{2},\dots,v_{k} $ con $ k=2,\dots,n $. \\
+	A questo punto $ \{v_{1},\dots,v_{n}\} $ è una base ortonormale di $ \C^{n} $ tale che $ A v_{k} $ sia combinazione lineare dei vettori di base. \\
+	Essendo la base ortonormale, la matrice $ A $ è dunque unitariamente simile a una matrice triangolare (superiore).
+\end{proof}
+
+\begin{remark}
+	La base $ \{v_{1},\dots,v_{n}\} $ che appare nel teorema di Schur viene chiamata \textit{base di Schur}.
+\end{remark}
+
+Una matrice $ A \in M_{n}(\C) $ è detta \textit{normale} se $ A A^{*} = A^{*} A $, i.e. commuta con la sua trasposta coniugata: esempi di matrici normali sono
+
+\begin{itemize}
+	\item Le matrici unitarie, in quanto $ A^{*} A = I $;
+	
+	\item Le matrici ortogonali (le quali hanno entrate reali), perciò $ A^{*} A = A^{T} A = I $;
+	
+	\item Le matrici hermitiane, che coincidono con la loro trasposta coniugata, i.e. $ A = A^{*} $;
+	
+	\item Le matrici simmetriche $ A \in S(n) $ (con entrate reali), in quanto $ A = A^{T} $.
+\end{itemize}
+
+\begin{theorem}(Teorema spettrale)
+	Ogni matrice $ A \in M_{n}(\C) $ normale è unitariamente simile a una matrice diagonale, i.e.
+	
+	\begin{equation}
+		A \in M_{n}(\C) \text{ normale} %
+		\implies %
+		\E U \in U(n) \mid U^{*} A U = %
+		\bmqty{ %
+				\dmat{ %
+						\lambda_{1},
+						& & 0 \\ & \ddots & \\ 0 & & ,
+						\lambda_{n}
+						}
+				}
+	\end{equation}
+
+	con $ \lambda_{j} $ gli autovalori di $ A $. \\
+	In altre parole, una matrice normale è sempre diagonalizzabile e i suoi autovettori sono una base ortonormale di $ \C^{n} $. \\
+	Ancora, una matrice $ A \in M_{n}(\C) $ è normale se e solo se esiste una base ortonormale di $ \C^{n} $ costituita dagli autovettori di $ A $.
+\end{theorem}
+
+\begin{proof}
+	Se $ A \in M_{n}(\C) $, per il teorema di Schur esiste una matrice unitaria $ U \in U(n) $ tale che
+	
+	\begin{equation}
+		U^{*} A U = T = %
+		\bmqty{ %
+				\dmat{ %
+						\lambda_{1},
+						& & K \\ & \ddots & \\ 0 & & ,
+						\lambda_{n}
+						}
+				}
+	\end{equation}
+
+	cioè $ A $ sia simile a una matrice triangolare superiore. \\
+	Essendo $ A $ normale, questo implica che anche $ U^{*} A U $ lo sia perché
+	
+	\begin{align}
+		\begin{split}
+			(U^{*} A U) (U^{*} A U)^{*} &= U^{*} A U U^{*} A^{*} U \\
+			&= U^{*} A A^{*} U \\
+			&= U^{*} A^{*} A U \\
+			&= U^{*} A^{*} U U^{*} A U \\
+			&= (U^{*} A U)^{*} (U^{*} A U)
+		\end{split}
+	\end{align}
+
+	A questo punto, $ T $ è normale ma se una matrice è triangolare superiore e normale allora è diagonale: dimostriamo questo per induzione su $ n $. \\
+	Per $ n=1 $, la matrice è "diagonale" in quanto numero. \\
+	Supponiamo che sia vero per matrici di ordine $ n-1 $ e mostriamolo per matrici di ordine $ n $: riscriviamo la matrice normale triangolare superiore come
+	
+	\begin{equation}
+		T = \bmqty{ \lambda_{1} & B \\ 0 & C } %
+		\qcomma %
+		\begin{cases}
+			\lambda_{1} \in \C \\
+			B \in M_{1,n-1}(\C) \\
+			0 \in M_{n-1,1}(\C) \\
+			C \in M_{n-1}(\C)
+		\end{cases}
+	\end{equation}
+
+	Imponendo la condizione di matrice normale
+	
+	\begin{align}
+		\begin{split}
+			T T^{*} &= T^{*} T \\
+			\bmqty{ %
+					\lambda_{1} & B \\
+					0 & C %
+					} %
+			\bmqty{ %
+					\bar{\lambda}_{1} & 0 \\
+					B^{*} & C^{*} %
+					}
+			&= %
+			\bmqty{ %
+						\bar{\lambda}_{1} & 0 \\
+						B^{*} & C^{*} %
+						}
+			\bmqty{ %
+					\lambda_{1} & B \\
+					0 & C %
+					} \\
+			%
+			\bmqty{ %
+					\abs{\lambda}_{1} + B B^{*} & B C^{*} \\
+					C B^{*} & C C^{*} %
+					}
+			&= %
+			\bmqty{ %
+					\abs{\lambda}_{1} & \bar{\lambda}_{1} B \\
+					\lambda_{1} B^{*} & B^{*} B + C^{*} C %
+					}
+		\end{split}
+	\end{align}
+
+	otteniamo che
+	
+	\begin{equation}
+		\begin{cases}
+			B B^{*} = 0 \implies B = 0 \\
+			C^{*} C = C C^{*}
+		\end{cases}
+	\end{equation}
+
+	rendendo $ C $ normale oltre che triangolare superiore: per ipotesi induttiva, $ C $ è diagonale quindi lo è anche $ T $.
+\end{proof}
+
+\begin{corollary}[1. Teorema spettrale per matrici simmetriche]
+	Sia $ A \in S(n) $ con entrate reali ($ A \in M_{n}(\R) $), allora esiste una matrice $ P \in O(n) $ tale che
+	
+	\begin{equation}
+		P^{T} A P = D = %
+		\bmqty{ %
+				\dmat{ %
+						\lambda_{1},
+						& & 0 \\ & \ddots & \\ 0 & & ,
+						\lambda_{n}
+						}
+				}
+	\end{equation}
+\end{corollary}
+
+\begin{proof}
+	Per dimostrare questo corollario, è sufficiente dimostrare che gli autovalori di $ A $ siano reali e dunque anche gli autovettori sono reali: considerando l'uguaglianza
+	
+	\begin{equation}
+		U(n) \cap M_{n}(\R) = O(n)
+	\end{equation}
+
+	il resto della dimostrazione deriva dal teorema spettrale. \\
+	Per dimostrare che gli autovalori di una matrice $ A \in S(n) \subset M_{n}(\C) $  a entrate reali siano reali, consideriamo la relazione
+	
+	\begin{equation}
+		A v = \lambda v \qcomma \lambda \in \C, \, v \in \C^{n}
+	\end{equation}
+
+	da cui
+
+	\begin{align}
+		\begin{split}
+			\lambda v &= A v \\
+			\bar{v}^{T} \lambda v &= \bar{v}^{T} A v \\
+			\lambda \abs{v}^{2} &= \bar{v}^{T} \bar{A}^{T} v \\
+			&= \overline{A v}^{T} v \\
+			&= \overline{\lambda v}^{T} v \\
+			&= \bar{\lambda} v^{T} v \\
+			&= \bar{\lambda} \abs{v}^{2}
+		\end{split}
+	\end{align}
+
+	perciò
+	
+	\begin{equation}
+		\bar{\lambda} = \lambda \implies \lambda \in \R
+	\end{equation}
+\end{proof}
+
+\begin{corollary}[2]
+	Siano una matrice normale $ A \in M_{n}(\C) $ e un suo autovalore $ \lambda $, allora la molteplicità algebrica di $ \lambda $ coincide con quella geometrica, dove la prima indica il grado della soluzione $ \lambda $ all'interno del polinomio caratteristico mentre la seconda indica la dimensione dell'autospazio associato a $ \lambda $.
+\end{corollary}
+
+\begin{proof}
+	Ricordiamo che una matrice normale è sempre diagonalizzabile e una matrice è diagonalizzabile se e solo se la molteplicità algebrica dei suoi autovalori coincide con quella geometrica.
+\end{proof}
+
+\begin{corollary}[3]\label{cor:unit-matrix-similar}
+	Sia $ A \in U(n) $, i.e. $ A^{*} A = I $, allora esiste una matrice unitaria $ U \in U(n) $ tale che
+	
+	\begin{equation}
+		U^{*} A U = %
+		\bmqty{ %
+				\dmat{ %
+						e^{i \theta_{1}} & & 0 \\
+						& \ddots & \\
+						0 & & e^{i \theta_{n}} %
+						}
+				} %
+		\qcomma \theta_{j} \in \R, \, j=1,\dots,n
+	\end{equation}
+
+	In altre parole, una matrice unitaria è simile a una matrice diagonale con entrate di norma unitaria.
+\end{corollary}
+
+\begin{proof}
+	Se $ A \in U(n) $ allora è normale, dunque esiste $ U \in U(n) $ tale che $ U^{*} A U $ sia diagonale, i.e.
+	
+	\begin{equation}
+		U^{T} A U = %
+		\bmqty{ %
+				\dmat{ %
+						\lambda_{1} & & 0 \\
+						& \ddots & \\
+						0 & & \lambda_{n} %
+						}
+				}
+	\end{equation}
+
+	quindi è sufficiente dimostrare che $ \abs{\lambda_{j}} = 1 $ per $ j=1,\dots,n $:
+	
+	\begin{align}
+		\begin{split}
+			\lambda v &= A v \\
+			\overline{(A v)}^{T} \lambda v &= \overline{(A v)}^{T} A v \\
+			\overline{(\lambda v)}^{T} \lambda v &= \bar{v}^{T} A^{*} A v \\
+			\bar{\lambda} \lambda \bar{v}^{T} v &= \bar{v}^{T} v \\
+			\abs{\lambda}^{2} \abs{v}^{2} &= \abs{v}^{2} \\
+			\abs{\lambda} &= 1
+		\end{split}
+	\end{align}
+\end{proof}
+
+Consideriamo l'insieme delle \textit{matrici unitarie speciali}:
+
+\begin{equation}
+	SU(n) = \{ X \in U(n) \mid \det(X) = 1 \} %
+	= \{ X \in M_{n}(\C) \mid X^{*} X = I \wedge \det(X) = 1 \}
+\end{equation}
+
+\begin{corollary}[4]
+	Sia $ A \in SU(n) $, allora esiste una matrice unitaria $ U $ tale che
+	
+	\begin{equation}
+		U^{*} A U = %
+		\bmqty{ %
+				\dmat{ %
+						e^{i \theta_{1}} & & 0 \\
+						& \ddots & \\
+						0 & & e^{i \theta_{n}} %
+						}
+				} %
+		\qcomma \theta_{j} \in \R, \, j=1,\dots,n
+	\end{equation}
+
+	con
+	
+	\begin{equation}
+		\sum_{j=1}^{n} \theta_{j} = 2 k \pi \qcomma k \in \Z
+	\end{equation}
+\end{corollary}
+
+\begin{proof}
+	\begin{gather}
+		1 = \det(A) = \det(U^{*} A U) = \prod_{j=1}^{n} e^{i \theta_{j}} = e^{i \sum_{j=1}^{n} \theta_{j}} \\
+		\Downarrow \nonumber \\
+		\sum_{j=1}^{n} \theta_{j} = 2 k \pi \qcomma k \in \Z
+	\end{gather}
+\end{proof}
+
+\subsection{Forma canonica}
+
+\begin{theorem}[Forma canonica ortogonale]
+	Sia una matrice $ A \in O(n) $, i.e. $ A^{T} A = I $, allora esistono una matrice ortogonale $ P $, tre numeri naturali $ p,q \in \N $ e $ \theta_{j} \in (0,\pi) $ con $ j=1,\dots,k $ dove $ k = (n-p-q)/2 $ tali che\footnote{%
+		Le entrate omesse nelle matrici implicano entrate nulle.%
+	}
+
+	\begin{equation}
+		P^{T} A P = %
+		\bmqty{ %
+				\dmat{ %
+					I_{p}, - I_{q}, R_{1}, \ddots, R_{n-p-q} %
+					}
+				}
+	\end{equation}
+
+	sia una matrice a blocchi dove
+	
+	\begin{gather}
+		R_{j} = %
+		\bmqty{ %
+				\cos(\theta_{j}) & \sin(\theta_{j}) \\ \\
+				- \sin(\theta_{j}) & \cos(\theta_{j}) %
+				 } \\
+		%
+		\nonumber \\
+		%
+		\det(R_{j}) = 1 \\
+		%
+		\nonumber \\
+		%
+		\det(P^{T} A P) = (- 1)^{q}
+	\end{gather}
+
+	Se $ A \in SO(n) $ allora $ q $ è sempre pari.
+\end{theorem}
+
+\subsection{Matrici elementari e generatori del gruppo lineare speciale}
+
+Siano $ a \in \R $, $ i,j=1,\dots,n $ con $ i \neq j $, una \textit{matrice elementare} $ M_{a}(i,j) \in M_{n}(\R) $ è definita nel seguente modo:
+
+\begin{equation}
+	M_{a}(i,j) \doteq I + a E_{ij}
+\end{equation}
+
+dove
+
+\begin{equation}
+	[E_{ij}]_{kl} = %
+	\begin{cases}
+		1, & k = i \wedge l = j \\
+		0, & \text{altrimenti}
+	\end{cases}
+\end{equation}
+
+in altre parole, una matrice elementare è una matrice che ha 1 nella diagonale principale, $ a $ nell'entrata identificata dalla riga $ i $ e dalla colonna $ j $ e 0 nelle altre entrate. \\
+Il determinante di una matrice elementare è sempre unitario, i.e.
+
+\begin{equation}
+	\det(M_{a}(i,j)) = 1
+\end{equation}
+
+in quanto è sempre una matrice triangolare superiore o inferiore, dunque il determinante è dato dal prodotto degli elementi sulla diagonale. L'inversa di una matrice elementare è ancora una matrice elementare ed è data da
+
+\begin{equation}
+	(M_{a}(i,j))^{-1} = M_{-a}(i,j)
+\end{equation}
+
+in quanto
+
+\begin{align}
+	\begin{split}
+		M_{a}(i,j) M_{-a}(i,j) &= (I + a E_{ij}) (I - a E_{ij}) \\
+		&= I + a E_{ij} - a E_{ij} - a^{2} \cancelto{0}{E_{ij} E_{ij}} \\
+		&= I
+	\end{split}
+\end{align}
+
+\begin{theorem}
+	Siano $ \K $ un campo e il gruppo lineare speciale
+	
+	\begin{equation}
+		SL_{n}(\K) = \{ A \in M_{n}(\K) \mid \det(A) = 1 \} \qcomma n \geqslant 1
+	\end{equation}
+
+	allora $ SL_{n}(\K) $ è generato da matrici elementari, i.e.
+	
+	\begin{equation}
+		\forall A \in SL_{n}(\K), \E M_{a_{1}}(i_{1},j_{1}), \dots, M_{a_{t}}(i_{t},j_{t}) \mid A = \prod_{p=1}^{t} M_{a_{p}}(i_{p},j_{p})
+	\end{equation}
+
+	cioè ogni matrice del gruppo lineare speciale può essere scritta come prodotto finito di matrici elementari.
+\end{theorem}
+
+\begin{proof}
+	Se $ A \in M_{n}(\K) $ e $ M_{b}(i,j) $ è una matrice elementare, allora il prodotto $ M_{b}(i,j) A $ corrisponde alla seguente operazione elementare sulle righe $ R_{i} $ di $ A $:
+	
+	\begin{equation}
+		R_{i} \to R_{i} + b R_{j}
+	\end{equation}
+
+	con
+	
+	\begin{equation}
+		R_{i} = \bmqty{ a_{i1} & \cdots & a_{in} }
+	\end{equation}
+
+	in quanto
+	
+	\begin{align}
+		\begin{split}
+			M_{b}(i,j) A &= (I + b E_{ij}) A \\
+			&= A + b E_{ij} A \\
+			&= \sbmqty{ %
+						a_{11} & \cdots & a_{1n} \\
+						\vdots & \ddots & \vdots \\
+						a_{n1} & \cdots & a_{nn} %
+						} + %
+				b \sbmqty{ %
+							0 & \cdots & & & \cdots & & \cdots & 0 \\
+							\vdots & \ddots & & & & & & \vdots \\
+							& & \ddots & & & & & \\
+							0 & \cdots & \cdots & 0 & \cdots & 1 & \cdots & 0 \\
+							& & & & \ddots & & & \\
+							\vdots & & & & & \ddots & & \vdots \\
+							& & & & & & \ddots & \\
+							0 & \cdots & & & \cdots & & \cdots & 0 %
+							} %
+				\sbmqty{ %
+						a_{11} & \cdots & a_{1n} \\
+						\vdots & \ddots & \vdots \\
+						a_{n1} & \cdots & a_{nn} %
+						} \\
+			%
+			&= \sbmqty{ %
+						R_{1} \\
+						\vdots \\
+						R_{i-1} \\
+						R_{i} \\
+						R_{i+1} \\
+						 \\
+						\vdots \\
+						 \\
+						R_{n} %
+						} + %
+				\sbmqty{ %
+						0 & \cdots & & & \cdots & & \cdots & 0 \\
+						\vdots & \ddots & & & & & & \vdots \\
+						& & \ddots & & & & & \\
+						0 & \cdots & \cdots & 0 & \cdots & b & \cdots & 0 \\
+						& & & & \ddots & & & \\
+						\vdots & & & & & \ddots & & \vdots \\
+						& & & & & & \ddots & \\
+						0 & \cdots & & & \cdots & & \cdots & 0 %
+						} %
+				\sbmqty{ %
+						R_{1} \\
+						\vdots \\
+						R_{i-1} \\
+						R_{i} \\
+						R_{i+1} \\
+						 \\
+						\vdots \\
+						 \\
+						R_{n} %
+						} \\
+			%
+			&= \sbmqty{ %
+						R_{1} \\
+						\vdots \\
+						R_{i-1} \\
+						R_{i} \\
+						R_{i+1} \\
+						 \\
+						\vdots \\
+						 \\
+						R_{n} %
+						} + %
+				\sbmqty{ %
+						0 \\
+						\vdots \\
+						0 \\ %
+						b R_{j} \\
+						0 \\
+						 \\
+						\vdots \\
+						 \\
+						0 %
+						} \\
+			%
+			&= \sbmqty{ %
+						R_{1} \\
+						\vdots \\
+						R_{i-1} \\
+						R_{i} + b R_{j} \\
+						R_{i+1} \\
+						 \\
+						\vdots \\
+						 \\
+						R_{n} %
+						}
+		\end{split}
+	\end{align}
+
+	Analogamente, il prodotto $ A M_{b}(i,j) $ corrisponde alla seguente operazione elementare sulle colonne $ C_{i} $ di $ A $:
+	
+	\begin{equation}
+		C_{j} \to C_{j} + b C_{i}
+	\end{equation}
+
+	con
+	
+	\begin{equation}
+		C_{i} = \bmqty{ a_{1i} \\ \vdots \\ a_{ni} }
+	\end{equation}
+	
+	in quanto
+	
+	\begin{align}
+		\begin{split}
+			A M_{b}(i,j) &= A (I + b E_{ij}) \\
+			&= A + b A E_{ij} \\
+			&= \sbmqty{ %
+						a_{11} & \cdots & a_{1n} \\
+						\vdots & \ddots & \vdots \\
+						a_{n1} & \cdots & a_{nn} %
+						} + %
+			b \sbmqty{ %
+						a_{11} & \cdots & a_{1n} \\
+						\vdots & \ddots & \vdots \\
+						a_{n1} & \cdots & a_{nn} %
+						} %
+			\sbmqty{ %
+						0 & \cdots & & & \cdots & & \cdots & 0 \\
+						\vdots & \ddots & & & & & & \vdots \\
+						& & \ddots & & & & & \\
+						0 & \cdots & \cdots & 0 & \cdots & 1 & \cdots & 0 \\
+						& & & & \ddots & & & \\
+						\vdots & & & & & \ddots & & \vdots \\
+						& & & & & & \ddots & \\
+						0 & \cdots & & & \cdots & & \cdots & 0 %
+						} \\
+			%
+			&= \sbmqty{ %
+						C_{1} & \cdots & C_{j-1} & C_{j} & C_{j+1} & \cdots & C_{n} %
+						} + %
+				\sbmqty{ %
+							0 & \cdots & & & \cdots & & \cdots & 0 \\
+							\vdots & \ddots & & & & & & \vdots \\
+							& & \ddots & & & & & \\
+							0 & \cdots & \cdots & 0 & \cdots & b & \cdots & 0 \\
+							& & & & \ddots & & & \\
+							\vdots & & & & & \ddots & & \vdots \\
+							& & & & & & \ddots & \\
+							0 & \cdots & & & \cdots & & \cdots & 0 %
+							} %
+				\sbmqty{ %
+						C_{1} & \cdots & C_{j-1} & C_{j} & C_{j+1} & \cdots & C_{n} %
+						} \\
+			%
+			&= \sbmqty{ %
+						C_{1} & \cdots & C_{j-1} & C_{j} & C_{j+1} & \cdots & C_{n} %
+						} + %
+				\sbmqty{ %
+						0 & \cdots & 0 & b \, C_{i} & 0 & \cdots & 0 %
+						} \\
+			%
+			&= \sbmqty{ %
+						C_{1} & \cdots & C_{j-1} & C_{j} + b \, C_{i} & C_{j+1} & \cdots & C_{n} %
+						}
+		\end{split}
+	\end{align}
+
+	Per dimostrare il teorema è dunque sufficiente mostrare che data $ A \in SL_{n}(\K) $ esistono un numero finito di operazioni elementari sulle righe e sulle colonne di $ A $ tali che trasformino $ A $ nella matrice identità: per fare ciò, usiamo l'algoritmo di Gauss-Jordan:
+	
+	\begin{enumerate}
+		\item Sia $ A \in SL_{n}(\K) $ e consideriamo il suo elemento $ a_{12} $: se questo è diverso da zero, saltiamo al passo successivo; nel caso in cui non lo sia, esisterà un elemento della stessa riga non nullo (in quanto la matrice ha determinante diverso da zero), i.e. $ a_{1j} \neq 0 $, e applichiamo la seguente operazione elementare
+		
+		\begin{equation}
+			C_{2} \to C_{2} + C_{j}
+		\end{equation}
+	
+		che rende $ a_{12} \neq 0 $;
+		
+		\item Con l'operazione elementare
+		
+		\begin{equation}
+			C_{1} \to C_{1} + \left( \dfrac{1-a_{11}}{a_{12}} \right) C_{2}
+		\end{equation}
+	
+		otteniamo che $ a_{11} = 1 $, in quanto
+		
+		\begin{equation}
+			a_{11} \to a_{11} + \left( \dfrac{1-a_{11}}{a_{12}} \right) a_{12} = a_{11} + 1 - a_{11} = 1
+		\end{equation}
+		
+		\item Per tutti i $ j \geqslant 2 $, applichiamo l'operazione elementare
+		
+		\begin{equation}
+			C_{j} \to C_{j} - a_{1j} C_{1}
+		\end{equation}
+	
+		rendendo la prima riga $ R_{1} $ della matrice $ A $ pari a 
+		
+		\begin{equation}
+			R_{1} = \bmqty{ 1 & 0 & \cdots & 0 }
+		\end{equation}
+		
+		\item Per tutti i $ j \geqslant 2 $, applichiamo l'operazione elementare
+		
+		\begin{equation}
+			R_{j} \to R_{j} - a_{j1} R_{1}
+		\end{equation}
+		
+		rendendo la prima colonna $ C_{1} $ della matrice $ A $ pari a 
+		
+		\begin{equation}
+			C_{1} = \bmqty{ 1 \\ 0 \\ \vdots \\ 0 }
+		\end{equation}
+	
+		e dunque la matrice $ A $ sarà ora pari a
+		
+		\begin{equation}
+			A = %
+			\bmqty{ %
+					1 & 0 & \cdots & 0 \\ %
+					0 & & & \\ %
+					\vdots & & B & \\ %
+					0 & & & %
+					}
+		\end{equation}
+	
+		con $ B \in SL_{n-1}(\K) $, in quanto le operazioni elementari fatte non modificano il determinante della matrice $ A $ (e dunque della matrice $ B $);
+		
+		\item Per induzione, rifacendo gli stessi passaggi\footnote{%
+			Le operazioni elementari su $ B $ non intaccano le operazioni precedenti perché gli elementi fuori da $ B $ e non nella diagonale sono tutti nulli.%
+		} per $ B $, si ricava la matrice identità $ I $ mediante un numero finito di operazioni elementari sulle righe e sulle colonne.
+	\end{enumerate}
+
+	Una volta svolte tutte le operazioni elementari, scritte come moltiplicazioni a destra e a sinistra per matrici elementari, possiamo scrivere infine
+	
+	\begin{align}
+		\begin{split}
+			(M_{1} \cdots M_{q}) A (M_{q+1} \cdots M_{t}) &= I \\
+			A &= (M_{1} \cdots M_{q})^{-1} (M_{q+1} \cdots M_{t})^{-1} \\
+			&= M_{q}^{-1} \cdots M_{1}^{-1} \, M_{t}^{-1} \cdots M_{q+1}^{-1} \\
+			&= M_{-q} \cdots M_{-1} \, M_{-t} \cdots M_{-(q+1)}
+		\end{split}
+	\end{align}
+\end{proof}
+
+\subsection{Traccia, determinante ed esponenziale di una matrice}
+
+Le seguenti considerazioni e dimostrazioni valgono indifferentemente se si considera come campo su cui sono definiti gli spazi quello dei numeri reali o quello dei numeri complessi, i.e. $ \K = \R,\C $. Per semplicità, useremo nella trattazione il campo dei reali $ \R $.
+
+\begin{definition}
+	Sia un matrice $ X \in M_{n}(\R) $, allora
+	
+	\begin{equation}
+		\tr(X) = \sum_{j=1}^{n} \lambda_{j}
+	\end{equation}
+	
+	dove i $ \lambda_{j} $ sono gli autovalori di $ X $.
+\end{definition}
+
+La traccia di una matrice a entrare reali è un numero reale, i.e. $ \tr(X) \in \R $, nonostante ci possano essere autovalori complessi, poiché quest'ultimi saranno complessi coniugati tra loro e, sommandoli, si elidono a vicenda.
+
+\begin{proof}
+	Per il teorema di Schur, $ X $ è simile a una matrice triangolare superiore, i.e. esiste $ U \in U(n) $ tale che
+	
+	\begin{equation}
+		U^{*} X U = T = %
+		\bmqty{ %
+				\lambda_{1}	& & A \\
+				& \ddots & \\
+				0 & & \lambda_{n} %
+				}
+	\end{equation}
+	
+	dove i $ \lambda_{j} $ sono gli autovalori di $ X $. Possiamo ora scrivere
+	
+	\begin{equation}
+		\tr(X) = \tr(U^{*} X U) %
+		= \tr(T) %
+		= \sum_{j=1}^{n} \lambda_{j}
+	\end{equation}
+\end{proof}
+
+\begin{definition}\label{prop:det-exp-tr}
+	Sia una matrice $ X \in M_{n}(\R) $, allora
+	
+	\begin{equation}
+		\det(e^{X}) = e^{\tr(X)}
+	\end{equation}
+\end{definition}
+
+\begin{proof}
+	Supponiamo che $ X $ sia triangolare superiore, i.e.
+	
+	\begin{equation}
+		X = %
+		\bmqty{ %
+				\lambda_{1} & & A \\
+				& \ddots & \\
+				0 & & \lambda_{n} %
+				}
+	\end{equation}
+
+	La potenza $ k $-esima di questa matrice avrà la forma
+	
+	\begin{equation}
+		X^{k} = %
+		\bmqty{ %
+				\lambda_{1}^{k} & & A' \\
+				& \ddots & \\
+				0 & & \lambda_{n}^{k} %
+				}
+	\end{equation}
+
+	perciò l'esponenziale sarà
+	
+	\begin{align}
+		\begin{split}
+			e^{X} &= \sum_{k=0}^{+\infty} \dfrac{X^{k}}{k!} \\
+			&= \sum_{k=0}^{+\infty} %
+				\bmqty{ %
+						\lambda_{1}^{k} & & A' \\
+						& \ddots & \\
+						0 & & \lambda_{n}^{k} %
+						} \\
+			%
+			&= \bmqty{ %
+						\displaystyle\sum_{k=0}^{+\infty} \dfrac{\lambda_{1}^{k}}{k!} & & A'' \\
+						& \ddots & \\
+						0 & & \displaystyle\sum_{k=0}^{+\infty} \dfrac{\lambda_{n}^{k}}{k!} %
+						} \\
+			&= \bmqty{ %
+						e^{\lambda_{1}} & & A'' \\
+						& \ddots & \\
+						0 & & e^{\lambda_{n}} %
+						}
+		\end{split}
+	\end{align}
+
+	A questo punto
+	
+	\begin{equation}
+		\det(e^{X}) = \prod_{k=1}^{n} e^{\lambda_{k}} %
+		= e^{\sum_{k=1}^{n} \lambda_{k}} %
+		= e^{\tr(X)}
+	\end{equation}
+
+	Nel caso in cui la matrice $ X $ non fosse triangolare, per il teorema di Schur, $ X $ è simile a una matrice triangolare superiore, i.e. esiste $ U \in U(n) $ tale che
+	
+	\begin{equation}
+		U^{*} X U = T = %
+		\bmqty{ %
+				\lambda_{1} & & A \\
+				& \ddots & \\
+				0 & & \lambda_{n} %
+				}
+	\end{equation}
+	
+	Per calcolare il determinante di $ e^{X} $, utilizziamo Binet e la dimostrazione fatta sopra:
+
+	\begin{align}
+		\begin{split}
+			\det(e^{X}) &= \det(U^{*}) \det(e^{X}) \det(U) \\
+			&= \det(U^{*} e^{X} U) \\
+			&= \det(e^{U^{*} X U}) \\
+			&= e^{\tr(U^{*} X U)} \\
+			&= e^{\tr(X)}
+		\end{split}
+	\end{align}
+	
+	nel terzo passaggio abbiamo utilizzato la proprietà $ U^{*} e^{X} U = e^{U^{*} X U} $, che si dimostra come
+	
+	\begin{equation}
+		e^{U^{*} X U} %
+		= \sum_{k=0}^{+\infty} \dfrac{(U^{*} X U)^{k}}{k!} %
+		= \sum_{k=0}^{+\infty} \dfrac{U^{*} X^{k} U}{k!} %
+		= U^{*} \left( \sum_{k=0}^{+\infty} \dfrac{X^{k}}{k!} \right) U %
+		= U^{*} e^{X} U
+	\end{equation}
+
+	dove $ (U^{*} X U)^{k} = U^{*} X^{k} U $ in quanto $ U^{*} U = I $ e, nel terzo passaggio, abbiamo usato le proprietà delle serie convergenti, i.e.
+	
+	\begin{equation}
+		\sum_{n=0}^{+\infty} a s_{n} = a \sum_{n=0}^{+\infty} s_{n}
+	\end{equation}
+\end{proof}
+
+\begin{corollary}\label{cor:det-exp-gl}
+	Siccome la proposizione dà un metodo per calcolare il determinante di $ e^{X} $, ricaviamo dunque che l'esponenziale di una matrice è sempre invertibile\footnote{%
+		Questo fatto è già stato dimostrato, questa è solo un'ulteriore conferma.%
+	}, in quanto
+
+	\begin{equation}
+		e^{\tr(X)} \neq 0 \qcomma \forall X \in M_{n}(\K)
+	\end{equation}
+\end{corollary}
+
+\begin{corollary}
+	Sappiamo che l'esponenziale di una matrice è sempre invertibile, i.e.
+	
+	\begin{equation}
+		e^{X} \in GL_{n}(\R) \qcomma \forall X \in M_{n}(\R)
+	\end{equation}
+
+	Sia dunque una matrice $ X \in M_{n}(\R) $, allora la curva
+	
+	\map{c}
+		{\R \times M_{n}(\R)}{GL_{n}(\R)}
+		{(t,X)}{e^{t X}}
+	
+	ha vettore tangente nell'origine esattamente $ X $, i.e. $ c'(0) = X $. \\
+	Valgono le seguenti identificazioni
+	
+	\begin{equation}
+		\begin{cases}
+			c(0) = I \\ \\
+			T_{I}(GL_{n}(\R)) = M_{n}(\R) \\ \\
+			c'(0) = \eval{ \ddv{t} c }_{t=0}
+		\end{cases}
+	\end{equation}
+
+	Più in generale, se $ A \in GL_{n}(\R) $ e $ B \in M_{n}(\R) $, allora per la curva
+	
+	\map{c}
+		{\R \times GL_{n}(\R) \times M_{n}(\R)}{GL_{n}(\R)}
+		{(t,A,B)}{A e^{t A^{-1} B}}
+	
+	valgono
+	
+	\begin{equation}
+		\begin{cases}
+			c(0) = A \\
+			c'(0) = B
+		\end{cases}
+	\end{equation}
+\end{corollary}
+
+\begin{proof}
+	Per il primo caso
+	
+	\begin{equation}
+		c(0) = e^{0 X} = e^{0_{n}} = I
+	\end{equation}
+
+	e il vettore tangente
+	
+	\begin{equation}
+		c'(0) = \eval{ \dv{t} e^{t X} }_{t=0} %
+		= \eval{ X e^{t X} }_{t=0} %
+		= X I %
+		= X
+	\end{equation}
+
+	Più in generale
+	
+	\begin{equation}
+		c(0) = A e^{0 A B} = A e^{0_{n}} = A
+	\end{equation}
+
+	e il vettore tangente
+	
+	\begin{equation}
+		c'(0) = \eval{ \dv{t} A e^{t A^{-1} B} }_{t=0} %
+		= A \eval{ \dv{t} e^{t A^{-1} B} }_{t=0} %
+		= A \eval{ A^{-1} B e^{t A^{-1} B} }_{t=0} %
+		= B I %
+		= B
+	\end{equation}
+\end{proof}
+
+\begin{corollary}\label{cor:det-diff}
+	Sia l'applicazione determinante
+	
+	\map{\det}
+		{GL_{n}(\R)}{\R}
+		{A}{\det(A)}
+		
+	Tramite le identificazioni \footnote{%
+		Lo spazio tangente può anche essere scritto come $ T_{A}(GL_{n}(\R)) = A \, T_{I}(GL_{n}(\R)) $, derivato dal differenziale della traslazione a sinistra nell'Esempio \ref{example:trasl-diff}.%
+	}
+	
+	\begin{equation}
+		\begin{cases}
+			T_{A}(GL_{n}(\R)) = M_{n}(\R) \\
+			T_{\det(A)}(\R) = \R
+		\end{cases}
+	\end{equation}
+
+	il differenziale del determinante $ \det_{*A} : T_{A}(GL_{n}(\R)) \to T_{\det(A)}(\R) $ può essere scritto come
+
+	\map{{\det}_{*A}}
+		{M_{n}(\R)}{\R}
+		{B}{\det(A) \tr(A^{-1} B)}
+\end{corollary}
+
+\begin{proof}
+	Sia la curva
+	
+	\map{c}
+		{\R \times GL_{n}(\R) \times M_{n}(\R)}{GL_{n}(\R)}
+		{(t,A,B)}{A e^{t A^{-1} B}}
+	
+	con $ c(0) = A $ e $ c'(0) = B $. \\
+	Usando le proprietà dell'esponenziale di matrice
+	
+	\begin{align}
+		\begin{split}
+			{\det}_{*A}(B) &= \dot{(\det \circ \, c)} (0) \\
+			&= \eval{ \dv{t} \det(A e^{t A^{-1} B}) }_{t=0} \\
+			&= \eval{ \dv{t} \det(A) \det(e^{t A^{-1} B}) }_{t=0} \\
+			&= \det(A) \eval{ \dv{t} \det(e^{t A^{-1} B}) }_{t=0} \\
+			&= \det(A) \eval{ \dv{t} e^{\tr(t A^{-1} B)} }_{t=0} \\
+			&= \det(A) \eval{ \dv{t} e^{t \tr(A^{-1} B)} }_{t=0} \\
+			&= \det(A) \tr(A^{-1} B) \eval{ e^{t \tr(A^{-1} B)} }_{t=0} \\
+			&= \det(A) \tr(A^{-1} B)
+		\end{split}
+	\end{align}
+\end{proof}
+
+Come asserito all'inizio della sottosezione, queste proprietà valgono anche se si considera il campo dei numeri complessi $ \C $.
+
+\section{Esempi di sottogruppi di Lie e loro topologia}
+
+Alcuni gruppi di Lie sono $ SL_{n}(\K) $, $ O(n) $, $ U(n) $ e $ SU(n) $: in questa sezione vedremo come questi sono sottogruppi di Lie di $ GL_{n}(\K) $, anch'esso gruppo di Lie.
+
+\subsection{$ SL_{n}(\R) $ come sottogruppo di Lie di $ GL_{n}(\R) $}\label{s-sec:slng-sublie}
+
+Il gruppo di Lie $ SL_{n}(\R) \subset GL_{n}(\R) $ è un sottogruppo di Lie di $ GL_{n}(\R) $ di dimensione
+
+\begin{equation}
+	\dim(SL_{n}(\R)) = n^{2} - 1
+\end{equation}
+
+con spazio tangente alla matrice unità
+
+\begin{equation}
+	T_{I}(SL_{n}(\R)) = \{ X \in M_{n}(\R) \mid \tr(X) = 0 \}
+\end{equation}
+
+Inoltre, $ SL_{n}(\R) $ è connesso (e quindi connesso per archi in quanto varietà), chiuso in $ GL_{n}(\R) $ ma non compatto. \\ \\
+%
+Per dimostrare che sia un sottogruppo di Lie senza usare la proprietà di sottovarietà, dovremmo dimostrare che $ SL_{n}(\R) $ sia un sottogruppo algebrico di $ GL_{n}(\R) $, che sia una sottovarietà immersa e che le sue operazioni siano lisce; usando invece il teorema della preimmagine, possiamo dimostrare che $ SL_{n}(\R) $ è una sottovarietà\footnote{%
+	Vedi Esempio \ref{example:sl-subman}.%
+} di $ GL_{n}(\R) $ e dunque, per il Teorema \ref{thm:liesub-var}, che è un sottogruppo di Lie embedded di $ GL_{n}(\R) $. \\
+Per (ri)dimostrare che $ SL_{n}(\R) $ sia una sottovarietà di $ GL_{n}(\R) $, consideriamo sempre la funzione determinante
+
+\map{f \doteq \det}
+	{GL_{n}(\R)}{\R}
+	{A}{\det(A)}
+	
+da cui $ SL_{n}(\R) = f^{-1}(1) $ (il quale rende $ SL_{n}(\R) $ chiuso in quanto immagine di un chiuso tramite una funzione continua). Perché $ SL_{n}(\R) $ sia effettivamente una sottovarietà di $ GL_{n}(\R) $ è necessario\footnote{%
+	Vedi Teorema \ref{thm:preimg}.%
+} che $ 1 \in \VR_{f} $, i.e. il differenziale $ f_{*A} $ è suriettivo per qualsiasi $ A \in SL_{n}(\R) = f^{-1}(1) $. \\
+Preso il differenziale
+
+\map{f_{*A} = {\det}_{*A}}
+	{T_{A}(GL_{n}(\R))}{T_{\det(A)}(\R) = \R}
+	{B}{\det(A) \tr(A^{-1} B) = \tr(A^{-1} B)}
+	
+dove $ \det(A) = 1 $ in quanto $ A \in SL_{n}(\R) $, la condizione di suriettività è la seguente:
+
+\begin{equation}
+	\forall c \in \R, \E B \in T_{A}(GL_{n}(\R)) = M_{n}(\R) \mid \tr(A^{-1} B) = c
+\end{equation}
+
+questo si verifica per $ B = c A / n $ con $ n = \dim(M_{n}(\R)) $, in quanto
+
+\begin{equation}
+	\tr(A^{-1} B) = \tr(\dfrac{c A^{-1} A}{n}) %
+	= \dfrac{c \tr(I_{n})}{n} %
+	= \dfrac{c \, n}{n} %
+	= c
+\end{equation}
+
+dunque $ SL_{n}(\R) $ è una sottovarietà di $ GL_{n}(\R) $ con dimensione (usando la funzione determinante)
+
+\begin{equation}
+	\dim(SL_{n}(\R)) = \dim(GL_{n}(\R)) - \dim(\R) = n^{2} - 1
+\end{equation}
+
+Il teorema della preimmagine asserisce inoltre che
+
+\begin{equation}
+	T_{I}(F^{-1}(c)) = \ker(F_{*p})
+\end{equation}
+
+da cui lo spazio tangente a $ SL_{n}(\R) $
+
+\begin{equation}
+	T_{I}(SL_{n}(\R)) = \ker({\det}_{*I}) %
+	= \{ X \in M_{n}(\R) = T_{A}(GL_{n}(\R)) \mid \tr(X) = 0 \}
+\end{equation}
+
+il quale ha dimensione $ n^{2} - 1 $ (esattamente come $ SL_{n}(\R) $), in quanto le sue entrate sono vincolate dall'unica condizione di avere traccia nulla. Nel caso in cui lo spazio tangente fosse calcolato in un altro punto
+
+\begin{equation}
+	T_{A}(SL_{n}(\R)) = A \, T_{I}(SL_{n}(\R))
+\end{equation}
+
+Per quanto riguarda la topologia di $ SL_{n}(\R) $, considerando il teorema di Heine-Borel\footnote{%
+	Il teorema di Heine-Borel asserisce che un insieme è compatto se e solo se è chiuso e limitato nel suo spazio ambiente.%
+} con spazio ambiente lo spazio euclideo $ \R^{n^{2}} $, in quanto $ SL_{n}(\R) \subset GL_{n}(\R) \subset M_{n}(\R) = \R^{n^{2}} $, $ SL_{n}(\R) $ non è compatto (per $ n \geqslant 2 $) in $ GL_{n}(\R) $ in quanto chiuso ma non limitato: prendendo l'insieme di matrici
+
+\begin{equation}
+	\left\{ %
+			\bmqty{\dmat{ k & 0 \\ 0 & \sfrac{1}{k}, I_{n-2} }} \qcomma k \in \N \setminus \{0\}
+	\right\} %
+	\subset SL_{n}(\R)
+\end{equation}
+
+questo è illimitato al variare di $ k $ in quanto non esiste una palla in $ GL_{n}(\R) $ che lo contenga. \\
+Per uno spazio localmente euclideo (come $ SL_{n}(\R) $ in quanto varietà), vale che questo è connesso se e solo se è connesso per archi\footnote{%
+	Per uno spazio non localmente euclideo, la connessione per archi implica la connessione ma non viceversa.%
+}. Per dimostrare dunque che $ SL_{n}(\R) $ sia connesso, facciamo vedere che una matrice qualsiasi $ A \in SL_{n}(\R) $ può essere unita tramite un arco, i.e. un'applicazione continua, all'identità: usando questo procedimento e il suo inverso, ogni matrice sarà unita a ogni altra matrice di $ SL_{n}(\R) $ tramite archi ($ A \to I \to B $). Ricordiamo che le matrici appartenenti a $ SL_{n}(\R) $ possono essere scritte come prodotto finito di matrici elementari
+
+\begin{equation}
+	A = \prod_{k=1}^{s} M_{a_{k}}(i_{k},j_{k}) %
+	= \prod_{k=1}^{s} (I + a_{k} E_{i_{k} j_{k}}) %
+	\qcomma \forall A \in SL_{n}(\R)
+\end{equation}
+
+con $ E_{ij} $ la matrice che ha tutte entrate nulle tranne per quella nella riga $ i $-esima e colonna $ j $-esima dove è presente 1. \\
+Sia la curva
+
+\map{c}
+	{[0,1]}{SL_{n}(\R)}
+	{t}{\prod_{k=1}^{s} M_{t a_{k}}(i_{k},j_{k}) = \prod_{k=1}^{s} (I + t a_{k} E_{i_{k} j_{k}})}
+	
+un'applicazione continua con $ c(0) = I $ e $ c(1) = A $: questa curva funge da arco che collega la matrice identità ad $ A $, dimostrando dunque che $ SL_{n}(\R) $ è connesso.
+
+\subsection{$ SL_{n}(\C) $ come sottogruppo di Lie di $ GL_{n}(\C) $}
+
+Il gruppo di Lie $ SL_{n}(\C) \subset GL_{n}(\C) $ è un sottogruppo di Lie di $ GL_{n}(\C) $ di dimensione
+
+\begin{equation}
+	\dim_{\R}(SL_{n}(\C)) = 2 n^{2} - 2
+\end{equation}
+
+con spazio tangente alla matrice unità
+
+\begin{equation}
+	T_{I}(SL_{n}(\C)) = \{ X \in M_{n}(\C) \mid \tr(X) = 0 \}
+\end{equation}
+
+Inoltre, $ SL_{n}(\C) $ è connesso (e quindi connesso per archi in quanto varietà), chiuso in $ GL_{n}(\C) $ ma non compatto. \\ \\
+%
+Analogamente a $ SL_{n}(\R) $, l'insieme $ SL_{n}(\C) $ è una sottovarietà di $ GL_{n}(\C) $ in quanto preimmagine del valore regolare $ 1 \in \VR_{f} $ tramite la funzione
+
+\map{f \doteq \det}
+	{GL_{n}(\C)}{\C}
+	{A}{\det(A)}
+
+da cui la dimensione
+
+\begin{equation}
+	\dim_{\R}(SL_{n}(\C)) = \dim_{\R}(GL_{n}(\C)) - \dim_{\R}(\C) = 2 n^{2} - 2
+\end{equation}
+
+Per quanto riguarda lo spazio tangente, prendendo il nucleo del differenziale
+
+\map{f_{*A} = \operatorname{det}_{*A}}
+	{T_{A}(GL_{n}(\C))}{\C}
+	{B}{\tr(A^{-1} B)}
+
+si ottiene
+
+\begin{equation}
+	T_{I}(SL_{n}(\C)) = \ker(\operatorname{det}_{*I}) = \{ X \in M_{n}(\C) \mid \tr(X) = 0 \}
+\end{equation}
+
+il quale ha dimensione $ 2 n^{2} - 2 $ (esattamente come $ SL_{n}(\C) $) in quanto le sue entrate sono vincolate dalla condizione di avere traccia nulla (che vale come due condizioni in quanto le entrate sono complesse).
+
+\subsection{$ O(n) $ come sottogruppo di Lie di $ GL_{n}(\R) $}\label{s-sec:o-n-subgroup-lie-glnr}
+
+Il gruppo delle matrici ortogonali
+
+\begin{equation}
+	O(n) = \{ A \in GL_{n}(\R) \mid A^{T} A = I \}
+\end{equation}
+
+è un sottogruppo di Lie embedded di $ GL_{n}(\R) $, in quanto sottogruppo algebrico e sottovarietà di $ GL_{n}(\R) $. \\
+È compatto in quanto chiuso e limitato in $ GL_{n}(\R) $: chiuso perché preimmagine di $ I \in \VR_{f} $ tramite l'applicazione continua
+
+\map{f}
+	{GL_{n}(\R)}{S(n)}
+	{A}{A^{T} A}
+	
+e limitato in quanto le colonne delle matrici di $ O(n) $ hanno norma unitaria e quindi la somma delle colonne è limitata dalla dimensione $ n $ delle matrici. \\
+Non è connesso per $ n \geqslant 1 $, ma costituito da due componenti connesse
+
+\begin{equation}
+	O(n) = SO(n) \sqcup SO^{-}(n)
+\end{equation}
+
+dove
+
+\begin{gather}
+	SO(n) = \{ A \in O(n) \mid \det(A) = 1 \} \\
+	SO^{-}(n) = \{ A \in O(n) \mid \det(A) = -1 \}
+\end{gather}
+
+Questo perché, siccome
+
+\begin{equation}
+	\det(A^{T}) = \det(A) \qcomma \forall A \in M_{n}(\K)
+\end{equation}
+
+abbiamo che
+
+\begin{equation}
+	\begin{aligned}
+		1 &= \det(I) \\
+		&= \det(A^{T} A) \\
+		&= \det(A^{T}) \det(A) \\
+		&= (\det(A))^{2} \\
+	\end{aligned} %
+	\implies %
+	\abs{\det(A)} = 1 \qcomma \forall A \in O(n)
+\end{equation}
+
+In particolare, per $ n=1 $ si ha l'insieme
+
+\begin{equation}
+	O(n) = \{ x \in \R \mid x^{2} = 1 \} = \{ \pm 1 \}
+\end{equation}
+
+La dimensione di questo gruppo di Lie è
+
+\begin{equation}
+	\dim(O(n)) = \dfrac{n(n-1)}{2}
+\end{equation}
+
+e il suo spazio tangente coincide con l'insieme delle matrici antisimmetriche\footnote{%
+	Vedi Esempio \ref{example:on-group-lie}.%
+}
+
+\begin{equation}
+	T_{I}(O(n)) = \{ X \in M_{n}(\R) \mid X^{T} = -X \}
+\end{equation}
+
+Sappiamo anche che $ SO(n) $ è un sottogruppo di Lie di $ O(n) $ della stessa dimensione (in quanto componente connessa) e con lo stesso spazio tangente di $ O(n) $. \\ \\
+%
+Per dimostrare che $ O(n) $ non sia connesso (e quindi non connesso per archi in quanto varietà), usiamo il fatto che non esiste un arco che connette due matrici che abbiano rispettivamente determinante $ 1 $ e $ -1 $. Siano la matrice identità $ I $ e la matrice
+
+\begin{equation}
+	A = \bmqty{\dmat{-1,1,\ddots,1}}
+\end{equation}
+
+con
+
+\begin{equation}
+	\begin{cases}
+		\det(I) = 1 \\
+		\det(A) = - 1
+	\end{cases}
+\end{equation}
+
+Supponiamo per assurdo che esista una curva continua (arco) $ c $ tale che
+
+\begin{equation}
+	\begin{cases}
+		c : [0,1] \to O(n) \\
+		c(0) = I \\
+		c(1) = A
+	\end{cases}
+\end{equation}
+
+Per la curva vale
+
+\begin{equation}
+	c(t) \in O(n) \implies \det(c(t)) \neq 0 \qcomma \forall t \in [0,1]
+\end{equation}
+
+e abbiamo che
+
+\begin{equation}
+	\begin{cases}
+		\det(c(0)) = \det(I) = 1 \\
+		\det(c(1)) = \det(A) = - 1
+	\end{cases}
+\end{equation}
+
+Per il teorema del valore medio, esiste un $ t_{0} \in [0,1] $ tale che $ \det(c(t_{0})) = 0 $, ma questo è assurdo in quanto $ c(t) \in O(n) $ e dunque $ O(n) $ non è connesso. \\
+Verifichiamo ora che il sottoinsieme $ SO(n) $ sia connesso (per archi) tramite la forma canonica ortogonale:
+
+\begin{equation}
+	A \in SO(n) %
+	\implies %
+	\E P \in O(n) \mid P^{T} A P = %
+	\bmqty{ %
+			\dmat{ %
+					I_{p}, %
+					- I_{q}, %
+					R_{1}(\theta_{1}), %
+					\ddots, %
+					R_{k}(\theta_{k}) %
+					} %
+			}
+\end{equation}
+
+con $ p,q,k \in \N $ e $ \theta_{j} \in (0,\pi) $ dove $ j=1,\dots,k $ e $ k = (n-p-q)/2 $, definendo $ R_{j}(\theta_{j}) $ come
+
+\begin{equation}
+	R_{j}(\theta_{j}) = %
+	\bmqty{ %
+			\cos(\theta_{j}) & \sin(\theta_{j}) \\ \\
+			- \sin(\theta_{j}) & \cos(\theta_{j}) %
+			}
+\end{equation}
+
+Siccome il teorema del valore medio vale per $ O(n) $, la condizione $ A \in SO(n) $ implica anche che $ \det(P^{T} A P) = 1 $ e quindi che $ \det(-I_{q}) = 1 $ in quanto $ \det(I_{p}) = \det(R_{j}) = 1 $, i.e. $ q $ deve essere pari. Consideriamo la curva continua (arco)
+
+\map{c}
+	{[0,1]}{SO(n)}
+	{t}{\bmqty{ %
+				\dmat{ %
+						I_{p}, %
+						R_{1}(\pi t), %
+						\ddots, %
+						R_{q}(\pi t), %
+						R_{1}(t \theta_{1}), %
+						\ddots, %
+						R_{k}(t \theta_{k}) %
+						}%
+				} %
+		}
+
+con $ q $ pari, per cui vale
+
+\begin{equation}
+	\begin{cases}
+		c(0) = I \\
+		c(1) = P^{T} A P
+	\end{cases}
+\end{equation}
+
+Considerando ora un'altra curva continua
+
+\map{g \doteq P \, c \, P^{T}}%
+	{[0,1]}{SO(n)}%
+	{t}{ P \bmqty{ %
+					\dmat{ %
+							I_{p}, %
+							R_{1}(\pi t), %
+							\ddots, %
+							R_{q}(\pi t), %
+							R_{1}(t \theta_{1}), %
+							\ddots, %
+							R_{k}(t \theta_{k}) %
+							}%
+					} P^{T} %
+	}
+
+per cui vale
+
+\begin{equation}
+	\begin{cases}
+		g(0) = I \\
+		g(1) = A
+	\end{cases}
+\end{equation}
+
+Abbiamo dunque costruito un arco che collega qualunque matrice di $ SO(n) $ alla matrice identità, dunque lo spazio è connesso (per archi). \\
+L'insieme $ SO(n) $ è una componente connessa di $ O(n) $ anche perché se esistesse un insieme connesso $ M $ tale che
+
+\begin{equation}
+	SO(n) \subsetneq M \subset O(n)
+\end{equation}
+
+un elemento di $ SO(n) $ potrebbe essere unito a un elemento $ A \in M $ con $ \det(A) = -1 $ e, siccome $ M $ è connesso (per archi), esisterebbe un arco $ c $ tale che
+
+\begin{equation}
+	\begin{cases}
+		c : [0,1] \to M \\
+		c(0) = I \\
+		c(1) = A
+	\end{cases}
+\end{equation}
+
+Questo è assurdo, per il teorema del valore medio, perché il determinante di $ \det(c(t)) \neq 0 $ ma $ c $ è un'applicazione continua che passerebbe da $ \det(c(0)) = 1 $ a $ \det(c(1)) = -1 $. \\
+Analogamente, l'insieme delle matrici con determinante pari a $ -1 $, i.e. $ SO^{-}(n) $, è l'altra componente connessa di $ O(n) $, per cui vale
+
+\begin{equation}
+	O(n) = SO(n) \sqcup SO^{-}(n)
+\end{equation}
+
+Consideriamo le due seguenti proposizioni:
+
+\begin{definition}
+	Presi uno spazio topologico $ X $ e una sua componente connessa $ C \subset X $, allora $ C $ è chiuso.
+\end{definition}
+
+\begin{proof}
+	La chiusura $ \bar{C} $ di una componente connessa $ C $ è ancora connessa e anche chiusa, dunque $ \bar{C} \equiv C $, perciò $ C $ è chiusa.
+\end{proof}
+
+\begin{definition}\label{prop:conn-comp-open}
+	Siano $ X $ uno spazio topologico localmente euclideo e $ C \subset X $ una sua componente connessa (per archi, in quanto $ X $ è localmente euclideo), allora $ C $ è aperto in $ X $.
+\end{definition}
+
+\begin{proof}
+	Sia un punto $ p \in C \subset X $: essendo $ X $ localmente euclideo, esiste un intorno aperto $ U \ni p $ che sia connesso (per archi), in quanto la connessione (per archi) si preserva per omeomorfismi. \\
+	Se, per assurdo, $ U \not\subset C $ allora $ U \cup C $ è un connesso tale che $ U \cup C \supsetneq C $ ma questo non è possibile perché avremmo trovato un connesso che contiene strettamente $ C $, in contrasto con il fatto che $ C $ sia una componente connessa. \\
+	Questo rende il punto (arbitrario) $ p $ interno a $ C $ e dunque $ C $ è aperto.
+\end{proof}
+
+Queste proposizioni insieme asseriscono che uno spazio topologico localmente euclideo, e.g. una varietà differenziabile, ha le sue componenti connesse sia aperte che chiuse: nello specifico, possiamo dire che l'insieme $ SO(n) $ è sia chiuso che aperto in $ O(n) $. \\
+Qualunque aperto di una varietà differenziabile è una sottovarietà\footnote{%
+	Vedi Osservazione \ref{rem:subvar-open}.%
+}, dunque $ SO(n) $ è una sottovarietà di $ O(n) $ e, per questo, è anche un sottogruppo di Lie embedded. La dimensione e lo spazio tangente di un aperto di una varietà sono gli stessi di quelli della varietà, perciò
+
+\begin{gather}
+	\dim(SO(n)) = \dfrac{n(n-1)}{2} \\
+	\nonumber \\
+	T_{I}(SO(n)) = T_{I}(O(n)) = \{ X \in M_{n}(\R) \mid X^{T} = -X \}
+\end{gather}
+
+Essendo chiuso e limitato (o, equivalentemente, chiuso nel compatto $ O(n) $), $ SO(n) $ è compatto. \\
+Gli stessi ragionamenti sono applicabili all'altra componente connessa $ SO^{-}(n) $ di $ O(n) $. \\
+Per piccoli valori di $ n $, abbiamo che:
+
+\begin{itemize}
+	\item $ SO(1) = \{ 1 \} $;
+	
+	\item $ SO(2) $ è diffeomorfo\footnote{%
+		Vedi Esercizio \ref{BONUS3-1}.%
+	} a $ \S^{1} $;
+	
+	\item $ SO(3) $ è diffeomorfo a $ \rp{3} $.
+\end{itemize}
+
+\subsection{$ U(n) $ come sottogruppo di Lie di $ GL_{n}(\C) $}
+
+L'insieme delle matrici unitarie
+
+\begin{equation}
+	U(n) = \{ A \in GL_{n}(\C) \mid A^{*} A = I \}
+\end{equation}
+
+dove $ A^{*} \doteq \bar{A}^{T} \equiv A^{-1} $, è un sottogruppo di Lie embedded di $ GL_{n}(\C) $ di dimensione
+
+\begin{equation}
+	\dim_{\R}(U(n)) = n^{2}
+\end{equation}
+
+con spazio tangente l'insieme delle matrici antihermitiane
+
+\begin{equation}
+	T_{I}(U(n)) = \{ X \in M_{n}(\C) \mid X^{*} = -X \}
+\end{equation}
+
+L'insieme $ U(n) $ è anche compatto e connesso. \\
+Per dimostrare che $ U(n) $ sia un sottogruppo di Lie embedded di $ GL_{n}(\C) $, è sufficiente mostrare che $ U(n) $ sia una sottovarietà di $ GL_{n}(\C) $. Consideriamo l'applicazione continua
+
+\map{f}
+	{GL_{n}(\C)}{H(n)}
+	{A}{A^{*} A}
+
+dove il codominio è l'insieme delle matrici hermitiane
+
+\begin{equation}
+	H(n) = \{ B \in M_{n}(\C) \mid B^{*} = B \}
+\end{equation}
+
+Abbiamo che $ U(n) = f^{-1}(I) $, dunque dobbiamo verificare che $ I \in \VR_{f} $ per poter usare il teorema della preimmagine di un valore regolare. Prendiamo quindi differenziale $ f_{*A}(B) $ con $ A \in GL_{n}(\C) $ e $ B \in T_{A}(GL_{n}(\C)) = M_{n}(\C) $ e verifichiamo che sia suriettivo nella restrizione a matrici unitarie: presa una curva liscia $ c $ tale che
+
+\begin{equation}
+	\begin{cases}
+		c : (-\varepsilon,\varepsilon) \to GL_{n}(\C) \\
+		c(0) = A \\
+		c'(0) = B
+	\end{cases}
+\end{equation}
+
+possiamo scrivere
+
+\begin{align}
+	\begin{split}
+		f_{*A}(B) &= \eval{ \dv{t} (f \circ c(t)) }_{t=0} \\
+		&= \eval{ \dv{t} f(c(t)) }_{t=0} \\
+		&= \eval{ \dv{t} (c(t)^{*} c(t)) }_{t=0} \\
+		&= \dot{c}(0)^{*} c(0) + c(0)^{*} \dot{c}(0) \\
+		&= B^{*} A + A^{*} B
+	\end{split}
+\end{align}
+
+da cui, tramite le identificazioni $ T_{A}(GL_{n}(\C)) = M_{n}(\C) $ e $ T_{f(A)}(H(n)) = H(n) $ ($ H(n) $ è uno spazio vettoriale) otteniamo
+
+\map{f_{*A}}
+	{M_{n}(\C)}{H(n)}
+	{B}{B^{*} A + A^{*} B}
+
+A questo punto abbiamo che
+
+\begin{equation}
+	I \in \VR_{f} \iff \E B \in M_{n}(\C) \mid f_{*A}(B) = C %
+	\qcomma \forall C \in H(n), \, \forall A \in U(n) = f^{-1}(I)
+\end{equation}
+
+cioè $ f_{*A} $ è suriettiva per $ A \in U(n) $: questo si verifica per $ B = AC/2 $
+
+\begin{align}
+	\begin{split}
+		f_{*A} \left( \dfrac{A C}{2} \right) &= \left( \dfrac{A C}{2} \right)^{*} A + A^{*} \left( \dfrac{A C}{2} \right) \\
+		&= \dfrac{1}{2} (C^{*} A^{*} A + A^{*} A C) \\
+		&= \dfrac{1}{2} (C^{*} + C) \\
+		&= \dfrac{1}{2} (C + C) \\
+		&= C
+	\end{split}
+\end{align}
+
+in quanto $ C \in H(n) $, perciò $ I \in \VR_{f} $ e dunque $ U(n) $ è una sottovarietà di $ GL_{n}(\C) $. \\
+La dimensione di $ U(n) $ deriva dal teorema della preimmagine\footnote{%
+	La dimensione di $ H(n) $ deriva dal fatto che gli $ n $ elementi della diagonale sono reali mentre quelli sopra la diagonale determinano anche quelli sotto e sono complessi, da cui il termine $ 2 (n(n-1)/2) $.%
+}
+
+\begin{equation}
+	\dim_{\R}(U(n)) = \dim_{\R}(GL_{n}(\C)) - \dim_{\R}(H(n)) %
+	= 2 n^{2} - \left( n +\dfrac{n (n-1)}{2} \, 2 \right) %
+	= 2 n^{2} - n^{2} %
+	= n^{2}
+\end{equation}
+
+Sempre dal teorema della preimmagine, lo spazio tangente di $ U(n) $ è
+
+\begin{equation}
+	T_{I}(U(n)) = \ker(f_{*I}) = \{ X \in M_{n}(\C) \mid X^{*} = -X \} = H^{-}(n)
+\end{equation}
+
+ovvero lo spazio delle matrici antihermitiane. \\
+La dimostrazione\footnote{%
+	Vedi Esercizio \ref{exer3-5}.%
+} che $ U(n) $ sia compatto è analoga a quella per $ O(n) $. Per dimostrare che sia connesso, sia $ A \in U(n) $, per il corollario del teorema spettrale esiste una matrice $ U \in U(n) $ tale che
+
+\begin{equation}
+	U^{-1} A U = %
+	\bmqty{ %
+			\dmat{ %
+					e^{i \theta_{1}}, %
+					\ddots, %
+					e^{i \theta_{n}} %
+					} %
+			}
+\end{equation}
+
+con $ \theta_{j} \in \R $ per $ j=1,\dots,n $. Possiamo definire una curva continua
+
+\map{c}
+	{[0,1]}{U(n)}
+	{t}{ %
+			U \bmqty{ %
+					\dmat{ %
+							e^{i t \theta_{1}}, %
+							\ddots, %
+							e^{i t \theta_{n}} %
+							} %
+					} U^{-1} %
+			}
+
+dove
+
+\begin{equation}
+	\begin{cases}
+		c(0) = I \\
+		c(1) = A
+	\end{cases}
+\end{equation}
+
+Esiste dunque un arco che connette ogni matrice unitaria alla matrice identità, perciò $ U(n) $ è connesso.
+
+\subsection{$ SU(n) $ come sottogruppo di Lie di $ U(n) $}\label{s-sec:su-n-lie-subg}
+
+L'insieme delle matrici unitarie speciali
+
+\begin{align}
+	\begin{split}
+		SU(n) &= \{ A \in GL_{n}(\C) \mid A^{*} A = I \wedge \det(A) = 1 \} \\
+		&= \{ A \in U(n) \mid \det(A) = 1 \}
+	\end{split}
+\end{align}
+
+è un sottogruppo di Lie embedded di $ U(n) $ di dimensione $ \dim_{\R}(SU(n)) = n^{2} - 1 $ con spazio tangente l'insieme delle matrici antihermitiane a traccia nulla
+
+\begin{align}
+	\begin{split}
+		T_{I}(SU(n)) &= \{ X \in M_{n}(\C) \mid X^{*} = -X \wedge \tr(X) = 0 \} \\
+		&= \{ X \in T_{I}(U(n)) \mid \tr(X) = 0 \}
+	\end{split}
+\end{align}
+
+L'insieme $ SU(n) $ è anche compatto e connesso. \\
+Per dimostrare che sia un sottogruppo di Lie embedded di $ U(n) $, utilizziamo il teorema della preimmagine per dimostrare che ne sia una sottovarietà tramite l'applicazione
+
+\map{f}
+	{U(n)}{\S^{1}}
+	{A}{\det(A)}
+
+Questa applicazione ha come codominio $ \S^{1} $ perché per $ A \in U(n) $ vale\footnote{%
+	È possibile dimostrare questo fatto anche nel seguente modo: siccome due matrici simili hanno stesso determinante (vedi Proposizione \ref{prop:similar-matrix-properties}) e siccome ogni matrice unitaria $ A \in U(n) $ è simile a una matrice del tipo
+	
+	\begin{equation*}
+		U^{*} A U = %
+		\bmqty{ %
+				\dmat{ %
+						e^{i \theta_{1}} & & 0 \\
+						& \ddots & \\
+						0 & & e^{i \theta_{n}} %
+						}
+				} %
+		\qcomma \theta_{j} \in \R, \, j=1,\dots,n
+	\end{equation*}
+	
+	con $ U \in U(n) $ (vedi Corollario \ref{cor:unit-matrix-similar}), possiamo asserire che
+	
+	\begin{equation*}
+		\det(U) = \det(U^{-1} A U) %
+		= e^{i \sum_{i=1}^{n} \theta_{i}} %
+		\doteq e^{i \Theta} %
+		\qcomma \Theta \in \R
+	\end{equation*}
+	%
+}
+
+\begin{equation}
+	A^{*} A = I %
+	\implies %
+	\begin{aligned}
+		\det(I) &= \det(A^{*} A) \\
+		1 &= \det(A^{*}) \det(A) \\
+		&= \overline{\det(A)} \det(A) \\
+		&= \abs{\det(A)}^{2}
+	\end{aligned} %
+	\implies %
+	\det(A) = e^{i \theta} \in \S^{1} \qcomma \theta \in \R
+\end{equation}
+
+A questo punto, $ SU(n) $ è la controimmagine di $ 1 \in \S^{1} \subset \C $ tramite il determinante, i.e. $ SU(n) = f^{-1}(1) $: perché sia una sottovarietà di $ U(n) $ è sufficiente che $ 1 \in \VR_{f} $. Prendiamo quindi il differenziale dell'applicazione determinante\footnote{%
+	Vedi Corollario \ref{cor:det-diff}.%
+}
+
+\map{f_{*A}}
+	{T_{A}(U(n))}{T_{\det(A)}(\S^{1})}
+	{B}{\det(A) \tr(A^{-1} B)}
+	
+Siccome siamo interessati agli elementi di $ SU(n) $, abbiamo che $ \det(A) = 1 $, i.e. per $ A \in SU(n) $
+
+\map{f_{*A}}
+	{T_{A}(U(n))}{T_{1}(\S^{1})}
+	{B}{\tr(A^{-1} B)}
+
+A questo punto, dobbiamo studiare $ T_{1}(\S^{1}) $ con $ \S^{1} \subset \C $: possiamo trovare gli elementi di questo spazio tangente considerando la curva
+
+\sbs{0.5}{%
+			\map{c}
+				{(-\varepsilon,\varepsilon)}{\S^{1}}
+				{t}{e^{i a t}}
+			}
+	{0.5}{%
+			\begin{equation}
+				\begin{cases}
+					a \in \R \\
+					c(0) = 1 \\
+					\dot{c}(0) = i a
+				\end{cases}
+			\end{equation}
+			}
+
+Dato che $ \dot{c}(0) \in T_{1}(\S^{1}) $, possiamo asserire che
+
+\begin{equation}
+	T_{1}(\S^{1}) = \ev{i}_{\R}
+\end{equation}
+
+cioè lo spazio tangente è generato da tutti i vettori paralleli all'asse immaginario che partano da $ 1 \in \C $. \\
+A questo punto, perché $ 1 \in \VR_{f} $, è necessario che il differenziale sia suriettivo per qualsiasi $ A \in SU(n) $ o equivalentemente
+
+\begin{equation}
+	1 \in \VR_{f} \iff \forall a \in \R, \E B \in T_{A}(U(n)) \mid f_{*A} (B) = \tr(A^{-1} B) = i a \in T_{1}(\S^{1}) %
+	\qcomma A \in SU(n)
+\end{equation}
+
+Abbiamo dimostrato che
+
+\begin{equation}
+	\begin{cases}
+		T_{A}(U(n)) = A \, T_{I}(U(n)) \\
+		T_{I}(U(n)) = H^{-}(n) & \text{ matrici antihermitiane}
+	\end{cases}
+\end{equation}
+
+perciò
+
+\begin{equation}
+	T_{A}(U(n)) = \{ AX \in M_{n}(\C) \mid X^{*} = -X \}
+\end{equation}
+
+Per soddisfare la condizione, prendiamo $ B = AX $ con $ X = (i a/n) I $, da cui
+
+\begin{equation}
+	\tr(A^{-1} B) = \tr(A^{-1} A \, \dfrac{ia}{n} \, I) %
+	= \dfrac{ia}{n} \tr(I) %
+	= \dfrac{ia}{n} \, n %
+	= i a
+\end{equation}
+
+Questo dimostra che $ 1 \in \VR_{f} $ perciò $ SU(n) $ è una sottovarietà e quindi un sottogruppo di Lie embedded di $ U(n) $ di dimensione
+
+\begin{equation}
+	\dim_{\R}(SU(n)) = \dim_{\R}(U(n)) - \dim_{\R}(\S^{1}) = n^{2} - 1
+\end{equation}
+
+Lo spazio tangente di $ SU(n) $ deriva ancora dal teorema della preimmagine
+
+\begin{equation}
+	T_{I}(SU(n)) = \ker({\det}_{*A}) %
+	= \{ X \in T_{I}(U(n)) \mid \tr(X) = 0 \}
+\end{equation}
+
+ma sappiamo che
+
+\begin{equation}
+	T_{I}(U(n)) = \{ X \in M_{n}(\C) \mid X^{*} = - X \}
+\end{equation}
+
+perciò
+
+\begin{equation}
+	T_{I}(SU(n)) = \{ X \in M_{n}(\C) \mid X^{*} = -X \wedge \tr(X) = 0 \}
+\end{equation}
+
+Essendo $ SU(n) $ chiuso (perché controimmagine del chiuso $ 1 \in \C $ tramite l'applicazione continua determinante) nel compatto $ U(n) $, $ SU(n) $ è compatto\footnote{%
+	Alternativamente, si può utilizzare il fatto che sia chiuso e limitato in $ U(n) $.%
+}. \\
+L'insieme $ SU(n) $ è connesso perché, presa una matrice $ A \in SU(n) $, per il corollario del teorema spettrale, esiste una matrice $ U \in U(n) $ tale che
+
+\begin{equation}
+	U^{-1} A U = %
+	\bmqty{ %
+			\dmat{ %
+			 		e^{i \theta_{1}}, %
+			 		\ddots, %
+			 		e^{i \theta_{n}} %
+		 			} %
+	 		}
+\end{equation}
+
+con $ \theta_{j} \in \R $ per $ j=1,\dots,n $ e siccome il determinante deve essere unitario
+
+\begin{equation}
+	\sum_{j=1}^{n} \theta_{j} = 2 k \pi \qcomma k \in \Z
+\end{equation}
+
+Possiamo definire una curva continua
+
+\map{c}
+	{[0,1]}{SU(n)}
+	{t}{ %
+			U \bmqty{ %
+						\dmat{ %
+								e^{i t \theta_{1}}, %
+								\ddots, %
+								e^{i t \theta_{n}} %
+								} %
+						} U^{-1} %
+			}
+
+dove
+
+\begin{equation}
+	\begin{cases}
+		c(0) = I \\
+		c(1) = A
+	\end{cases}
+\end{equation}
+
+e la curva appartiene a $ SU(n) $ per Binet. \\
+Esiste dunque un arco che connette ogni matrice unitaria speciale alla matrice identità perciò $ SU(n) $ è connesso. \\
+Notiamo anche che\footnote{%
+	Vedi Esercizio \ref{BONUS3-2}.%
+}
+
+\begin{gather}
+	SU(1) = U(1) = SO(2) \simeq \S^{1} \\
+	SU(2) \simeq \S^{3}
+\end{gather}
+
+\subsection{Isomorfismo tra $ GL_{n}(\R) $ e $ SL_{n}(\R) \times \R \setminus \{0\} $}
+
+Un gruppo di Lie è un gruppo algebrico con operazioni lisce che sia anche una varietà differenziabile. Due gruppi di Lie possono essere legati da un diffeomorfismo, in quanto varietà, ma non essere isomorfi: questo succede se il diffeomorfismo non è anche un omomorfismo di gruppi, i.e. non preserva la moltiplicazione tra i gruppi. \\
+Sia l'applicazione
+
+\map{f}
+	{GL_{n}(\R)}{SL_{n}(\R) \times \R \setminus \{0\}}
+	{A}{(A M_{1/\det(A)},\det(A))}
+
+dove la matrice $ M_{r} $ è definita come
+
+\begin{equation}
+	M_{r} \doteq %
+	\bmqty{ %
+			r & 0_{1,n} \\ \\
+			0_{n,1} & I_{n-1} %
+			} = %
+	\bmqty{ %
+			\dmat{ %
+					r, %
+					1, %
+					\ddots, %
+					1 %
+					} %
+			} %
+	\qcomma \qquad \det(M_{r}) = r \in \R
+\end{equation}
+
+e il codominio è un prodotto diretto tra i gruppi di Lie, i.e. il gruppo delle matrici invertibili con determinante unitario $ SL_{n}(\R) $ e il gruppo $ (\R \setminus \{0\},\cdot) $ con $ \cdot $ il prodotto tra numeri reali. \\
+L'applicazione $ f $ è un diffeomorfismo ma non un isomorfismo. \\
+L'immagine è ben definita, i.e. il primo termine appartiene a $ SL_{n}(\R) $ in quanto
+
+\begin{equation}
+	\det(A M_{1/\det(A)}) = \det(A) \det(M_{1/\det(A)}) = \det(A) \, \dfrac{1}{\det(A)} = 1
+\end{equation}
+
+e il secondo appartiene a $ \R \setminus \{0\} $, poiché $ \det(A) \neq 0 $ per qualsiasi $ A \in GL_{n}(\R) $. \\
+L'applicazione $ f $ è liscia perché tutte le entrate sono lisce e perché, considerando l'applicazione liscia
+
+\map{g}
+	{GL_{n}(\R)}{GL_{n}(\R) \times \R \setminus \{0\}}
+	{A}{(A M_{1/\det(A)},\det(A))}
+ 
+il codominio di $ f $ è una restrizione del codominio di $ g $ a una sua sottovarietà. \\
+L'inversa di $ f $ (ancora liscia anche perché restrizione di un'applicazione liscia) è
+
+\map{f^{-1}}
+	{SL_{n}(\R) \times \R \setminus \{0\}}{GL_{n}(\R)}
+	{(S,r)}{S M_{r}}
+
+in quanto
+
+\begin{align}
+	\begin{split}
+		(f^{-1} \circ f)(A) &= f^{-1} \left( A M_{1/\det(A)},\det(A) \right) \\
+		&= A M_{1/\det(A)} M_{\det(A)} \\
+		&= A
+	\end{split}
+\end{align}
+
+\begin{align}
+	\begin{split}
+		(f \circ f^{-1})(S,r) &= f(S M_{r}) \\
+		&= \left( S M_{r} M_{{1/\det(S M_{r})}},\det(S M_{r}) \right) \\
+		&= \left( S M_{r} M_{1/(\det(S) \det(M_{r}))},\det(S) \det(M_{r}) \right) \\
+		&= \left( S M_{r} M_{1/r},r \right) \\
+		&= (S,r)
+	\end{split}
+\end{align}
+
+dove $ \det(S) = 1 $ poiché $ S \in SL_{n} (\R) $. Questo dimostra che $ f $ è un diffeomorfismo. \\
+Perché sia un isomorfismo, oltre ad essere un diffeomorfismo, dovrebbe essere un omomorfismo e quindi preservare la moltiplicazione, ma
+
+\begin{align}
+	\begin{split}
+		f(A B) &\neq f(A) \, f(B) \\
+		\left( A B M_{1/\det(A B)}, \det(A B) \right) &\neq \left( A M_{1/\det(A)},\det(A) \right) \, \left( B M_{1/\det(B)},\det(B) \right) \\
+		&\neq \left( A M_{1/\det(A)} B M_{1/\det(B)},\det(A) \det(B) \right) \\
+		&\neq \left( A M_{1/\det(A)} B M_{1/\det(B)},\det(A B) \right)
+	\end{split}
+\end{align}
+
+in quanto, in generale, $ [B, M_{1/\det(A)}] \neq 0 $. \\
+Da questa analisi otteniamo che
+
+\begin{equation}
+	GL_{n}(\R) \stackrel{diff.}{\simeq} SL_{n}(\R) \times \R \setminus \{0\} %
+	\quad \wedge \quad %
+	GL_{n}(\R) \stackrel{iso.}{\not\simeq} SL_{n}(\R) \times \R \setminus \{0\}
+\end{equation}
+
+Inoltre, siccome $ \R \setminus \{0\} $ è costituito da due componenti connesse
+
+\begin{equation}
+	\R \setminus \{0\} = \R^{+} \sqcup \R^{-}
+\end{equation}
+
+dal diffeomorfismo $ f $, ricaviamo che anche $ GL_{n}(\R) $ è costituito da due componenti connesse (in quanto $ SL_{n}(\R) $ è connesso), i.e. le matrici con determinante positivo e quelle con determinante negativo
+
+\begin{equation}
+	GL_{n}(\R) = (SL_{n}(\R) \times \R^{+}) \sqcup (SL_{n}(\R) \times \R^{-}) %
+	\doteq GL_{n}^{+}(\R) \sqcup GL_{n}^{-}(\R)
+\end{equation}
+
+In generale, $ GL_{n}(\R) $ e $ SL_{n}(\R) \times \R \setminus \{0\} $ non sono quindi isomorfi: questo rimane vero per $ n $ pari, ma per $ n $ dispari è possibile trovare un isomorfismo tra questi due gruppi. \\
+Preso un gruppo algebrico $ G $, il suo \textit{centro} $ Z(G) $ è l'insieme  degli elementi di $ G $ che commutano con tutti gli altri elementi, i.e.
+
+\begin{equation}
+	Z(G) = \{ z \in G \mid zg = gz, \, \forall g \in G \}
+\end{equation}
+
+Il centro del gruppo lineare è l'insieme di tutte le matrici scalari, i.e.
+
+\begin{equation}
+	Z(GL_{n}(\R)) = \{ A \in M_{n}(\R) \mid A = c I, \, c \in \R \setminus \{0\} \}
+\end{equation}
+
+Questo significa che
+
+\begin{equation}
+	Z(GL_{n}(\R)) = \{I\} \times \R \setminus \{0\}
+\end{equation}
+
+Siccome il centro del prodotto di due gruppi è il prodotto del centro dei gruppi, i.e.
+
+\begin{equation}
+	Z(G) \times Z(H) = Z(G \times H) \qcomma \forall G,H \text{ gruppi}
+\end{equation}
+
+possiamo scrivere
+
+\begin{equation}
+	Z(SL_{n}(\R) \times \R \setminus \{0\}) = Z(SL_{n}(\R)) \times Z(\R \setminus \{0\})
+\end{equation}
+
+L'insieme dei reali è commutativo e, siccome $ Z(G) = G $ per $ G $ abeliano, abbiamo che coincide con il suo centro, mentre il gruppo lineare speciale ha centro diverso a seconda della dimensione delle matrici:
+
+\begin{equation}
+	Z(SL_{n}(\R)) = %
+	\begin{cases}
+		\{ \pm I \}, & n = 2 k \\
+		\{ I \}, & n = 2 k + 1
+	\end{cases} %
+	\qquad k \in \N
+\end{equation}
+
+A questo punto, abbiamo che per $ n $ pari
+
+\begin{align}
+	\begin{split}
+		Z(GL_{n}(\R)) &\neq Z(SL_{n}(\R) \times \R \setminus \{0\}) \\
+		\{ I \} \times \R \setminus \{0\} &\neq Z(SL_{n}(\R)) \times Z(\R \setminus \{0\}) \\
+		&\neq \{ \pm I \} \times \R \setminus \{0\}
+	\end{split}
+\end{align}
+
+mentre per $ n $ dispari
+
+\begin{equation}
+	Z(GL_{n}(\R)) = Z(SL_{n}(\R) \times \R \setminus \{0\}) = \{ I \} \times \R \setminus \{0\}
+\end{equation}
+
+Questo prova che non sia possibile costruire un isomorfismo per $ n $ pari in quanto, se i gruppi fossero isomorfi, in particolare dovrebbero esserlo anche i loro centri, fatto che non si verifica in questo caso. \\
+A questo punto, esibiamo un isomorfismo di Lie esplicito, per $ n $ dispari, tra $ GL_{n}(\R) $ e $ SL_{n}(\R) \times \R \setminus \{0\} $:
+
+\map{h}
+	{GL_{n}(\R)}{SL_{n}(\R) \times \R \setminus \{0\}}
+	{A}{\left( \det(A)^{-1/n} \, A, \det(A) \right)}
+
+Notiamo che la prima entrata è ben definita in quanto esiste sempre la radice $ n $-esima di un numero reale per $ n $ dispari, che l'applicazione è liscia, invertibile, e la sua inversa è liscia
+
+\map{h^{-1}}
+	{SL_{n}(\R) \times \R \setminus \{0\}}{GL_{n}(\R)}
+	{(S,r)}{r^{1/n} S}
+	
+Verifichiamo che siano inverse:
+
+\begin{align}
+	\begin{split}
+		(h^{-1} \circ h)(A) &= h^{-1} \left( \det(A)^{-1/n} \, A, \det(A) \right) \\
+		&= \det(A)^{1/n} \det(A)^{-1/n} A \\
+		&= A
+	\end{split}
+\end{align}
+
+\begin{align}
+	\begin{split}
+		(h \circ h^{-1})(S,r) &= h \left( r^{1/n} S \right) \\
+		&= \left( \det(r^{1/n} S)^{-1/n} \, r^{1/n} S, \det(r^{1/n} S) \right) \\
+		&= \left( \left( (r^{1/n})^{n} \det(S) \right)^{-1/n} \, r^{1/n} S, (r^{1/n})^{n} \det(S) \right) \\
+		&= \left( r^{-1/n} r^{1/n} S, r \right) \\
+		&= (S,r)
+	\end{split}
+\end{align}
+
+dove $ \det(S) = 1 $ poiché $ S \in SL_{n} (\R) $ e
+
+\begin{equation}
+	\det(c \, A) = c^{n} \det(A) \qcomma \forall c \in \R, \, \forall A \in M_{n}(\R)
+\end{equation}
+
+Verifichiamo ora che sia un omomorfismo:
+
+\begin{align}
+	\begin{split}
+		h(A B) &= \left( \det(A B)^{-1/n} \, A B, \det(A B) \right) \\
+		&= \left( \det(A)^{-1/n} \, A \, \det(B)^{-1/n} \, B, \det(A) \det(B) \right) \\
+		&= \left( \det(A)^{-1/n} \, A, \det(A) \right) \, \left( \det(B)^{-1/n} \, B, \det(B) \right) \\
+		&= h(A) \, h(B)
+	\end{split}
+\end{align}
+
+Da cui otteniamo che $ h $ è un isomorfismo di gruppi di Lie tra $ GL_{n}(\R) $ e $ SL_{n}(\R) \times \R \setminus \{0\} $ per $ n $ dispari.
+
+\section{Algebre di Lie}
+
+Un'\textit{algebra di Lie su un campo} $ \K $ è uno spazio vettoriale\footnote{%
+	Non necessariamente di dimensione finita.%
+} $ V $ dotato di un'applicazione
+
+\map{[,]}
+	{V \times V}{V}
+	{(x,y)}{[x,y]}
+
+tale che:
+
+\begin{itemize}
+	\item sia bilineare, i.e.
+	
+	\begin{equation}
+		\begin{cases}
+			[ax+by,z] = a[x,z] + b[y,z], & \forall a,b \in \R, \, \forall x,y,z \in V \\
+			[x,cz+dw] = c[x,z] + d[x,w], & \forall c,d \in \R, \, \forall x,z,w \in V
+		\end{cases}
+	\end{equation}
+	
+	\item sia antisimmetrica, i.e.
+	
+	\begin{equation}
+		[x,y] = -[y,x] \qcomma \forall x,y \in V
+	\end{equation}
+	
+	\item valga l'\textit{identità di Jacobi}
+	
+	\begin{equation}
+		[x,[y,z]] + [y,[z,x]] + [z,[x,y]] = 0 \qcomma \forall x,y,z \in V
+	\end{equation}
+\end{itemize}
+
+\subsubsection{\textit{Esempi}}
+
+\paragraph{1) Algebra di Lie abeliana}
+
+Se $ V $ è uno spazio vettoriale su $ \K $, possiamo definire il commutatore nullo
+
+\begin{equation}
+	[x,y] = 0 \qcomma \forall x,y \in V
+\end{equation}
+
+che definisce l'algebra di Lie \textit{abeliana} (gli elementi $ x $ e $ y $ commutano).
+
+\paragraph{2) Insieme delle matrici quadrate}
+
+Siano lo spazio vettoriale $ M_{n}(\K) $ delle matrici quadrate su un campo $ \K $ e il commutatore
+
+\begin{equation}
+	[A,B] = AB - BA \qcomma A,B \in M_{n}(\K)
+\end{equation}
+
+La verifica delle proprietà è immediata e dunque $ (M_{n}(\K),[,]) $ è un'algebra di Lie.
+
+\paragraph{3) Commutatore}
+
+Una qualunque algebra $ A $ su un campo $ \K $ con commutatore
+
+\begin{equation}
+	[a,b] = ab - ba \qcomma \forall a,b \in A
+\end{equation}
+
+è un'algebra di Lie su campo $ \K $.
+
+\paragraph{4) Campi di vettori}
+
+Siano $ M $ una varietà differenziabile, $ \chi(M) $ l'insieme dei campi di vettori lisci sulla varietà, e il commutatore tra campi
+
+\begin{equation}
+	[X,Y] = XY - YX \qcomma X,Y \in \chi(M)
+\end{equation}
+
+allora $ (\chi(M),[,]) $ è un'algebra di Lie su $ \R $. Lo spazio vettoriale $ \chi(M) $ ha dimensione infinita.
+
+\subsection{Algebre e gruppi di Lie}
+
+Siano un gruppo di Lie $ G $, il suo elemento neutro $ e $, e lo spazio vettoriale tangente a $ G $ in $ e $, i.e. $ T_{e}(G) $, il quale ha la stessa dimensione del gruppo di Lie
+
+\begin{equation}
+	\dim(T_{e}(G)) = \dim(G)
+\end{equation}
+
+Vogliamo definire una struttura di algebra di Lie su $ T_{e}(G) $ che sia legata al gruppo di Lie $ G $: per fare questo, definiamo un commutatore su $ T_{e}(G) $
+
+\map{[,]}
+	{T_{e}(G) \times T_{e}(G)}{T_{e}(G)}
+	{(v,w)}{[v,w]}
+
+che sia bilineare, antisimmetrico e che rispetti l'identità di Jacobi. \\
+L'idea è usare il commutatore dei campi di vettori lisci sul gruppo di Lie $ G $, i.e. considerare l'algebra $ (\chi(G),[,]) $, per indurre un commutatore su $ T_{e}(G) $.
+
+\subsubsection{Campi di vettori invarianti a sinistra}
+
+Sia $ X $ un campo di vettori su $ G $ (non necessariamente liscio), diremo che $ X $ è \textit{invariante a sinistra} se
+
+\begin{equation}
+	(L_{g})_{*} X = X \qcomma \forall g \in G
+\end{equation}
+
+cioè il pushforward\footnote{%
+	Sia un'applicazione $ F : N \to M $ un diffeomorfismo (quindi sia iniettiva che suriettiva), il pushforward di un campo di vettori $ X $ tramite $ F $ è definito come
+
+	\begin{equation*}
+		(F_{*} (X))_{q} = F_{*F^{-1}(q)} (X_{F^{-1}(q)})
+	\end{equation*}%
+} di $ X $ tramite la traslazione a sinistra è identico a sé stesso, dove la traslazione a sinistra è definita come
+
+\map{L_{g}}
+	{G}{G}
+	{h}{g h}
+
+la quale è un diffeomorfismo (quindi è possibile definire il pushforward in quanto $ L_{g} $ è sia iniettiva che suriettiva) con inversa $ L_{g}^{-1} = L_{g^{-1}} $. Equivalentemente, il campo di vettori $ X $ è invariante per traslazioni a sinistra se
+
+\begin{equation}
+	(L_{g})_{*h} (X_{h}) = X_{gh} \qcomma \forall g,h \in G
+\end{equation}
+
+ciò significa che $ X $ è $ L_{g} $-related\footnote{%
+	Sia un diffeomorfismo $ F : N \to M $, un campo di vettori $ X $ è $ F $-related a un altro campo di vettori $ Y $ se
+	
+	\begin{equation*}
+		F_{*p}(X_{p}) = Y_{F(p)} \qcomma \forall p \in N
+	\end{equation*}
+
+	i.e. $ Y $ è il pushforward di $ X $ tramite $ F $.%
+} a sé stesso.
+
+\begin{remark}
+	Un campo di vettori invariante a sinistra $ X $ è determinato dal suo valore nell'elemento neutro $ X_{e} $ in quanto
+	
+	\begin{equation}
+		X_{g} = (L_{g})_{*e} (X_{e})
+	\end{equation}
+\end{remark}
+
+I campi di vettori invarianti a sinistra sono importanti perché esiste un isomorfismo (di spazi vettoriali) tra questi e lo spazio tangente a un gruppo di Lie.
+
+\begin{theorem}[Proprietà dei campi di vettori invarianti a sinistra]
+	Siano $ G $ un gruppo di Lie ed $ e \in G $ il suo elemento neutro. Valgono le seguenti proprietà:
+	
+	\begin{enumerate}
+		\item L'applicazione
+		%		
+		\map{\hatapp}
+			{T_{e}(G)}{L(G)}
+			{A}{\hat{A}}
+			
+		dove $ L(G) $ indica l'insieme dei campi di vettori invarianti a sinistra di $ G $ e
+		
+		\begin{equation}
+			\hat{A}_{g} \doteq (L_{g})_{*e}(A)
+		\end{equation}
+	
+		con $ (L_{g})_{*e} : T_{e}(G) \to T_{g}(G) $, è un isomorfismo di spazi vettoriali;
+		
+		\item L'insieme dei campi di vettori invarianti a sinistra di $ G $ è contenuto nell'insieme dei campi di vettori lisci su $ G $, i.e. $ L(G) \subset \chi(G) $, quindi un campo di vettori invariante a sinistra è sempre liscio;
+		
+		\item Il commutatore di due campi di vettori invarianti a sinistra è ancora un campo di vettori invariante a sinistra, i.e.
+		
+		\begin{equation}
+			\comm{X}{Y} \in L(G) \qcomma \forall X,Y \in L(G)
+		\end{equation}
+	
+		quindi i campi di vettori invarianti a sinistra sono chiusi rispetto al commutatore.
+	\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+	\begin{enumerate}
+		\item Verifichiamo innanzitutto che $ \hat{A} \in L(G) $:
+		
+		\begin{gather}
+			\hat{A} \in L(G) \nonumber \\
+			\Updownarrow \nonumber \\
+			(L_{g})_{*}(\hat{A}) = \hat{A} \qcomma \forall g \in G \\
+			\Updownarrow \nonumber \\
+			(L_{g})_{*h}(\hat{A}_{h}) = \hat{A}_{gh} \qcomma \forall g,h \in G \nonumber
+		\end{gather}
+	
+		Possiamo dimostrare l'ultima equazione tramite la definizione di $ \hat{A}_{g} $
+		
+		\begin{equation}
+			\hat{A}_{g} \doteq (L_{g})_{*e}(A)
+		\end{equation}
+	
+		otteniamo dunque che
+		
+		\begin{align}
+			\begin{split}
+				(L_{g})_{*h}(\hat{A}_{h}) &= (L_{g})_{*h}((L_{h})_{*e}(A)) \\
+				&= (L_{g} \circ L_{h})_{*e} (A) \\
+				&= (L_{gh})_{*e} (A) \\
+				&= \hat{A}_{gh}
+			\end{split}
+		\end{align}
+		
+		quindi $ \hat{A} \in L(G) $. \\
+		Per dimostrare che $ \hatapp $ sia un isomorfismo tra spazi vettoriali dobbiamo far vedere che sia un omomorfismo invertibile. Per dimostrare che sia un omomorfismo dobbiamo mostrare che $ \hatapp $ sia un'applicazione lineare, i.e.
+		
+		\begin{equation}
+			\widehat{\lambda A + \mu B} = \lambda \hat{A} + \mu \hat{B} %
+			 \qcomma \forall \lambda,\mu \in \R, \, \forall A,B \in T_{e}(G)
+		\end{equation}
+	
+		per fare ciò, applichiamo il primo membro a un qualunque elemento $ g \in G $:
+	
+		\begin{align}
+			\begin{split}
+				(\widehat{\lambda A + \mu B})_{g} &\doteq (L_{g})_{*e} (\lambda A + \mu B) \\
+				&= \lambda (L_{g})_{*e} (A) + \mu (L_{g})_{*e} (B) \\
+				&\doteq \lambda \hat{A}_{g} + \mu \hat{B}_{g} \\
+				&= (\lambda \hat{A} + \mu \hat{B})_{g}
+			\end{split}
+		\end{align}
+	
+		L'applicazione inversa (lineare) è la "valutazione in $ e $"
+		
+		\map{\mid_{e}}
+			{L(G)}{T_{e}(G)}
+			{X}{X_{e}}
+			
+		in quanto
+		
+		\begin{equation}
+			(\mid_{e} \circ \hatapp)(A) = \hat{A}_{e} = (L_{e})_{*e} (A) = A
+		\end{equation}
+		
+		poiché, per le proprietà funtoriali del differenziale, vale l'implicazione
+		
+		\begin{equation}
+			L_{e} = \id_{G} %
+			\implies %
+			(L_{e})_{*e} = \id_{T_{e}(G)}
+		\end{equation}
+	
+		e viceversa verifichiamo che
+		
+		\begin{equation}
+			(\hatapp \circ \mid_{e})(X) = \widehat{X_{e}} = X
+		\end{equation}
+	
+		applicando il primo membro a un qualunque elemento $ g \in G $:
+		
+		\begin{equation}
+			\eval{\widehat{X_{e}}}_{g} \doteq (L_{g})_{*e}(X_{e}) = X_{g} \qcomma \forall g \in G %
+			\implies %
+			\hat{X_{e}} = X
+		\end{equation}
+		
+		\item Un campo di vettori è liscio se la derivata di una funzione liscia rispetto al campo di vettori è ancora una funzione liscia, i.e.
+		
+		\begin{equation}
+			X \in \chi(G) \iff X f \in C^{\infty}(G) \qcomma \forall f \in C^{\infty}(G)
+		\end{equation}
+	
+		cioè la derivata direzionale $ (X f)(g) = X_{g} f $ varia in modo liscio al variare di $ g \in G $: presa una curva liscia
+		
+		\begin{equation}
+			\begin{cases}
+				\gamma : (-\varepsilon,\varepsilon) \to G \\
+				\gamma(0) = g \\
+				\gamma'(0) = X_{g}
+			\end{cases}
+		\end{equation}
+	
+		abbiamo che
+		
+		\begin{equation}
+			X_{g} f = \eval{ \dv{t} f(\gamma(t)) }_{t=0}
+		\end{equation}
+	
+		Consideriamo dunque la curva $ \gamma = g \cdot c $ dove $ \cdot $ è il prodotto in $ G $ e $ c $ è una curva liscia
+		
+		\begin{equation}
+			\begin{cases}
+				c : (-\varepsilon,\varepsilon) \to G \\
+				c(0) = e \\
+				c'(0) = X_{e}
+			\end{cases}
+		\end{equation}
+	
+		che rispetta le condizioni poste su $ \gamma $:
+		
+		\begin{equation}
+			\gamma(0) = g \, c(0)= g \, e = g
+		\end{equation}
+		%		
+		\begin{align}
+			\begin{split}
+				\gamma'(0) &= \eval{ \dv{t} g \, c(t) }_{t=0} \\
+				&= \eval{ \dv{t} L_{g}(c(t)) }_{t=0} \\
+				&= (L_{g} \circ c)'(0) \\
+				&= (L_{g})_{*c(0)} (c'(0)) \\
+				&= (L_{g})_{*e} (X_{e}) \\
+				&= X_{g}
+			\end{split}
+		\end{align}
+	
+		dove nel quarto passaggio abbiamo utilizzato
+		
+		\begin{equation}
+			F_{*p}(X_{p}) = (F \circ c)'(0)
+		\end{equation}
+		
+		e nell'ultimo abbiamo utilizzato il fatto che $ X $ è invariante a sinistra. \\
+		A questo punto, per mostrare che $ X \in \chi(G) $ basta mostrare che sia liscia in $ G $ la derivata direzionale
+		
+		\begin{equation}
+			X_{g} f = \eval{ \dv{t} f(\gamma(t)) }_{t=0} %
+			= \eval{ \dv{t} f(g \cdot c(t)) }_{t=0}
+		\end{equation}
+	
+		questo è vero perché $ f \in C^{\infty}(G) $ per ipotesi, $ c(t) $ è una curva liscia, il prodotto $ \cdot $ è liscio in quanto $ G $ è un gruppo di Lie e $ f(g \cdot c(t)) $ rimane liscia se derivata rispetto a $ t $.
+		
+		\item Siano due campi di vettori invarianti a sinistra $ X,Y \in L(G) \subset \chi(G) $, perché il loro commutatore appartenga a $ L(G) $ è necessario che
+		
+		\begin{equation}
+			(L_{g})_{*}([X,Y]) = [X,Y] \qcomma \forall g \in G \iff [X,Y] \in L(G)
+		\end{equation}
+	
+		Sappiamo che $ X $ e $ Y $ sono lisci e inoltre sono $ L_{g} $-related rispettivamente a $ (L_{g})_{*}(X) $ e $ (L_{g})_{*}(Y) $ dunque, per il Corollario \ref{cor:f-rel-brack}, abbiamo che
+		
+		\begin{equation}
+			L_{g_{*}}([X,Y]) = [(L_{g})_{*}(X), (L_{g})_{*}(Y)]
+		\end{equation}
+	
+		Essendo $ X $ e $ Y $ invarianti a sinistra, i.e.
+		
+		\begin{equation}
+			\begin{cases}
+				(L_{g})_{*}(X) = X \\
+				(L_{g})_{*}(Y) = Y
+			\end{cases}
+		\end{equation}
+		
+		abbiamo dunque che
+		
+		\begin{equation}
+			(L_{g})_{*}([X,Y]) = [(L_{g})_{*}(X), (L_{g})_{*}(Y)] = [X,Y]
+		\end{equation}		
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+	La coppia $ (L(G),[,]) $ è una sottoalgebra\footnote{%
+		Presi due spazi vettoriali $ V $ e $ W \subset V $ con $ (V,[,]) $ algebra di Lie, $ \left( W, \eval{[,]}_{W} \right) $ è una sottoalgebra di Lie se $ W $ è un sottospazio vettoriale e se vale
+		
+		\begin{equation*}
+			[w_{1}, w_{2}] \in W \qcomma \forall w_{1},w_{2} \in W
+		\end{equation*}%
+	} di Lie di $ (\chi(G),[,]) $ e dunque essa stessa un'algebra di Lie finito-dimensionale, in quanto ha la stessa dimensione dello spazio tangente $ T_{e}(G) $ poiché $ L(G) \stackrel{iso.}{\simeq} T_{e}(G) $.
+\end{corollary}
+
+\subsection{Algebra di Lie su $ T_{e}(G) $}
+
+Siano $ G $ un gruppo di Lie, $ e \in G $ il suo elemento neutro e $ T_{e}(G) $ lo spazio tangente a $ G $ nell'elemento $ e $. \\
+Dati $ A,B \in T_{e}(G) $ definiamo il commutatore tra gli elementi dello spazio tangente mediante il commutatore tra i campi di vettori\footnote{%
+	I due commutatori sono diversi in quanto hanno come entrate oggetti diversi (nel primo elementi dello spazio tangente a $ G $ mentre nel secondo campi di vettori invarianti a sinistra) e appartengono a spazi diversi, i.e. $ \comm{A}{B} \in T_{e}(G) $ mentre $ \comm{\hat{A}}{\hat{B}} \in L(G) $.%
+}
+
+\begin{equation}
+	[A,B] \doteq \comm{\hat{A}}{\hat{B}}_{e}
+\end{equation}
+
+cioè tramite l'isomorfismo
+
+\map{\hatapp}
+	{T_{e}(G)}{L(G)}
+	{A}{\hat{A}}
+	
+dove
+
+\begin{equation}
+	\hat{A}_{g} = (L_{g})_{*e}(A) \qcomma \forall g \in G
+\end{equation}
+
+\sbs{0.55}{%
+			In sintesi, vengono mappati gli elementi dello spazio tangente $ A $ e $ B $ nei rispettivi campi di vettori invarianti a sinistra $ \hat{A} $ e $ \hat{B} $, di questi si calcola il commutatore (come campi di vettori), il quale viene infine valutato nell'elemento $ e $, i.e. utilizzando l'inversa dell'isomorfismo
+			
+			\map{\mid_{e}}
+				{L(G)}{T_{e}(G)}
+				{X}{X_{e}}
+			
+			ottenendo dunque il commutatore $ [A,B] $ come un elemento dello spazio tangente $ T_{e}(G) $.
+			}
+	{0.45}{%
+			\diagr{%
+					L(G) \times L(G) \arrow[rr, "{[,]}"]                         \&  \& L(G) \arrow[dd, "\mid_{e}"]                         \\
+					\&  \&                                                     \\
+					T_{e}(G) \times T_{e}(G) \arrow[uu, "\hatapp \times \hatapp"]                   \&  \& T_{e}(G)                                            \\
+					                                                 \&  \&                                                     \\
+					{(\hat{A},\hat{B})} \arrow[rr, "{[,]}", maps to] \&  \& {[\hat{A},\hat{B}]} \arrow[dd, "\mid_{e}", maps to] \\
+					\&  \&                                                     \\
+					{(A,B)} \arrow[uu, "\hatapp \times \hatapp", maps to]           \&  \& {[\hat{A},\hat{B}]_{e}}                                     
+					}
+			}
+
+In questo modo, l'applicazione $ \hatapp $ è un isomorfismo di algebre di Lie tra $ (T_{e}(G),[,]) $ e $ (L(G),[,]) $ con i rispettivi commutatori; le proprietà di algebra di Lie sono rispettate da $ (T_{e}(G),[,]) $ in quanto isomorfo a $ (L(G),[,]) $, il quale le rispetta. \\
+L'algebra $ (T_{e}(G),[,]) $ è chiamata \textit{algebra di Lie del gruppo} $ G $ e viene solitamente indicata con
+
+\begin{equation}
+	\g \doteq (T_{e}(G),[,])
+\end{equation}
+
+\begin{remark}
+	Siano $ A,B \in T_{e}(G) $, allora il campo di vettori associato al loro commutatore tramite l'isomorfismo tra $ T_{e}(G) $ e $ L(G) $ è identico al commutatore tra i campi di vettori corrispondenti ad $ A $ e $ B $, i.e.
+	
+	\begin{equation}
+		\widehat{[A,B]} = \widehat{\comm{\hat{A}}{\hat{B}}}_{e} = \comm{\hat{A}}{\hat{B}}
+	\end{equation}
+
+	dove nel primo passaggio abbiamo usato la definizione di commutatore nello spazio tangente e nel secondo abbiamo usato il fatto che l'isomorfismo $ \hatapp $ e la valutazione nell'elemento neutro $ \mid_{e} $ siano inversi tra loro.
+\end{remark}
+
+\subsubsection{Esempi di algebre di Lie su spazi tangenti a gruppi di Lie}
+
+\paragraph{1) $ (\R^{n},+) $}
+
+La coppia $ (\R^{n},+) $ è un gruppo di Lie (abeliano) con elemento neutro $ 0 \in \R^{n} $. Lo spazio tangente all'elemento neutro $ T_{0}(\R^{n}) $ può essere identificato con $ \R^{n} $ stesso:
+
+\begin{equation}
+	T_{0}(\R^{n}) = \left\{ \sum_{j=1}^{n} a^{j}(0) \eval{\pdv{x^{j}}}_{0} \right\} %
+	= (a^{1}(0),\dots,a^{n}(0)) \in \R^{n}
+\end{equation}
+
+dove le $ a^{j} : \R^{n} \to \R $ sono applicazioni e lo spazio tangente è generato dalle derivate parziali
+
+\begin{equation}
+	T_{0}(\R^{n}) = \ev{ \eval{ \pdv{x^{j}} }_{0} }
+\end{equation}
+
+Consideriamo ora l'isomorfismo $ \hatapp $, in modo da analizzare i campi di vettori invarianti a sinistra
+
+\map{\hatapp}
+	{T_{0}(\R^{n})}{L(\R^{n})}
+	{\eval{ \pdv{x^{j}} }_{0}}{\widehat{ \eval{ \pdv{x^{j}} }_{0} }}
+
+Applicando l'isomorfismo alla base di $ T_{0}(\R^{n}) $ otteniamo i generatori dello spazio $ L(\R^{n}) $:
+
+\begin{equation}
+	L(\R^{n}) = \ev{ \widehat{ \eval{ \pdv{x^{j}} }_{0} } }
+\end{equation}
+
+Per esplicitare la forma dei campi di vettori invarianti a sinistra, valutiamo un rappresentante di $ L(\R^{n}) $ in un generico elemento $ g \in \R^{n} $
+
+\begin{align}
+	\begin{split}
+		\left( \widehat{ \eval{ \pdv{x^{i}} }_{0} } \right)_{g} \in T_{g}(\R^{n}) %
+		\implies %
+		\left( \widehat{ \eval{ \pdv{x^{i}} }_{0} } \right)_{g} = \sum_{i=1}^{n} b^{ij} \eval{ \pdv{x^{j}} }_{g} \qcomma b^{ij} \in \R
+	\end{split}
+\end{align}
+
+Al fine di trovare i coefficienti $ b^{ij} $, applichiamo entrambi i membri dell'equazione alla proiezione
+
+\map{x^{k}}
+	{\R^{n}}{\R}
+	{(x^{1},\dots,x^{n})}{x^{k}}
+
+Per il secondo membro
+
+\begin{equation}
+	\left( \sum_{i=1}^{n} b^{ij} \eval{ \pdv{x^{j}} }_{g} \right) (x^{k}) = \sum_{i=1}^{n} b^{ij} \eval{ \pdv{x^{k}}{x^{j}} }_{g} %
+	= \sum_{i=1}^{n} b^{ij} \delta^{jk} %
+	= b^{ik}
+\end{equation}
+
+mentre per il primo membro, considerando $ g = (g^{1},\dots,g^{n}) $ e la traslazione a sinistra
+
+\map{L_{g}}
+	{\R^{n}}{\R^{n}}
+	{x}{g+x}
+
+abbiamo che
+
+\begin{align}
+	\begin{split}
+		\left( \widehat{ \eval{ \pdv{x^{i}} }_{0} } \right)_{g} (x^{k}) &= (L_{g})_{*0} \left( \eval{ \pdv{x^{i}} }_{0} \right) (x^{k}) \\
+		&= \eval{ \pdv{x^{i}} }_{0} (x^{k} \circ L_{g}) \\
+		&= \eval{ \pdv{x^{i}} }_{0} (g^{k} + x^{k}) \\
+		&= \cancel{ \eval{ \pdv{g^{k}}{x^{i}} }_{0} } + \eval{ \pdv{x^{k}}{x^{i}} }_{0} \\
+		&= \delta^{ik}
+	\end{split}
+\end{align}
+
+perciò $ b^{ik} = \delta^{ik} $ e quindi
+
+\begin{equation}
+	\left( \widehat{ \eval{ \pdv{x^{i}} }_{0} } \right)_{g} = \sum_{i=1}^{n} \delta^{ij} \eval{ \pdv{x^{j}} }_{g} %
+	= \eval{ \pdv{x^{i}} }_{g} \qcomma \forall g \in \R
+\end{equation}
+
+il che implica
+
+\begin{equation}
+	\widehat{ \eval{ \pdv{x^{i}} }_{0} } \equiv \pdv{x^{i}}
+\end{equation}
+
+Un campo di vettori invariante a sinistra può dunque essere scritto come
+
+\begin{equation}
+	X \in L(\R^{n}) \iff X = \sum_{i=1}^{n} a^{i} \pdv{x^{i}} \qcomma a^{i} \in \R
+\end{equation}
+
+mentre un campo di vettori qualunque può avere delle funzioni al posto dei coefficienti reali $ a^{i} $. \\
+Presi due vettori $ A,B \in T_{0}(\R^{n}) $, il commutatore dell'algebra di Lie $ (T_{0}(\R^{n}),[,]) $ è definito come
+
+\begin{align}
+	\begin{split}
+		\comm{A}{B} &\doteq \comm{\hat{A}}{\hat{B}}_{0} \\
+		&= \comm{ \sum_{i=1}^{n} a^{i} \pdv{x^{i}} }{ \sum_{j=1}^{n} b^{j} \pdv{x^{j}} }_{0} \\
+		&= \sum_{i,j=1}^{n} a^{i} b^{j} \cancel{ \comm{ \pdv{x^{i}} }{ \pdv{x^{j}} }_{0} } \\
+		&= 0
+	\end{split}
+\end{align}
+
+Essendo il commutatore nullo, l'algebra di Lie $ (T_{0}(\R^{n}),[,]) $ è abeliana.
+
+\paragraph{2) $ (\S^{1},\cdot) $}
+
+La coppia $ (\S^{1},\cdot) $ è un gruppo di Lie (abeliano) con elemento neutro $ 1 \in \S^{1} $, dove $ \S^{1} $ è una sottovarietà di $ \R^{2} = \C $. Lo spazio tangente all'elemento neutro $ T_{1}(\S^{1}) $ è generato dall'unità immaginaria\footnote{%
+	Vedi Sottosezione \ref{s-sec:su-n-lie-subg}.%
+}, i.e.
+
+\begin{equation}
+	T_{1}(\S^{1}) = \ev{i}_{\R} = \{ ia \mid a \in \R \}
+\end{equation}
+
+Prendendo la traslazione a sinistra
+
+\map{L_{g}}
+	{\S^{1}}{\S^{1}}
+	{h}{g h}
+	
+e la curva liscia
+
+\sbs{0.5}{%
+			\map{c}
+				{(-\varepsilon,\varepsilon)}{\S^{1}}
+				{t}{e^{i t}}
+			}
+	{0.5}{%
+			\begin{equation}
+				\begin{cases}
+					c(0) = 1 \\
+					c'(0) = i
+				\end{cases}
+			\end{equation}
+			}
+
+l'isomorfismo verso i campi di vettori invarianti a sinistra è definito come
+
+\begin{equation}
+	\hat{i}_{g} \doteq (L_{g})_{*1} (i) %
+	= \eval{ \dv{t} L_{g}(c(t)) }_{t=0} %
+	= \eval{ \dv{t} (g \, e^{i t}) }_{t=0} %
+	= i g
+\end{equation}
+
+dove $ L(\S^{1}) = \ev{\hat{i}}_{\R} $ e $ \hat{i}_{g} $ è il vettore perpendicolare alla normale al punto $ g \in \S^{1} $ (la rotazione di $ \pi/2 $ in senso antiorario è data da $ i $) \\
+Anche in questo caso, il commutatore definito nello spazio tangente è nullo in quanto
+
+\begin{equation}
+	[ia,ib] \doteq \comm{\widehat{ia}}{\widehat{ib}}_{1} %
+	= a b \cancel{ [i,i] } %
+	= 0
+\end{equation}
+
+dunque anche l'algebra di Lie $ (T_{1}(\S^{1}),[,]) $ è abeliana.
+
+\paragraph{3) $ (\T^{n},\cdot) $}
+
+Il toro è definito come
+
+\begin{equation}
+	\T^{n} = \prod^{n} \S^{1} = \S^{1} \times \cdots \times \S^{1}
+\end{equation}
+
+La coppia $ (\T^{n},\cdot) $ è un gruppo di Lie (abeliano) con elemento neutro $ e = (1,\dots,1) $. Lo spazio tangente all'elemento neutro è dato da
+
+\begin{equation}
+	T_{e}(\T^{n}) = \prod^{n} T_{1}(\S^{1}) = T_{1}(\S^{1}) \times \cdots \times T_{1}(\S^{1})
+\end{equation}
+
+e il commutatore dell'algebra di Lie $ (\T^{n},\cdot) $ è nullo, dunque l'algebra è abeliana.
+
+\begin{definition}
+	Se un gruppo di Lie $ G $ di dimensione $ \dim(G) = n $ è abeliano, allora
+	
+	\begin{equation}
+		G \stackrel{iso.}{\simeq} \R^{k} \times \T^{n-k} \qcomma k \in [0,n]
+	\end{equation}
+
+	dove $ \times $ indica il prodotto diretto di gruppi di Lie.
+\end{definition}
+
+\paragraph{4) $ (GL_{n}(\R),\cdot) $}
+
+L'insieme delle matrici invertibili
+
+\begin{equation}
+	GL_{n}(\R) = \{ A \in M_{n}(\R) \mid \det(A) \neq 0 \}
+\end{equation}
+
+con il prodotto matriciale $ \cdot $ forma un gruppo di Lie $ (GL_{n}(\R),\cdot) $ con elemento neutro la matrice identità $ I $. \\
+Lo spazio tangente all'elemento neutro è l'insieme delle matrici quadrate
+
+\begin{equation}
+	T_{I}(GL_{n}(\R)) = M_{n}(\R)
+\end{equation}
+
+Un elemento dello spazio tangente può essere scritto come sommatoria degli elementi di base delle matrici quadrate e poi identificato con la matrice dei coefficienti, i.e.
+
+\begin{equation}
+	A = \sum_{i,j=1}^{n} a_{ij} \eval{ \pdv{x_{ij}} }_{I} \equiv [a_{ij}] %
+	\qcomma \forall A \in T_{I}(GL_{n}(\R))
+\end{equation}
+
+Consideriamo l'isomorfismo $ \hatapp $ tra lo spazio tangente $ T_{I}(GL_{n}(\R)) $ e l'insieme dei campi di vettori invarianti a sinistra $ L(GL_{n}(\R)) $: presa una matrice $ g = [g_{ij}] \in GL_{n}(\R) $ e la traslazione a sinistra
+
+\map{L_{g}}
+	{GL_{n}(\R)}{GL_{n}(\R)}
+	{h}{g h}
+
+un elemento di $ L(GL_{n}(\R)) $ è definito come\footnote{%
+	Vedi Esempio \ref{example:trasl-diff}.%
+}
+
+\begin{equation}
+	\hat{A}_{g} \doteq (L_{g})_{*I} (A) %
+	= \sum_{i,j=1}^{n} (g A)_{ij} \eval{ \pdv{x_{ij}} }_{g}
+\end{equation}
+
+Il commutatore nello spazio tangente è definito tramite l'isomorfismo e avrà la forma
+
+\begin{equation}
+	[A,B] \doteq \comm{\hat{A}}{\hat{B}}_{I} = \sum_{i,j=1}^{n} c_{ij} \eval{ \pdv{x_{ij}} }_{I}
+\end{equation}
+
+può dunque essere identificato dalla matrice
+
+\begin{equation}
+	[A,B] \doteq C = [c_{ij}] \in M_{n}(\R)
+\end{equation}
+
+Definendo l'applicazione
+
+\map{x_{ij}}
+	{M_{n}(\R)}{\R}
+	{X = [x_{ij}]}{x_{ij}}
+
+e applicando entrambi i membri del commutatore a questa applicazione, abbiamo che
+
+\begin{align}
+	\begin{split}
+		\left( \sum_{p,q=1}^{n} c_{pq} \eval{ \pdv{x_{pq}} }_{I} \right)(x_{ij}) &= \comm{\hat{A}}{\hat{B}}_{I} (x_{ij}) \\
+		c_{ij} &= \hat{A}_{I} (\hat{B} \, x_{ij}) - \hat{B}_{I} (\hat{A} \, x_{ij}) \\
+		&= A (\hat{B} \, x_{ij}) - B (\hat{A} \, x_{ij})
+	\end{split}
+\end{align}
+
+per qualsiasi $ i,j = 1,\dots,n $, dove $ \hat{X}_{I} = X $ per definizione dell'isomorfismo e della sua inversa. \\
+Per calcolare il secondo membro, lo applichiamo a una matrice $ g \in GL_{n}(\R) $ e utilizziamo il differenziale della traslazione a sinistra definito sopra, ottenendo (per la parte tra parentesi del secondo termine)
+
+\begin{align}
+	\begin{split}
+		(\hat{A} \, x_{ij})(g) &= \hat{A}_{g} (x_{ij}) \\
+		&= \left( \sum_{p,q=1}^{n} (g A)_{pq} \eval{ \pdv{x_{pq}} }_{g} \right)(x_{ij}) \\
+		&= \left( \sum_{p,q=1}^{n} (g A)_{pq} \, \delta_{ip} \, \delta_{jq} \right) \\
+		&= (g A)_{ij} \\
+		&= \sum_{k=1}^{n} g_{ik} \, a_{kj} \\
+		&= \sum_{k=1}^{n} a_{kj} \, x_{ik}(g)
+	\end{split}
+\end{align}
+
+da cui, per analogia
+
+\begin{equation}
+	\begin{cases}
+		\hat{A} \, x_{ij} = \displaystyle\sum_{k=1}^{n} a_{kj} \, x_{ik} \\ \\
+		\hat{B} \, x_{ij} = \displaystyle\sum_{k=1}^{n} b_{kj} \, x_{ik}
+	\end{cases}
+\end{equation}
+
+Sostituendo ora in $ c_{ij} $
+
+\begin{align}
+	\begin{split}
+		c_{ij} &= A (\hat{B} \, x_{ij}) - B (\hat{A} \, x_{ij}) \\
+		&= \left( \sum_{p,q=1}^{n} a_{pq} \eval{ \pdv{x_{pq}} }_{I} \right) \left( \sum_{k=1}^{n} b_{kj} \, x_{ik} \right) - \left( \sum_{p,q=1}^{n} b_{pq} \eval{ \pdv{x_{pq}} }_{I} \right) \left( \sum_{k=1}^{n} a_{kj} \, x_{ik} \right) \\
+		&= \sum_{p,q,k=1}^{n} ( a_{pq} b_{kj} - b_{pq} a_{kj} ) \delta_{ip} \, \delta_{kq} \\
+		&= \sum_{k=1}^{n} ( a_{ik} b_{kj} - b_{ik} a_{kj} )
+	\end{split}
+\end{align}
+
+Tramite questo risultato e l'identificazione $ C = [c_{ij}] = [A,B] $, otteniamo dunque
+
+\begin{equation}
+	[A,B] = A B - B A
+\end{equation}
+
+cioè l'usuale commutatore tra matrici.
+
+\subsection{Pushforward di campi di vettori invarianti a sinistra tramite omomorfismi di gruppi di Lie}
+
+Siano $ G $ e $ H $ due gruppi di Lie; un omomorfismo di gruppi di Lie $ F : G \to H $ è un'applicazione liscia (ma non necessariamente invertibile), che preserva le operazioni dei gruppi e per la quale vale
+
+\begin{equation}
+	L_{F(g)} \circ F = F \circ L_{g} \qcomma \forall g \in G
+\end{equation}
+
+Per trasportare i campi di vettori invarianti a sinistra su $ G $ in quelli su $ H $, possiamo utilizzare gli isomorfismi tra questi spazi e gli spazi tangenti e comporli con il differenziale dell'omomorfismo.
+
+\sbs{0.55}{%
+			Consideriamo le seguenti applicazioni\footnotemark
+			
+			\begin{equation}
+				\begin{cases}
+					\mid_{e} \, : L(G) \to T_{e}(G) \\
+					F_{*e} : T_{e}(G) \to T_{e}(H) \\
+					\hatapp : T_{e}(H) \to L(H)
+				\end{cases}
+			\end{equation}
+		
+			
+			}
+	{0.45}{%
+			\diagr{%
+					T_{e}(G) \arrow[rr, "F_{*e}"]                   \&  \& T_{e}(H) \arrow[dd, "\hatapp"] \\
+					\&  \&                                \\
+					L(G) \arrow[uu, "\mid_{e}"] \arrow[rr, "F_{*}"] \&  \& L(H)                          
+					}
+			}
+
+\footnotetext{%
+	Al fine di non appesantire la notazione, il simbolo $ \hatapp $ verrà usato per entrambi gli isomorfismi
+	
+	\begin{equation*}
+		\begin{cases}
+			\hatapp : T_{e}(G) \to L_{G} \\
+			\hatapp : T_{e}(H) \to L_{H}
+		\end{cases}
+	\end{equation*}
+	
+	e analogamente per il suo inverso; inoltre $ e $ indicherà l'elemento neutro per entrambi i gruppi di Lie, anche perché questi sono legati da un omomorfismo, il quale mappa $ e \in G $ in $ e \in H $.%
+}
+
+Definiamo il \textit{pushforward tramite l'omomorfismo} $ F $ come la composizione:
+
+\begin{equation}
+	F_{*} \doteq \hatapp \circ F_{*e} \circ \mid_{e}
+\end{equation}
+
+Applicandolo a un campo di vettori invariante a sinistra $ X \in L(G) $
+
+\begin{equation}
+	F_{*}(X) = \widehat{ F_{*e}(X_{e}) } \in L(G)
+\end{equation}
+
+Esplicitando questa definizione tramite la traslazione a sinistra
+
+\begin{equation}
+	(F_{*}(X))_{h} = (\widehat{ F_{*e}(X_{e}) })_{h} %
+	\doteq (L_{h})_{*e} (F_{*e}(X_{e})) \qcomma \forall h \in H
+\end{equation}
+
+Analogamente, prendendo un elemento dello spazio tangente $ A \in T_{e}(G) $ e considerando il campo di vettori invariante a sinistra $ \hat{A} \in L(G) $ dato dall'isomorfismo, si può riscrivere il pushforward tramite l'omomorfismo $ F $ come
+
+\begin{equation}
+	F_{*} (\hat{A}) = \widehat{ F_{*e} (\hat{A}_{e}) } = \widehat{ F_{*e} (A) }
+\end{equation}
+
+\begin{definition}
+	Sia $ F : G \to H $ un isomorfismo di gruppi di Lie, allora il pushforward di $ X \in L(G) $ tramite $ F $ visto come diffeomorfismo coincide al pushforward di $ X $ tramite $ F $ visto come omomorfismo.
+\end{definition}
+
+\begin{proof}
+	Per notazione, in questa dimostrazione useremo
+	
+	\begin{itemize}
+		\item $ \tilde{F}_{*}(X) $ per il pushforward di $ X $ tramite $ F $ visto come diffeomorfismo
+		
+		\item $ F_{*}(X) $ per il pushforward di $ X $ tramite $ F $ visto come omomorfismo
+	\end{itemize}
+
+	Per definizione, applicando il pushforward tramite il diffeomorfismo $ F : G \to H $ a un elemento $ F(g) = h \in H $, otteniamo
+	
+	\begin{align}
+		\begin{split}
+			(\tilde{F}_{*}(X))_{h} &\doteq F_{*F^{-1}(h)}(X_{F^{-1}(h)}) \\
+			&= F_{*g}(X_{g}) \\
+			&= F_{*g}((L_{g})_{*e}(X_{e})) \\
+			&= (F \circ L_{g})_{*e} (X_{e}) \\
+			&= (L_{F(g)} \circ F)_{*e} (X_{e}) \\
+			&= (L_{h} \circ F)_{*e} (X_{e}) \\
+			&= (L_{h})_{*F(e)} (F_{*e}(X_{e})) \\
+			&= (L_{h})_{*e} (F_{*e}(X_{e})) \\
+			&\doteq (\widehat{ F_{*e}(X_{e}) })_{h} \\
+			&= (F_{*}(X))_{h}
+		\end{split}
+	\end{align}
+
+	dove abbiamo usato le seguenti proprietà:
+	
+	\begin{itemize}
+		\item nel primo passaggio, la definizione del pushforward;
+		
+		\item nel secondo, $ g = F^{-1}(h) $ in quanto $ F $ è un diffeomorfismo;
+		
+		\item nel terzo passaggio, il campo di vettori è invariante a sinistra, i.e. $ X \in L(G) $;
+		
+		\item nel quarto e nel settimo passaggio, la regola della catena;
+		
+		\item nel quinto passaggio, il fatto che $ F $ è un omomorfismo, i.e.
+		%
+		\begin{equation}
+			L_{F(g)} \circ F = F \circ L_{g} \qcomma \forall g \in G
+		\end{equation}		
+		
+		\item nel nono passaggio, la definizione dell'immagine dell'isomorfismo $ \hatapp $.
+	\end{itemize}
+
+	A questo punto
+	
+	\begin{equation}
+		\tilde{F}_{*}(X) = F_{*}(X) \qcomma \forall X \in L(G)
+	\end{equation}
+
+	Essendo equivalenti, d'ora in poi verrà utilizzata la notazione $ F_{*}(X) $ per indicare il pushforward sia tramite diffeomorfismo che tramite omomorfismo.
+\end{proof}
+
+Anche nel contesto di omomorfismi, è possibile definire campi di vettori $ F $-related.
+
+\begin{definition}
+	Siano un omomorfismo di gruppi di Lie $ F : G \to H $ e un campo di vettori su $ G $ invariante a sinistra $ X \in L(G) $, allora $ X $ è $ F $-related \footnote{%
+		Siano un'applicazione liscia $ F : N \to M $ e due campi di vettori lisci $ X \in \chi(N) $ e $ Y \in \chi(M) $, allora $ X $ è $ F $-related a $ Y $ se
+		
+		\begin{equation*}
+			F_{*p} (X_{p}) = Y_{F(p)} \qcomma \forall p \in N
+		\end{equation*}
+	
+		Nel caso in cui $ F $ sia un diffeomorfismo, un campo di vettori e il suo pushforward sono sempre $ F $-related tra loro.%
+	} a $ F_{*}(X) $, i.e.
+
+	\begin{equation}
+		F_{*g} (X_{g}) = (F_{*}(X))_{F(g)} \qcomma \forall g \in G
+	\end{equation}
+\end{definition}
+
+\begin{proof}
+	Per dimostrare che $ X $ è $ F $-related a $ F_{*}(X) $ tramite $ F $ omomorfismo, usiamo la definizione di campo di vettori invariante a sinistra
+	
+	\begin{align}
+		\begin{split}
+			F_{*g} (X_{g}) &= F_{*g} ((L_{g})_{*e}(X_{e})) \\
+			&= (F \circ L_{g})_{*e} (X_{e}) \\
+			&= (L_{F(g)} \circ F)_{*e} (X_{e}) \\
+			&= (L_{F(g)})_{*e} (F_{*e}(X_{e})) \\
+			&= (\widehat{ F_{*e}(X_{e}) })_{F(g)} \\
+			&= (F_{*}(X))_{F(g)}
+		\end{split}
+	\end{align}
+\end{proof}
+
+\begin{definition}
+	Sia $ F : G \to H $ un omomorfismo di gruppi di Lie, allora il differenziale
+	
+	\begin{equation}
+		F_{*e} : T_{e}(G) \to T_{e}(H)
+	\end{equation}
+
+	scritto anche come
+	
+	\begin{equation}
+		F_{*e} : \g \to \h
+	\end{equation}
+
+	è un omomorfismo di algebre di Lie (con il commutatore usuale), i.e.
+	
+	\begin{equation}
+		F_{*e} \comm{A}{B} = \comm{F_{*e} (A)}{F_{*e} (B)} \qcomma \forall A,B \in \g
+	\end{equation}
+\end{definition}
+
+\begin{proof}
+	Siano i campi di vettori su $ G $ invarianti a sinistra $ \hat{A},\hat{B} \in L(G) $. Per la seconda proposizione
+	
+	\begin{itemize}
+		\item $ \hat{A} $ è $ F $ related a $ F_{*}(\hat{A}) $
+		
+		\item $ \hat{B} $ è $ F $ related a $ F_{*}(\hat{B}) $
+	\end{itemize}
+
+	Per il Corollario \ref{cor:f-rel-brack} e per l'identificazione tra il pushforward tramite il diffeomorfismo e quello tramite omomorfismo, se $ F $ è un'applicazione liscia allora $ [\hat{A},\hat{B}] $ è $ F $-related a $ [F_{*} (\hat{A}),F_{*} (\hat{B})] $, i.e.
+	
+	\begin{equation}
+		F_{*g} \left( \comm{\hat{A}}{\hat{B}}_{g} \right) = \comm{ F_{*}(\hat{A}) }{ F_{*}(\hat{B}) }_{F(g)} %
+		\qcomma \forall g \in G
+	\end{equation}
+
+	Se $ g = e $, abbiamo che $ F(e) = e $, dunque
+	
+	\begin{align}
+		\begin{split}
+			F_{*e} \left( \comm{\hat{A}}{\hat{B}}_{e} \right) &= \comm{ F_{*}(\hat{A}) }{ F_{*}(\hat{B}) }_{e} \\
+			F_{*e} (\comm{A}{B}) &= \comm{ \widehat{ F_{*e}(A) } }{ \widehat{ F_{*e}(B) } }_{e} \\
+			&= \comm{F_{*e} (A)}{F_{*e} (B)}
+		\end{split}
+	\end{align}
+\end{proof}
+
+\begin{corollary}\label{cor:incl-alg-lie-subg}
+	Siano $ H $ un sottogruppo di Lie di un gruppo di Lie $ G $ e l'inclusione $ i : H \to G $, allora, chiamando le algebre di Lie degli spazi tangenti come
+	
+	\begin{equation}
+		\begin{cases}
+			\h = (T_{e}(H),[,]) \\
+			\g = (T_{e}(G),[,])
+		\end{cases}
+	\end{equation}
+	
+	abbiamo che il differenziale dell'inclusione $ i_{*e} : \h \to \g $ soddisfa
+	
+	\begin{equation}
+		i_{*e} (\comm{A}{B}) = \comm{i_{*e} (A)}{i_{*e} (B)} \qcomma \forall A,B \in T_{e}(H)
+	\end{equation}
+
+	Quindi il commutatore di $ \g $ induce il commutatore (e dunque l'algebra) di $ \h $.
+\end{corollary}
+
+In particolare, il commutatore dei sottogruppi (matriciali) di $ GL_{n}(\R) $ o $ GL_{n}(\C) $ è dato dal \textit{commutatore standard}
+
+\begin{equation}
+	[A,B] = A B - B A \qcomma A,B \in T_{I}(GL_{n}(\K)), \, \K = \R, \C
+\end{equation}
+
+in quanto questo è il commutatore definito nell'algebra dello spazio tangente all'insieme delle matrici invertibili, i.e. $ (T_{I}(GL_{n}(\R)),[,]) $ con l'identificazione $ T_{I}(GL_{n}(\R)) = M_{n}(\R) $. L'algebra di Lie dei sottogruppi matriciali è dunque data dalla coppia formata da spazio tangente all'identità del sottoinsieme e il commutatore standard.
+
+\subsubsection{\textit{Esempi}}
+
+\paragraph{1)}
+
+Il gruppo di Lie delle matrici ortogonali $ O(n) $ è un sottogruppo di Lie di $ GL_{n}(\R) $ con spazio tangente quello delle matrici antisimmetriche
+
+\begin{equation}
+	T_{I}(O(n)) = \{ X \in M_{n}(\R) \mid X^{T} = -X \}
+\end{equation}
+
+L'algebra di Lie $ (T_{I}(O(n)),[,]) $ ha come commutatore, per il corollario sopraccitato, quello standard
+
+\begin{equation}
+	[X,Y] = X Y - Y X \qcomma X,Y \in T_{I}(O(n))
+\end{equation}
+
+Essendo un elemento dello spazio tangente, per il commutatore vale
+
+\begin{equation}
+	[X,Y]^{T} = - [X,Y]
+\end{equation}
+
+\paragraph{2)}
+
+Il gruppo di Lie delle matrici unitarie speciali $ SU(n) $ è un sottogruppo di Lie di $ GL_{n}(\C) $ con spazio tangente quello delle matrici antihermitiane a traccia nulla
+
+\begin{equation}
+	T_{I}(SU(n)) = \{ X \in M_{n}(\C) \mid X^{*} = -X \wedge \tr(X) = 0 \}
+\end{equation}
+
+L'algebra di Lie dello spazio tangente a $ SU(n) $
+
+\begin{equation}
+	\mathfrak{su}(n) \doteq (T_{I}(SU(n)),[,])
+\end{equation}
+
+ha come commutatore, per il corollario sopraccitato, quello standard
+
+\begin{equation}
+	[X,Y] = X Y - Y X \qcomma X,Y \in T_{I}(SU(n))
+\end{equation}
+
+Essendo un elemento dello spazio tangente, per il commutatore valgono
+
+\begin{equation}
+	\begin{cases}
+		[X,Y]^{*} = - [X,Y] \\
+		\tr([X,Y]) = 0
+	\end{cases}
+\end{equation}
+
+\paragraph{3)}
+
+Per la verifica che il commutatore standard definisca un'algebra di Lie nei gruppi matriciali studiati in precedenza, vedi Esercizio \ref{exer3-9}.
+
+\subsection{Applicazione esponenziale di un gruppo di Lie}
+
+Siano $ G $ un gruppo di Lie, $ e \in G $ il suo elemento neutro, $ \g = (T_{e}(G),[,]) $ la sua algebra di Lie e $ \xi,\eta \in \g $ due elementi di quest'algebra. Vogliamo costruire un'applicazione
+
+\begin{equation}
+	f : \g \to G
+\end{equation}
+
+che leghi l'algebra di Lie di $ G $, costruita mediante i campi di vettori invarianti a sinistra sul gruppo, al gruppo stesso.
+
+\subsubsection{Flusso di un campo di vettori invariante a sinistra}
+
+Sia $ \hat{\xi} \in L(G) $ il campo di vettori invariante a sinistra associato al campo di vettori dell'algebra di Lie $ \xi \in \g $ con
+
+\begin{equation}
+	\hat{\xi}_{g} = (L_{g})_{*e}(\xi)
+\end{equation}
+
+Possiamo considerare il flusso locale di $ \hat{\xi} $ nel punto $ g \in U $ con $ U \subset G $ aperto, i.e. $ \sigma_{t}^{\xi}(g) $ con $ t \in (-\delta,\delta) $ e $ \delta \in \R $. La condizione per cui questo oggetto sia un flusso è che, considerando $ \sigma_{t}^{\xi}(g) $ come una curva al variare di $ t $ con $ g $ fissato, la curva inizi in $ g $ e il vettore tangente a questa curva in ogni suo punto coincida con il campo di vettori $ \hat{\xi} $ calcolato nello stesso punto, i.e.
+
+\begin{equation}
+	\begin{cases}
+		\sigma_{0}^{\xi}(g) = g \\ \\
+		\ddv{t} \sigma_{t}^{\xi}(g) = \hat{\xi}_{\sigma_{t}^{\xi}(g)}
+	\end{cases}
+\end{equation}
+
+Equivalentemente, $ \sigma_{t}^{\xi}(g) $ è la curva integrale del campo di vettori $ \hat{\xi} $. \\
+Dai teoremi sulle curve integrali e sui flussi di campi di vettori\footnote{%
+	Vedi Teorema \ref{thm:flux-var}.%
+}, $ \sigma_{t}^{\xi}(g) $ dipende in modo liscio da $ t $ e da $ g $; inoltre vale la relazione
+
+\begin{equation}
+	\sigma_{t+s}^{\xi} = \sigma_{t}^{\xi} \circ \sigma_{s}^{\xi}
+\end{equation}
+
+dove sono definite entrambe le applicazioni. \\
+Prendendo l'elemento neutro dell'algebra di Lie $ 0 \in \g $, abbiamo che
+
+\begin{equation}
+	\dv{t} \sigma_{t}^{0}(g) = \hat{0}_{\sigma_{t}^{\xi}(g)} = 0
+\end{equation}
+
+dunque $ \sigma_{t}^{0}(g) $ è costante in $ t $, in particolare in $ t=0 $ possiamo usare la condizione
+
+\begin{equation}
+	\sigma_{0}^{\xi}(g) = g
+\end{equation}
+
+ottenendo
+
+\begin{equation}
+	\sigma_{t}^{0}(g) = \sigma_{0}^{0}(g) = g
+\end{equation}
+
+dunque il flusso locale dell'elemento neutro dell'algebra di Lie è costante. \\
+Riassumendo per $ \sigma_{t}^{\xi}(g) $
+
+\begin{equation}
+	\begin{cases}
+		\sigma_{0}^{\xi}(g) = g \\ \\
+		\ddv{t} \sigma_{t}^{\xi}(g) = \hat{\xi}_{\sigma_{t}^{\xi}(g)} \\ \\
+		\sigma_{t+s}^{\xi} = \sigma_{t}^{\xi} \circ \sigma_{s}^{\xi} \\ \\
+		\sigma_{t}^{0}(g) = g, & \forall t \in (-\delta,\delta)
+	\end{cases}
+\end{equation}
+
+Definiamo ora la curva liscia
+
+\map{\gamma^{\xi}}
+	{(-\delta,\delta)}{G}
+	{t}{\sigma_{t}^{\xi}(e)}
+	
+dove $ e \in G $ è l'elemento neutro del gruppo. Calcolandone il punto in cui inizia e il vettore tangente, otteniamo:
+
+\begin{gather}
+	\gamma^{\xi}(0) = \sigma_{0}^{\xi}(e) = e \\
+	\nonumber \\
+	\dv{t} \gamma^{\xi}(t) = \dv{t} \sigma_{t}^{\xi}(e) %
+	= \hat{\xi}_{\sigma_{t}^{\xi}(e)} %
+	= \hat{\xi}_{\gamma^{\xi}(t)}
+\end{gather}
+
+dunque $ \gamma^{\xi}(t) $ è la curva integrale di $ \hat{\xi} $ che inizia in $ e $. \\
+In particolare
+
+\begin{equation}
+	\eval{ \dv{t} \gamma^{\xi}(t) }_{t=0} = \eval{ \hat{\xi}_{\gamma^{\xi}(t)} }_{t=0} %
+	= \hat{\xi}_{\gamma^{\xi}(0)} %
+	= \hat{\xi}_{e} %
+	= \xi
+\end{equation}
+
+\begin{definition}
+	Il flusso locale $ \sigma_{t}^{\xi}(g) $ può essere scritto come
+	
+	\begin{equation}
+		\sigma_{t}^{\xi}(g) = g \cdot \gamma^{\xi}(t)
+	\end{equation}
+
+	dove $ \cdot $ indica il prodotto in $ G $.
+\end{definition}
+
+Ricordiamo che una curva integrale che inizia in un punto è l'unica curva integrale (dove definita) che inizi nello stesso punto.
+
+\begin{proof}
+	Per definizione
+	
+	\begin{equation}
+		\begin{cases}
+			\sigma_{0}^{\xi}(g) = g \\ \\
+			\ddv{t} \sigma_{t}^{\xi}(g) = \hat{\xi}_{\sigma_{t}^{\xi}(g)}
+		\end{cases}
+	\end{equation}
+
+	Perché valga $ \sigma_{t}^{\xi}(g) = g \cdot \gamma^{\xi}(t) $, dobbiamo dimostrare che
+	
+	\begin{equation}
+		\begin{cases}
+			g \cdot \gamma^{\xi}(0) = g \\ \\
+			\ddv{t} (g \cdot \gamma^{\xi}(t)) = \hat{\xi}_{g \cdot \gamma^{\xi}(t)}
+		\end{cases}
+	\end{equation}
+
+	Per la prima equazione
+	
+	\begin{equation}
+		g \cdot \gamma^{\xi}(0) = g \cdot e = g
+	\end{equation}
+
+	Per la seconda
+	
+	\begin{align}
+		\begin{split}
+			\dv{t} (g \cdot \gamma^{\xi}(t)) &= \dv{t} L_{g}(\gamma^{\xi}(t)) \\
+			&= (L_{g})_{*\gamma^{\xi}(t)} \left( \dv{t} \gamma^{\xi}(t) \right) \\
+			&= (L_{g})_{*\gamma^{\xi}(t)} \left( \hat{\xi}_{\gamma^{\xi}(t)} \right) \\
+			&= \hat{\xi}_{L_{g}(\gamma^{\xi}(t))} \\
+			&= \hat{\xi}_{g \cdot \gamma^{\xi}(t)}
+		\end{split}
+	\end{align}
+
+	dove nel secondo passaggio abbiamo usato la definizione di differenziale tramite curve e nel quarto il fatto che $ \hat{\xi} $ sia un campo di vettori invariante a sinistra. \\
+	Per unicità delle curve integrali abbiamo dunque che
+	
+	\begin{equation}
+		\sigma_{t}^{\xi}(g) = g \cdot \gamma^{\xi}(t)
+	\end{equation}
+
+	in quanto le due curve hanno stesso punto d'inizio e stesso vettore tangente in ogni punto.
+\end{proof}
+
+Data questa forma del flusso integrale, possiamo scrivere
+
+\begin{align}
+	\begin{split}
+		\gamma^{\xi}(t+s) &= \sigma_{t+s}^{\xi}(e) \\
+		&= (\sigma_{t}^{\xi} \circ \sigma_{s}^{\xi})(e) \\
+		&= \sigma_{t}^{\xi}(\sigma_{s}^{\xi}(e)) \\
+		&= \sigma_{t}^{\xi}(\gamma^{\xi}(s)) \\
+		&= \gamma^{\xi}(s) \cdot \gamma^{\xi}(t)
+	\end{split}
+\end{align}
+
+Riassumendo per $ \gamma^{\xi}(t) $:
+
+\begin{equation}
+	\begin{cases}
+		\gamma^{\xi}(0) = e \\ \\
+		\ddv{t} \gamma^{\xi}(t) = \hat{\xi}_{\gamma^{\xi}(t)} \\ \\
+		\eval{ \ddv{t} \gamma^{\xi}(t) }_{t=0} = \xi \\ \\
+		\gamma^{\xi}(t+s) = \gamma^{\xi}(s) \cdot \gamma^{\xi}(t)
+	\end{cases}
+\end{equation}
+
+\begin{definition}
+	Il campo di vettori invariante a sinistra $ \hat{\xi} $ è completo, i.e. $ t \in \R $ e $ g \in G $.
+\end{definition}
+
+\begin{proof}
+	Perché $ \hat{\xi} $ sia completo, è necessario che il flusso $ \sigma_{t}^{\xi}(g) $ sia globale: per dimostrare questo, è sufficiente dimostrare che $ g \cdot \gamma^{\xi}(t) $ sia globale in quanto, per la proposizione precedente, abbiamo che $ \sigma_{t}^{\xi}(g) = g \cdot \gamma^{\xi}(t) $. \\
+	Supponiamo, per assurdo, che $ (-\delta,\delta) $ con $ \delta < \infty $ sia il dominio massimale di definizione di $ \gamma^{\xi} $. Definiamo ora la curva
+	
+	\map{\gamma}
+		{(-\delta,\delta + t_{0})}{G}
+		{t}{%
+			\begin{cases}
+				\gamma^{\xi}(t), & t \in (-\delta,\delta) \\
+				\gamma^{\xi}(t_{0}) \cdot \gamma^{\xi}(t - t_{0}), & t \in (t_{0},\delta + t_{0})
+			\end{cases}%
+			}
+		
+	dove $ t_{0} \in (0,\delta) $; questa curva è liscia perché liscia nelle due condizioni e queste coincidono nell'intersezione aperta $ (t_{0},\delta) $ in quanto
+	
+	\begin{equation}
+		\gamma^{\xi}(t_{0}) \cdot \gamma^{\xi}(t - t_{0}) %
+		= \gamma^{\xi}(t_{0} + t - t_{0}) %
+		= \gamma^{\xi}(t) %
+		\qcomma \forall t \in (t_{0},\delta)
+	\end{equation}
+
+	Abbiamo che
+	
+	\begin{equation}
+		\gamma(0) = \gamma^{\xi}(0) = e
+	\end{equation}
+	
+	inoltre, per $ t \in (-\delta,\delta) $
+	
+	\begin{equation}
+		\dv{t} \gamma(t) = \dv{t} \gamma^{\xi}(t) %
+		= \hat{\xi}_{\gamma^{\xi}(t)} %
+		= \hat{\xi}_{\gamma(t)}
+	\end{equation}
+
+	e per $ t \in (\delta,\delta + t_{0}) $
+	
+	\begin{align}
+		\begin{split}
+			\dv{t} \gamma(t) &= \dv{t} ( \gamma^{\xi}(t_{0}) \cdot \gamma^{\xi}(t - t_{0}) ) \\
+			&= \dv{t} L_{\gamma^{\xi}(t_{0})} ( \gamma^{\xi}(t - t_{0}) ) \\
+			&= (L_{\gamma^{\xi}(t_{0})})_{*\gamma^{\xi}(t - t_{0})} \left( \dv{t} \gamma^{\xi}(t - t_{0}) \right) \\
+			&= (L_{\gamma^{\xi}(t_{0})})_{*\gamma^{\xi}(t - t_{0})} \left( \hat{\xi}_{\gamma^{\xi}(t - t_{0})} \right) \\
+			&= \hat{\xi}_{\gamma^{\xi}(t_{0}) \cdot \gamma^{\xi}(t - t_{0})}
+		\end{split}
+	\end{align}
+	
+	Da questi risultati otteniamo
+		
+	\begin{equation}
+		\begin{cases}
+			\gamma(0) = e \\ \\
+			\ddv{t} \gamma(t) = \hat{\xi}_{\gamma(t)}
+		\end{cases}
+	\end{equation}	
+	
+	cioè $ \gamma $ è una curva integrale per $ \hat{\xi} $ che inizia in $ e $, dunque la condizione $ \delta < \infty $ è contraddittoria e quindi il parametro $ t $ può assumere qualunque valore reale, i.e. $ t \in \R $.
+\end{proof}
+
+A questo punto, la curva integrale $ \gamma^{\xi}(t) \in G $ può essere scritta come
+
+\map{\gamma^{\xi}}
+	{\R}{G}
+	{t}{\sigma_{t}^{\xi}(e)}
+
+\subsubsection{Definizione e proprietà dell'esponenziale di un gruppo di Lie}
+
+Siano $ G $ un gruppo di Lie, $ e \in G $ il suo elemento neutro, $ \xi \in T_{e}(G) $ un elemento dell'algebra di Lie $ \g $ di $ G $ e $ \gamma^{\xi}(t) $ con $ t \in \R $ la curva integrale del campo di vettori invariante a sinistra $ \hat{\xi} $ che inizia in $ e $, definiamo l'applicazione \textit{esponenziale} come
+
+\map{\exp}
+	{T_{e}(G)}{G}
+	{\xi}{\gamma^{\xi}(1) = \sigma_{1}^{\xi}(e)}
+
+Questa applicazione è il riassunto di alcuni passaggi intermedi:
+
+\begin{enumerate}
+	\item Prendiamo un campo di vettori $ \xi \in \g $ dell'algebra di Lie di $ G $;
+	
+	\item associamo a questo il campo di vettori invariante a sinistra $ \hat{\xi} \in L(G) $;
+	
+	\item consideriamo il flusso globale di questo $ \sigma_{t}^{\xi}(g) $;
+	
+	\item consideriamo la curva integrale $ \gamma^{\xi}(t) = \sigma_{t}^{\xi}(e) $, ottenuta valutando il flusso nell'elemento neutro $ e \in G $;
+	
+	\item valutiamo questa curva in $ t=1 $.
+\end{enumerate}
+
+A questo punto, possiamo dire che $ \exp(\xi) \in G $ è il valore in $ t=1 $ della curva integrale del campo di vettori invariante a sinistra $ \hat{\xi} $ che inizia nell'elemento neutro $ e \in G $. \\
+Fin'ora sappiamo solo che $ \sigma_{t}^{\xi}(g) $ dipende in modo liscio da $ t $ e da $ g $ ma non abbiamo informazioni sulla dipendenza da $ \xi $.
+
+\begin{definition}[Proprietà dell'esponenziale di un gruppo di Lie]\hfill\break
+	\begin{enumerate}
+		\item L'esponenziale $ \exp : T_{e}(G) \to G $ è liscio rispetto a $ \xi $;
+		
+		\item $ \exp(0) = e $;
+		
+		\item $ \exp(t \xi) = \gamma^{\xi}(t) $.
+	\end{enumerate}
+\end{definition}
+
+\begin{proof}\hfill\break
+	\begin{enumerate}
+		\item Sia $ \tilde{G} = G \times T_{e}(G) $ il prodotto diretto dei gruppi di Lie $ (G,\cdot) $ e $ (T_{e}(G),+) $, da cui il gruppo di Lie $ (\tilde{G},\cdot) $ con quest'ultima operazione definita come
+		
+		\map{\cdot}
+			{\tilde{G} \times \tilde{G}}{\tilde{G}}
+			{((g_{1},\xi_{1}),(g_{2},\xi_{2}))}{(g_{1} \cdot g_{2},\xi_{1} + \xi_{2})}
+
+		Tramite il gruppo di Lie $ \tilde{G} $, consideriamo $ \xi $ non come parametro ma come coordinata di un punto $ (g,\xi) \in \tilde{G} $. \\
+		Lo spazio tangente di $ \tilde{G} $ nell'elemento neutro $ (e,0) $, ricordando che $ T_{e}(G) $ è uno spazio vettoriale quindi coincide con il suo spazio tangente, è pari a
+		
+		\begin{equation}
+			T_{(e,0)}(\tilde{G}) = T_{e}(G) \times T_{0}(T_{e}(G)) %
+			= T_{e}(G) \times T_{e}(G)
+		\end{equation}
+		
+		dove abbiamo usato l'isomorfismo tra lo spazio tangente del prodotto diretto e il prodotto diretto degli spazi tangenti\footnote{%
+			Vedi Esercizio \ref{exer2-11}.%
+		}. \\
+		Prendiamo un elemento $ \tilde{\xi} $ di questo spazio tangente definito come
+		
+		\begin{equation}
+			\tilde{\xi}_{(g,\xi)} = (\hat{\xi}_{g},0) \in T_{e}(G) \times T_{e}(G)
+		\end{equation}
+	
+		dove $ \hat{\xi} \in L(G) $ è il campo di vettori invarianti a sinistra associato a $ \xi $ e $ 0 \in T_{e}(G) $ è il campo di vettori nullo; $ \tilde{\xi} $ è un campo di vettori invariante a sinistra, i.e. $ \tilde{\xi} \in L(\tilde{G}) $, in quanto
+		
+		\begin{equation}
+			L_{(g,\xi)_{*}} \left( \tilde{\xi} \right) = \left( L_{(g,\xi)_{*}} \left( \hat{\xi}_{g} \right), L_{(g,\xi)_{*}} (0) \right) %
+			= \left( \hat{\xi}_{g},0 \right) %
+			= \tilde{\xi}_{(g,\xi)}
+		\end{equation}
+	
+		Per il flusso globale di $ \tilde{\xi} $ scritto come $ \tilde{\sigma}(t,g,\xi) $ valgono le seguenti relazioni
+		
+		\begin{equation}
+			\begin{cases}
+				\tilde{\sigma} : \R \times \tilde{G} \to \tilde{G} \\ \\
+				\ddv{t} \tilde{\sigma}(t,g,\xi) = \tilde{\xi}_{\tilde{\sigma}(t,g,\xi)} \\ \\
+				\tilde{\sigma}(0,g,\xi) = (g,\xi)
+			\end{cases}
+		\end{equation}
+	
+		Essendo $ (g,\xi) \in \tilde{G} $, il flusso globale $ \tilde{\sigma}(t,g,\xi) $ dipende in modo liscio da $ \xi $ per il Teorema \ref{thm:flux-var}. \\
+		Considerando la curva $ (\sigma_{t}^{\xi}(g),\xi) \in \tilde{G} $, questa comincia in
+		
+		\begin{equation}
+			(\sigma_{0}^{\xi}(g),\xi) = (g,\xi)
+		\end{equation}
+	
+		e il suo vettore tangente è
+		
+		\begin{equation}
+			\dv{t} (\sigma_{t}^{\xi}(g),\xi) = \left( \hat{\xi}_{\sigma_{t}^{\xi}(g)}, 0 \right) = \tilde{\xi}_{(\sigma_{t}^{\xi}(g),\xi)}
+		\end{equation}
+	
+		Dunque è una curva integrale per $ \tilde{\xi} $ che inizia in $ (g,\xi) $: per il teorema sull'unicità della curva integrale, otteniamo che
+		
+		\begin{equation}
+			\tilde{\sigma}(t,g,\xi) = (\sigma_{t}^{\xi}(g),\xi) %
+			\qcomma \forall t \in \R, \, \forall g \in G, \, \forall \xi \in \g
+		\end{equation}
+	
+		Questo prova che anche $ \sigma_{t}^{\xi}(g) $ è liscia in $ \xi $, da cui $ \gamma^{\xi}(t) = \sigma_{t}^{\xi}(e) $ è liscia in $ \xi $ e infine abbiamo che $ \exp(\xi) = \gamma^{\xi}(1) $ è liscio in $ \xi $.
+		
+		\item Per definizione
+		
+		\begin{equation}
+			\exp(0) \doteq \gamma^{0}(1) %
+			= \sigma_{1}^{0}(e) %
+			= e
+		\end{equation}
+	
+		in quanto $ \sigma_{t}^{0}(g) = g $ per qualsiasi $ t \in \R $.
+		
+		\item Per definizione
+		
+		\begin{equation}
+			\exp(t \xi) = \gamma^{t \xi}(1)
+		\end{equation}
+	
+		e vorremmo dimostrare che
+		
+		\begin{equation}
+			\exp(t \xi) = \gamma^{\xi}(t)
+		\end{equation}
+	
+		Più in generale, dimostriamo che
+		
+		\begin{equation}
+			\gamma^{t \xi}(s) = \gamma^{\xi}(t s) \qcomma \forall t,s \in \R
+		\end{equation}
+	
+		Questa proprietà è verificata per $ t = 0 $
+		
+		\begin{equation}
+			\gamma^{0}(s) = \sigma_{s}^{0}(e) %
+			= e %
+			= \gamma^{\xi}(0)
+		\end{equation}
+	
+		Supponiamo che $ t \neq 0 $ e sfruttiamo l'unicità delle curve integrali: definendo $ u = t s $, vogliamo che
+		
+		\begin{equation}
+			\gamma^{t \xi} \left( \dfrac{u}{t} \right) = \gamma^{\xi}(u)
+		\end{equation}
+		
+		Calcoliamo dunque il vettore tangente del secondo membro, ottenendo
+		
+		\begin{equation}
+			\begin{cases}
+				\gamma^{\xi}(0) = e \\ \\
+				\ddv{u} \gamma^{\xi}(u) = \hat{\xi}_{\gamma^{\xi}(u)}
+			\end{cases}
+		\end{equation}
+	
+		mentre per il primo membro, sapendo che $ \dd{u} = t \dd{s} $ e che l'isomorfismo $ \hatapp $ è lineare, otteniamo
+		
+		\begin{align}
+			\begin{split}
+				\dv{u} \gamma^{t \xi} \left( \dfrac{u}{t} \right) &= \dfrac{1}{t} \dv{s} \gamma^{t \xi}(s) \\
+				&= \dfrac{1}{t} \left( \widehat{t \xi} \right)_{\gamma^{t \xi}(s)} \\
+				&= \dfrac{1}{t} \, t \, \left( \hat{\xi}_{\gamma^{t \xi}(s)} \right) \\
+				&= \hat{\xi}_{\gamma^{t \xi}(s)} \\
+				&= \hat{\xi}_{\gamma^{t \xi}(u/t)}
+			\end{split}
+		\end{align}
+	
+		dunque
+		
+		\begin{equation}
+			\begin{cases}
+				\gamma^{t \xi}(0) = e \\ \\
+				\ddv{u} \gamma^{t \xi} \left( \dfrac{u}{t} \right) = \hat{\xi}_{\gamma^{t \xi}(u/t)}
+			\end{cases}
+		\end{equation}
+	
+		perciò, per unicità delle curve integrali
+		
+		\begin{equation}
+			\gamma^{\xi}(u) = \gamma^{t \xi} \left( \dfrac{u}{t} \right)
+		\end{equation}
+	
+		Dato questo, abbiamo dimostrato la proprietà
+		
+		\begin{equation}
+			\gamma^{t \xi}(s) = \gamma^{\xi}(t s)
+		\end{equation}
+	
+		e quindi anche
+		
+		\begin{equation}
+			\exp(t \xi) = \gamma^{t \xi}(1) = \gamma^{\xi}(t)
+		\end{equation}
+	\end{enumerate}
+\end{proof}
+
+\begin{corollary}
+	Valgono le seguenti proprietà:
+	
+	\begin{enumerate}
+		\item Il flusso globale di $ \hat{\xi} $ si può scrivere come
+		
+		\begin{equation}
+			\sigma_{t}^{\xi}(g) = g \cdot \exp(t \xi)
+		\end{equation}
+		
+		\item $ \exp((t+s) \xi) = \exp(t \xi) \cdot \exp(s \xi) %
+		\qcomma \forall t,s \in \R, \, \forall \xi \in \g $
+		
+		\item L'inversa dell'esponenziale è pari a
+		\begin{equation}
+			\exp(\xi)^{-1} = \exp(-\xi) \qcomma \forall \xi \in \g
+		\end{equation}
+	\end{enumerate}
+\end{corollary}
+
+\begin{proof}\hfill\break
+	\begin{enumerate}
+		\item $ \sigma_{t}^{\xi}(g) = g \cdot \gamma^{\xi}(t) = g \cdot \exp(t \xi) $
+		
+		\item $ \exp((t+s) \xi) = \gamma^{\xi}(t+s) %
+		= \gamma^{\xi}(t) \cdot \gamma^{\xi}(s) %
+		= \exp(t \xi) \cdot \exp(s \xi) $
+		
+		\item Per $ t = 1 $ e $ s = -1 $
+		%
+		\begin{align}
+			\begin{split}
+				\exp(t \xi) \cdot \exp(s \xi) &= \exp((t+s) \xi) \\
+				\exp(\xi) \cdot \exp(-\xi) &= \exp(0) \\
+				&= e
+			\end{split}
+		\end{align}
+	\end{enumerate}
+\end{proof}
+
+\begin{remark}
+	Si dimostra che, presi due elementi qualunque dell'algebra di Lie $ \xi,\eta \in \g $ con $ [\xi,\eta] = 0 $, vale
+	
+	\begin{equation}
+		\exp(\xi + \eta) = \exp(\xi) \cdot \exp(\eta)
+	\end{equation}
+
+	In generale, l'esponenziale della somma non è uguale al prodotto degli esponenziali\footnote{%
+		Vedi \textit{Formula di Baker–Campbell–Hausdorff}.%
+	}.
+\end{remark}
+
+\subsection{Sottogruppi a un parametro di un gruppo di Lie}
+
+Sia $ G $ un gruppo di Lie, un'applicazione liscia $ \varphi : \R \to G $ è chiamata \textit{sottogruppo a un parametro di} $ G $ se vale
+
+\begin{equation}
+	\varphi(t+s) = \varphi(t) \cdot \varphi(s) \qcomma \forall t,s \in \R
+\end{equation}
+
+cioè $ \varphi $ è un omomorfismo di gruppi di Lie tra $ (\R,+) $ e $ G $. L'applicazione $ \varphi $ è chiamata così poiché l'immagine $ \varphi(\R) $ è un sottogruppo algebrico di $ G $ isomorfo al gruppo $ (\R,+) $. \\
+Ad esempio, $ \gamma^{\xi}(t) = \exp(t \xi) $ definisce un sottogruppo a un parametro di $ G $.
+
+\begin{definition}
+	Sia $ \varphi : \R \to G $ un sottogruppo a un parametro di un gruppo di Lie $ G $ tale che
+	
+	\begin{equation}
+		\varphi'(0) = \eval{ \dv{t} \varphi(t) }_{t=0} %
+		= \xi \in T_{e}(G)
+	\end{equation}
+	
+	allora
+	
+	\begin{equation}
+		\varphi(t) = \exp (t \xi) \qcomma \forall t \in \R
+	\end{equation}
+\end{definition}
+
+\begin{remark}
+	Da questa proposizione, deriviamo che esiste una corrispondenza biunivoca tra gli elementi dell'algebra di Lie $ \g $ di $ G $ e l'insieme dei sottogruppi a un parametro; a questo punto, essendo presente l'isomorfismo $ \hatapp $ tra lo spazio tangente a $ G $ e l'insieme dei campi di vettori invarianti a sinistra, i.e. $ T_{e}(G) \stackrel{iso.}{\simeq} L(G) $, si possono descrivere gli elementi dell'algebra di Lie $ \g $ sia come sottogruppi a un parametro di $ G $ sia come campi di vettori invarianti a sinistra.
+\end{remark}
+
+\begin{proof}
+	Sia la curva
+	
+	\map{q}
+		{\R}{G}
+		{t}{\varphi(t) \exp(-t \xi)}
+		
+	Osserviamo che $ \varphi(0) = e $ in quanto omomorfismo di gruppi di Lie (manda l'elemento neutro di $ \R $ in quello di $ G $) e dunque
+	
+	\begin{equation}
+		q(0) \doteq \varphi(0) \exp(0) = e
+	\end{equation}
+	
+	Calcoliamo il vettore tangente alla curva $ q(t) $
+	
+	\begin{align}
+		\begin{split}
+			\dv{t} q(t) &= \dv{t} \varphi(t) \exp(-t \xi) \\
+			&= \eval{ \dv{s} \varphi(t+s) \exp(- (t+s) \xi) }_{s=0} \\
+			&= \eval{ \dv{s} \varphi(t) \varphi(s) \exp(-s \xi) \exp(-t \xi) }_{s=0}
+		\end{split}
+	\end{align}
+
+	Definendo l'applicazione
+	
+	\map{Q}
+		{\R \times G \times T_{e}(G)}{G}
+		{(t,g,\xi)}{Q^{\xi}_{t}(g)}
+	
+	dove
+	
+	\begin{equation}
+		Q^{\xi}_{t}(g) \doteq (L_{\varphi(t)} \circ R_{\exp(-t \xi)})(g) = \varphi(t) \, g \, \exp(-t \xi)
+	\end{equation}
+	
+	possiamo scrivere, usando la definizione di differenziale e la moltiplicazione $ \mu $ di $ G $
+	
+	\begin{align}
+		\begin{split}
+			\dv{t} q(t) &= \eval{ \dv{s} \varphi(t) \varphi(s) \exp(-s \xi) \exp(-t \xi) }_{s=0} \\
+			&= \eval{ \dv{s} Q^{\xi}_{t} (\varphi(s) \exp(-s \xi)) }_{s=0} \\
+			&= (Q^{\xi}_{t})_{*e} \left( \eval{ \dv{s} \varphi(s) \exp(-s \xi) }_{s=0} \right) \\
+			&= (Q^{\xi}_{t})_{*e} \left( \eval{ \dv{s} \mu(\varphi(s), \exp(-s \xi)) }_{s=0} \right) \\
+			&= (Q^{\xi}_{t})_{*e} \left( \mu_{*(e,e)} \left( \eval{ \dv{s} \varphi(s) }_{s=0}, \eval{ \dv{s} \exp(-s \xi) }_{s=0} \right) \right)
+		\end{split}
+	\end{align}
+
+	Ricordando che
+	
+	\begin{equation}
+		\mu_{*(e,e)} (X_{e},Y_{e}) = X_{e} + Y_{e} \qcomma X_{e},Y_{e} \in T_{e}(G)
+	\end{equation}
+
+	mostriamo che l'argomento di $ (Q^{\xi}_{t})_{*e} $ è nullo:
+	
+	\begin{align}
+		\begin{split}
+			\mu_{*(e,e)} \left( \eval{ \dv{s} \varphi(s) }_{s=0}, \eval{ \dv{s} \exp(-s \xi) }_{s=0} \right) &= \left( \xi, \eval{ \dv{s} \gamma^{-\xi}(s) }_{s=0} \right) \\
+			&= \mu_{*(e,e)} (\xi, -\xi) \\
+			&= \xi - \xi \\
+			&= 0
+		\end{split}
+	\end{align}
+
+	A questo punto, otteniamo che
+	
+	\begin{equation}
+		\dv{t} q(t) = (Q^{\xi}_{t})_{*e} (0) = 0 \qcomma \forall t \in \R \implies q(t) = e \qcomma \forall t \in \R
+	\end{equation}
+
+	cioè la curva $ q(t) $ è costante (usiamo il suo valore in $ q(0) = e $), quindi
+	
+	\begin{equation}
+		\varphi(t) \exp(-t \xi) = q(t) = e \qcomma \forall t \in \R \implies \varphi(t) = \exp(t \xi)
+	\end{equation}
+
+	in quanto $ \exp(t \xi) = \exp(-t \xi)^{-1} $.
+\end{proof}
+
+\subsection{Omomorfismi ed esponenziale di gruppi di Lie}
+
+\begin{definition}\label{prop:exp-loc-diffeo}
+	L'esponenziale $ \exp : T_{e}(G) \to G $ è un diffeomorfismo locale in $ 0 \in T_{e}(G) $, i.e. il differenziale dell'esponenziale nell'origine
+	
+	\begin{equation}
+		\exp_{*0} : T_{0}(T_{e}(G)) = T_{e}(G) \to T_{e}(G)
+	\end{equation}
+
+	è un isomorfismo di spazi vettoriali.
+\end{definition}
+
+\begin{remark}
+	In generale, l'esponenziale non è un diffeomorfismo locale in un elemento $ \xi \in T_{e}(G) $ con $ \xi \neq 0 $.
+\end{remark}
+
+\begin{proof}
+	Preso un elemento $ \xi \in T_{e}(G) = T_{0}(T_{e}(G)) $, per calcolare il differenziale dell'esponenziale $ \exp_{*0} $, consideriamo la curva
+	
+	\map{c}
+		{\R}{T_{e}(G)}
+		{t}{t \xi}
+	
+	dove
+	
+	\begin{equation}
+		\begin{cases}
+			c(0) = 0 \in T_{e}(G) \\
+			c'(0) = \xi
+		\end{cases}
+	\end{equation}
+	
+	dunque, per le proprietà del differenziale
+	
+	\begin{equation}
+		\exp_{*0} (\xi) = \dot{(\exp \circ \, c)}(0) %
+		= \eval{ \dv{t} \exp(t \xi) }_{0} %		
+		= \xi
+	\end{equation}
+
+	e quindi
+	
+	\begin{equation}
+		\exp_{*0} = \id_{T_{0}(T_{e}(G))}
+	\end{equation}
+	
+	Il differenziale è dunque l'identità dello spazio $ T_{0}(T_{e}(G)) $, perciò invertibile e, in particolare, isomorfismo di spazi vettoriali: per il teorema della funzione inversa\footnote{%
+		Vedi Teorema \ref{thm:ift}, e Teorema \ref{thm:diffeo-loc-iso-ift} per la formulazione tramite differenziale.%
+	}, questo rende l'esponenziale un diffeomorfismo locale intorno a $ 0 \in T_{e}(G) $.
+\end{proof}
+
+\begin{definition}\label{prop:homo-lie-exp-comm}
+	Siano un omomorfismo di gruppi di Lie $ F : G \to H $ e gli esponenziali dei rispettivi gruppi di Lie
+	
+	\sbs{0.6}{%
+				\begin{equation}
+					\begin{cases}
+						\exp_{G} : T_{e}(G) \to G \\
+						\exp_{H} : T_{e}(H) \to H
+					\end{cases}
+				\end{equation}
+				
+				allora il diagramma a lato è commutativo.
+				}
+		{0.4}{%
+				\diagr{%
+						T_{e}(G) \arrow[rr, "F_{*e}"] \arrow[dd, "\exp_{G}"] \&  \& T_{e}(H) \arrow[dd, "\exp_{H}"] \\
+						\&  \&                                 \\
+						G \arrow[rr, "F"]                                    \&  \& H                              %
+						}
+				}
+	
+	Questo significa che l'esponenziale commuta con gli omomorfismi di gruppi di Lie, i.e.
+	
+	\begin{equation}
+		F \circ \exp_{G} = \exp_{H} \circ F_{*e}
+	\end{equation}
+\end{definition}
+
+\begin{proof}
+	Per dimostrare questo fatto, facciamo vedere che
+	
+	\begin{equation}
+		F(\exp_{G}(t \xi)) = \exp_{H}(F_{*e}(t \xi)) \qcomma \forall t \in \R, \, \forall \xi \in T_{e}(G)
+	\end{equation}
+
+	Chiamiamo l'applicazione nel primo membro $ \varphi_{1} $ e quella nel secondo $ \varphi_{2} $ e osserviamo che queste applicazioni
+	
+	\sbs{0.5}{%
+				\map{\varphi_{1}}
+					{\R}{H}
+					{t}{F(\exp_{G}(t \xi))}
+				}
+		{0.5}{%
+				\map{\varphi_{2}}
+					{\R}{H}
+					{t}{\exp_{H}(F_{*e}(t \xi))}
+				}
+	
+	sono sottogruppi a un parametro di $ H $, i.e.
+	
+	\begin{equation}
+		\varphi_{j}(t+s) = \varphi_{j}(t) \, \varphi_{j}(s) \qcomma \forall t,s \in \R, \, j = 1,2
+	\end{equation}
+	
+	tali che il loro vettore tangente in $ 0 $ sia
+	
+	\begin{equation}
+		\varphi'_{1}(0) = \varphi'_{2}(0) = F_{*e}(\xi) \in T_{e}(H)
+	\end{equation}
+
+	Per verificarlo, utilizziamo il fatto che $ F $ sia un omomorfismo, i.e. preservi la moltiplicazione, dunque
+	
+	\sbs{0.5}{%
+				\begin{align}
+					\begin{split}
+						\varphi_{1}(t+s) &= F(\exp_{G}((t+s) \xi)) \\
+						&= F(\exp_{G}(t \xi) \exp_{G}(s \xi)) \\
+						&= F(\exp_{G}(t \xi)) \, F(\exp_{G}(s \xi)) \\
+						&= \varphi_{1}(t) \, \varphi_{1}(s)
+					\end{split}
+				\end{align}
+				}
+		{0.5}{%
+				\begin{align}
+					\begin{split}
+						\varphi_{2}(t+s) &= \exp_{H}(F_{*e}((t+s) \xi)) \\
+						&= \exp_{H}((t+s) F_{*e}(\xi)) \\
+						&= \exp_{H}(t F_{*e}(\xi)) \exp_{H}(s F_{*e}(\xi)) \\
+						&= \exp_{H}(F_{*e}(t \xi)) \exp_{H}(F_{*e}(s \xi)) \\
+						&= \varphi_{2}(t) \, \varphi_{2}(s)
+					\end{split}
+				\end{align}
+				}
+	
+	con vettori tangenti, calcolati usando i differenziali tramite curve e la linearità del differenziale, pari a
+	
+	\sbs{0.5}{%
+				\begin{align}
+					\begin{split}
+						\varphi'_{1}(0) &= \eval{ \dv{t} }_{0} F(\exp_{G}(t \xi)) \\
+						&= F_{*e} \left( \eval{ \dv{t} }_{0} \exp_{G}(t \xi) \right) \\
+						&= F_{*e}(\xi)
+					\end{split}
+				\end{align}
+				}
+		{0.5}{%
+				\begin{align}
+					\begin{split}
+						\varphi'_{2}(0) &= \eval{ \dv{t} }_{0} \exp_{H}(F_{*e}(t \xi)) \\
+						&= \eval{ \dv{t} }_{0} \exp_{H}(t F_{*e}(\xi)) \\
+						&= F_{*e}(\xi)
+					\end{split}
+				\end{align}
+				}
+	
+	in quanto il vettore tangente in $ 0 \in T_{e}(G) $ dell'esponenziale $ \exp(t \xi) $ è pari a $ \xi $. \\
+	A questo punto $ \varphi_{1} $ e $ \varphi_{2} $ sono due sottogruppi a un parametro su $ G $ entrambi costruiti a partire da $ F_{*e}(\xi) $, perciò coincidono, il che prova
+	
+	\begin{equation}
+		F(\exp_{G}(t \xi)) = \exp_{H}(F_{*e}(t \xi)) %
+		\qcomma \forall t \in \R, \, \forall \xi \in T_{e}(H)
+	\end{equation}
+
+	e in particolare per $ t=1 $, da cui otteniamo
+	
+	\begin{equation}
+		F \circ \exp_{G} = \exp_{H} \circ F_{*e}
+	\end{equation}
+
+	cioè l'esponenziale commuta con gli omomorfismi di gruppi di Lie.
+\end{proof}
+
+\begin{corollary}\label{cor:om-cont-smooth}
+	Sia $ F : G \to H $ un omomorfismo (algebrico) di gruppi di Lie continuo, allora $ F $ è liscio. \\
+	In particolare, un sottogruppo a un parametro di $ G $ si può definire come un'applicazione continua $ \varphi : \R \to G $, in quanto questa sarà automaticamente liscia.
+\end{corollary}
+
+\begin{proof}
+	Consideriamo il seguente diagramma
+	
+	\img{0.6}{img55}
+	
+	Mostriamo innanzitutto che l'omomorfismo $ F $ sia liscio in un intorno $ U $ dell'origine $ e \in G $: l'esponenziale è un diffeomorfismo locale intorno all'origine $ 0 \in T_{e}(G) $, dunque la sua restrizione all'intorno $ \tilde{U} \ni 0 $
+	
+	\begin{equation}
+		\eval{\exp}_{\tilde{U}} : \tilde{U} \to \exp(\tilde{U})
+	\end{equation}
+
+	è un diffeomorfismo. A questo punto, la restrizione $ \eval{F}_{U} $, dove $ U \doteq \exp \!\; (\tilde{U}) $, è liscia poiché può essere scritta come
+	
+	\begin{equation}
+		\eval{F}_{U} = \exp \circ F_{*e} \circ \left( \eval{\exp}_{\tilde{U}} \right)^{-1}
+	\end{equation}
+
+	questa composizione è liscia perché l'esponenziale è liscio e il differenziale è lineare (dunque liscio). \\
+	Consideriamo ora un qualunque punto (che non sia l'origine) $ g \in G $ e l'immagine dell'aperto $ U $ tramite la traslazione a sinistra $ L_{g}(U) $, il quale è aperto in quanto $ L_{g} $ è un diffeomorfismo (porta aperti in aperti). Verifichiamo ora che la restrizione $ \eval{F}_{L_{g}(U)} $ sia liscia, rendendo $ F $ liscio dappertutto in quanto $ g $ è arbitrario. \\
+	Essendo $ F $ un omomorfismo, vale la proprietà
+	
+	\begin{equation}
+		F \circ L_{g} = L_{F(g)} \circ F \qcomma \forall g \in G
+	\end{equation}
+
+	siccome
+	%	
+	\begin{gather}
+		L_{h}^{-1} = L_{h^{-1}} \\
+		L_{h^{-1}} (L_{h}(U)) = U
+	\end{gather}
+
+	possiamo scrivere
+	
+	\begin{align}
+		\begin{split}
+			F \circ L_{g} &= L_{F(g)} \circ F \\
+			F &= L_{F(g)} \circ F \circ L_{g^{-1}} \\
+			\eval{F}_{L_{g}(U)} &= \eval{ (L_{F(g)} \circ F \circ L_{g^{-1}}) }_{L_{g}(U)} \\
+			&= \eval{L_{F(g)}}_{F(U)} \circ \eval{F}_{U} \circ \eval{ (L_{g^{-1}}) }_{L_{g}(U)}
+		\end{split}
+	\end{align}
+
+	il che rende $ \eval{F}_{L_{g}(U)} $ liscia in quanto composizione di applicazioni lisce.
+\end{proof}
+
+\begin{corollary}\label{cor:subgr-lie-exp-tang}
+	Sia $ H \subset G $ un sottogruppo di Lie di $ G $, allora l'esponenziale del sottogruppo di Lie $ \exp_{H} : T_{e}(H) \to H $ è la restrizione dell'esponenziale di $ G $ allo spazio tangente in $ H $, i.e.
+	
+	\begin{equation}
+		\exp_{H} = \eval{\exp_{G}}_{T_{e}(H)}
+	\end{equation}
+\end{corollary}
+
+\begin{proof}\hfill\break
+
+	\sbs{0.6}{%
+				Siccome l'inclusione $ i : H \to G $ è un omomorfismo di gruppi di Lie (le operazioni sono quelle indotte), il diagramma commutativo a lato mostra che\footnotemark
+				
+				\begin{equation}
+					i \circ \exp_{H} = \exp_{G} \circ \, i_{*e}
+				\end{equation}
+			
+				e dunque che
+	
+				\begin{equation}
+					\exp_{H} = \eval{\exp_{G}}_{T_{e}(H)}
+				\end{equation}
+				}
+		{0.4}{%
+				\diagr{%
+					T_{e}(H) \arrow[rr, "i_{*e}"] \arrow[dd, "\exp_{H}"] \&  \& T_{e}(G) \arrow[dd, "\exp_{G}"] \\
+					\&  \&                                 \\
+					H \arrow[rr, "i"]                                    \&  \& G                              %
+					}
+				}
+	\footnotetext{%
+		Vedi Proposizione \ref{prop:homo-lie-exp-comm}.%
+	}
+\end{proof}
+
+\subsection{Esponenziale di gruppi di Lie matriciali}
+
+Ricordiamo che l'esponenziale per matrici è definito come
+
+\map{e}
+	{M_{n}(\R)}{GL_{n}(\R)}
+	{A}{e^{A} = \sum_{k=0}^{+\infty} \dfrac{A^{k}}{k!}}
+
+Possiamo identificare $ M_{n}(\R) = T_{I}(GL_{n}(\R)) $, quindi l'esponenziale di gruppi di Lie ha stesso dominio e codominio dell'esponenziale per matrici, i.e.
+
+\map{\exp}
+	{T_{I}(GL_{n}(\R))}{GL_{n}(\R)}
+	{A}{\exp(A)}
+
+\begin{corollary}
+	L'esponenziale di matrici coincide con l'esponenziale di gruppi di Lie matriciali.
+\end{corollary}
+
+\begin{proof}
+	Sia una matrice $ A \in M_{n}(\R) $, chiamiamo
+	
+	\begin{equation}
+		\begin{cases}
+			\varphi_{1}(t) \doteq e^{t A} \\
+			\varphi_{2}(t) \doteq \exp(t A)
+		\end{cases}
+	\end{equation}
+
+	dove, tramite l'identificazione $ M_{n}(\R) = T_{I}(GL_{n}(\R)) $
+	
+	\begin{equation}
+		\varphi_{j} : \R \times T_{I}(GL_{n}(\R)) \to GL_{n}(\R) \qcomma j=1,2
+	\end{equation}
+
+	Fissando $ A \in M_{n}(\R) $, le applicazioni $ \varphi_{1}(t) $ e $ \varphi_{2}(t) $ sono sottogruppi di Lie a un parametro di $ GL_{n}(\R) $, i.e.
+	
+	\begin{equation}
+		\varphi_{j} : \R \to GL_{n}(\R) \qcomma j=1,2
+	\end{equation}
+	
+	e il loro vettore tangente nell'origine è la matrice $ A $, i.e.
+	
+	\begin{equation}
+		\varphi'_{1}(0) = \varphi'_{2}(0) = A
+	\end{equation}
+
+	in quanto valgono
+	
+	\begin{equation}
+		\begin{cases}
+			e^{(t+s) A} = e^{t A} e^{s A} \\
+			\exp((t+s) A) = \exp(t A) \exp(s A)
+		\end{cases} %
+		\qquad \forall t,s \in \R, \, \forall A \in M_{n}(\R)
+	\end{equation}
+
+	e per i vettori tangenti
+	
+	\begin{equation}
+		\eval{ \dv{t} e^{t A} }_{t=0} = \eval{ \dv{t} \exp(t A) }_{t=0} = A %
+		\qcomma \forall t \in \R, \, \forall A \in M_{n}(\R)
+	\end{equation}
+
+	Due sottogruppi a un parametro che hanno lo stesso vettore tangente nell'origine (essendo completamente determinati da questo) coincidono, dunque
+	
+	\begin{equation}
+		e \equiv \exp
+	\end{equation}
+
+	per gruppi di Lie matriciali.
+\end{proof}
+
+\begin{corollary}
+	Sia $ G \subset GL_{n}(\R) $ un sottogruppo di Lie matriciale di $ GL_{n}(\R) $, allora
+	
+	\begin{equation}
+		\exp_{G} = \eval{e}_{T_{I}(G)}
+	\end{equation}
+\end{corollary}
+
+\begin{proof}
+	Dal Corollario \ref{cor:subgr-lie-exp-tang} e dall'identificazione $ e \equiv \exp $, possiamo scrivere
+	
+	\begin{equation}
+		\exp_{G} = \eval{ \exp_{GL_{n}(\R)} }_{T_{I}(G)} %
+		= \eval{e}_{T_{I}(G)}
+	\end{equation}
+\end{proof}
+
+\subsubsection{\textit{Esempio}}
+
+Sia il gruppo delle matrici lineari speciali $ SL_{n}(\R) \subset GL_{n}(\R) $, l'esponenziale in questo spazio è definito come
+
+\map{e}
+	{T_{I}(SL_{n}(\R))}{SL_{n}(\R)}
+	{X}{e^{X}}
+
+cioè coincide con l'esponenziale standard ma con $ X \in T_{I}(SL_{n}(\R)) $, i.e. $ \tr(X) = 0 $: se la traccia di $ X $ è nulla, l'esponenziale avrà determinante unitario e quindi apparterrà a $ SL_{n}(\R) $, in quanto\footnote{%
+	Vedi Proposizione \ref{prop:det-exp-tr}.%
+}
+
+\begin{equation}
+	\det(e^{X}) = e^{\tr(X)} = 1
+\end{equation}
+
+Per altri esempi di gruppi matriciali, vedi Esercizio \ref{exer3-10}.
+
+\subsection{Sulla suriettività dell'esponenziale}
+
+Dai risultati precedenti, dato un gruppo di Lie $ G $, possiamo costruire un'algebra di Lie $ \g = (T_{e}(G),[,]) $ e da questa possiamo tornare indietro tramite l'esponenziale: questo dimostra l'esistenza di un funtore, chiamato \textit{funtore di Lie} $ \mathcal{L} $, dalla categoria dei gruppi di Lie $ \mathfrak{G} $ alla categoria delle algebre di Lie $ \mathfrak{A} $ che porta omomorfismi di gruppi di Lie $ F : G \to H $ in omomorfismi\footnote{%
+	Gli isomorfismi di algebre di Lie sono omomorfismi invertibili, per i morfismi della categoria delle algebre di Lie questo non è necessario.%
+} di algebre di Lie $ F_{*e} : \g \to \h $
+
+\begin{equation}
+	\begin{cases}
+		\mathcal{L}(G) = \g, & \forall G \in \ob(\mathfrak{G}), \, \g \in \ob(\mathfrak{A}) \\
+		\mathcal{L}(F) = F_{*e}, & \forall F \in \mor(G,H), \, F_{*e} \in \mor(\g,\h)
+	\end{cases}
+\end{equation}
+
+Ci chiediamo ora quali siano le condizioni sotto cui l'esponenziale di gruppi di Lie sia suriettivo, in modo tale da poter legare un gruppo di Lie alla sua algebra di Lie. \\
+In generale, l'esponenziale non è suriettivo, a parte per un intorno dell'origine, per il quale è un diffeomorfismo locale\footnote{%
+	Vedi Proposizione \ref{prop:exp-loc-diffeo}; l'essere un diffeomorfismo implica la suriettività.%
+}. \\
+Ad esempio, considerando l'insieme
+
+\begin{equation}
+	SL_{2}(\R) = \{ A \in GL_{2}(\R) \mid \det(A) = 1 \} \subset GL_{2}(\R)
+\end{equation}
+
+l'esponenziale
+
+\map{\exp}
+	{T_{I}(SL_{2}(\R))}{SL_{2}(\R)}
+	{X}{e^{X}}
+
+non è suriettivo, i.e. esistono delle matrici in $ SL_{2}(\R) $ che non hanno controimmagine tramite l'esponenziale in $ T_{I}(SL_{2}(\R)) $. In generale, nemmeno
+
+\map{\exp}
+	{T_{I}(GL_{2}(\R))}{GL_{2}(\R)}
+	{X}{e^{X}}
+
+è suriettivo. \\
+Prendendo una matrice con determinante unitario
+
+\begin{equation}
+	A = \bmqty{ \sfrac{-1}{2} & 0 \\ \\ 0 & -2 } \in SL_{2}(\R)
+\end{equation}
+
+per questa matrice non esiste $ B \in T_{I}(SL_{2}(\R)) $ tale che $ e^{B} = A $. \\
+Supponiamo, per assurdo, che questa matrice esista e dividiamo il problema nei casi in cui la matrice $ B $ sia diagonalizzabile oppure no:
+
+\begin{itemize}
+	\item La matrice $ B $ è diagonalizzabile: sia $ \lambda \in \R $ un suo autovalore, allora
+	
+	\begin{equation}
+		B v = \lambda v \qcomma v \in \R^{2} \setminus {(0,0)}
+	\end{equation}
+
+	ed $ e^{\lambda} $ è un autovalore per $ A = e^{B} $ perché
+	
+	\begin{equation}
+		A v = e^{B} v %
+		= \left( \sum_{j=0}^{+\infty} \dfrac{B^{j}}{j!} \right) (v) %
+		= \sum_{j=0}^{+\infty} \dfrac{B^{j} v}{j!} %
+		= \sum_{j=0}^{+\infty} \dfrac{\lambda^{j} v}{j!} %
+		= \left( \sum_{j=0}^{+\infty} \dfrac{\lambda^{j}}{j!} \right) (v) %
+		= e^{\lambda} v
+	\end{equation}
+
+	dunque se $ \lambda_{1} $ e $ \lambda_{2} $ sono due autovalori di $ B $ allora $ e^{\lambda_{1}} $ ed $ e^{\lambda_{2}} $ sono due autovalori di $ A = e^{B} $, ma questo è assurdo perché gli autovalori di $ A $ sono negativi mentre $ e^{\lambda} > 0 $ per qualsiasi $ \lambda \in \R $;
+	
+	\item La matrice $ B $ non è diagonalizzabile: questo significa che gli autovalori di $ B $ non sono reali quindi, per il teorema fondamentale dell'algebra, avremmo che la matrice avrà degli autovalori $ \alpha, \bar{\alpha} \in \C $ complessi coniugati (in quanto il polinomio caratteristico ha coefficienti reali); anche in questo caso $ e^{\alpha} $ ed $ e^{\bar{\alpha}} $ sono due autovalori di $ A = e^{B} $ ma
+	
+	\begin{equation}
+		\abs{e^{\alpha}} = \abs{e^{x + i y}} = \abs{e^{x} e^{i y}} = e^{x} %
+		\implies %
+		\abs{e^{\alpha}} = \abs{e^{\bar{\alpha}}}
+	\end{equation}
+
+	invece
+	
+	\begin{equation}
+		\abs{- \dfrac{1}{2}} \neq \abs{2}
+	\end{equation}
+
+	dunque arriviamo a una contraddizione anche in questo caso, i.e. non esiste $ B $ tale che $ e^{B} = A $.
+\end{itemize}
+
+\subsubsection{Condizioni di suriettività}
+
+Introduciamo i due seguenti lemmi:
+
+\begin{lemma}
+	Sia $ S $ un sottogruppo di Lie di $ G $ con $ S $ aperto e $ G $ connesso, allora $ S = G $.
+\end{lemma}
+
+\begin{proof}
+	È sufficiente dimostrare che $ S $ sia chiuso: un insieme aperto e chiuso (diverso dal vuoto) contenuto in un insieme connesso, coincide con quest'ultimo. \\
+	L'insieme $ S $ unito all'unione disgiunta delle classi laterali $ g S $, definite come
+	
+	\begin{equation}
+		g \, S = L_{g}(S) \qcomma g \notin S
+	\end{equation}
+	
+	quindi aperte, è uguale a $ G $, i.e.
+	
+	\begin{equation}
+		G = S \cup \left( \bigsqcup_{g \notin S} g S \right) %
+		\implies %
+		S = G \setminus \left( \bigsqcup_{g \notin S} g S \right)
+	\end{equation}
+	
+	dove
+	
+	\begin{equation}
+		g_{1} S \cap g_{2} S = \emptyset %
+		\qcomma \forall g_{1},g_{2} \in G \setminus S
+	\end{equation}
+	
+	Questo rende $ S $ il complementare di un aperto e dunque un chiuso, dimostrando che $ S = G $.
+\end{proof}
+
+\begin{lemma}\label{lemma:lie-gr-neut-int}
+	Siano $ G $ un gruppo di Lie connesso ed $ e \in G $ il suo elemento neutro, allora $ G $ è generato da un qualunque intorno $ U \subset G $ dell'elemento neutro $ e \in G $, i.e.
+	
+	\begin{equation}
+		\forall \, U \subset G \mid U \ni e \implies g = \prod_{j=1}^{k} g_{j} %
+		\qcomma \forall g \in G, \, g_{j} \in U, \, j=1,\dots,k %
+		\qq{con} k \in \N
+	\end{equation}
+\end{lemma}
+
+Per le proprietà della componente connessa attorno all'elemento neutro, vedi Esercizio \ref{exer3-6}.
+
+\begin{proof}
+	Dato un qualunque intorno $ U \ni e $, consideriamo l'intersezione di tutti gli elementi $ g $ di $ U $ con l'insieme $ U^{-1} $ dei suoi inversi $ g^{-1} $, i.e. $ U \cap U^{-1} $,  questo è ancora un aperto che contiene l'elemento neutro perché l'inversione
+	
+	\map{i}
+		{U}{U^{-1}}
+		{g}{g^{-1}}
+	
+	è un diffeomorfismo; sappiamo inoltre che $ U \cap U^{-1} \subset U $. \\
+	Dimostriamo ora che il seguente insieme
+	
+	\begin{equation}
+		S = \left\{ \prod_{j=1}^{k} g_{j} \in G \st g_{j} \in U \cap U^{-1}, \, j=1,\dots,k \qq{con} k \in \N \right\}
+	\end{equation}
+	
+	coincide con $ G $. Possiamo dedurre che $ S \neq \emptyset $ e che sia un sottogruppo algebrico di Lie di $ G $, i.e. $ S \leqslant G $, in quanto
+	
+	\begin{equation}
+		\left( \prod_{i=1}^{k} g_{i} \right) \left( \prod_{j=1}^{l} g_{j}^{-1} \right) \in S
+	\end{equation}
+	
+	Inoltre, $ S $ è aperto in $ G $ perché qualunque punto di $ S $ è interno: sia $ g \in S $ e sia l'insieme di tutti gli elementi di $ U \cap U^{-1} $ moltiplicati a sinistra per $ g $, i.e.
+	
+	\begin{equation}
+		g \, U \cap U^{-1} = L_{g}(U \cap U^{-1})
+	\end{equation}
+	
+	questo insieme è aperto in quanto $ L_{g} $ è un diffeomorfismo (porta aperti in aperti) ed è un sottoinsieme di $ S $ perché ogni elemento di $ g \, U \cap U^{-1} $ è della forma
+	
+	\begin{equation}
+		g \, U \cap U^{-1} = \left\{ \prod_{j=1}^{k+1} g_{j} \right\} \subset S
+	\end{equation}
+	
+	Dunque $ S $ è aperto e, per il lemma precedente, questo prova che $ S = G $ e dunque che $ G $ è generato da un qualunque intorno del suo elemento neutro.
+\end{proof}
+
+Quest'ultimo lemma permette di dimostrare l'ultimo punto del teorema seguente:
+
+\begin{theorem}
+	Siano un gruppo di Lie connesso\footnote{%
+		Lo spazio tangente all'identità $ T_{e}(G) $ è connesso e l'esponenziale è continuo quindi l'immagine dell'esponenziale $ \exp(T_{e}(G)) \subseteq G $ è connessa: se $ G $ non è connesso (e.g. $ O(n) $), l'esponenziale non potrà essere suriettivo.%
+	} $ G $ e l'esponenziale $ \exp : T_{e}(G) \to G $. \\
+	Valgono le seguenti affermazioni:
+	
+	\begin{enumerate}
+		\item se $ G $ è anche compatto, l'esponenziale è suriettivo;
+		
+		\item se $ G $ è anche abeliano, l'esponenziale è suriettivo;
+		
+		\item ogni elemento del gruppo può essere scritto come prodotto finito di esponenziali, i.e. 
+		%
+		\begin{equation}
+			g = \prod_{j=1}^{k} \exp(\xi_{j}) \qcomma \forall g \in G, \, \xi_{j} \in T_{e}(G), \, j=1,\dots,k \qq{con} k \in \N
+		\end{equation}
+	\end{enumerate}
+\end{theorem}
+
+Nel caso del gruppo di Lie matriciale connesso $ GL_{n}(\C) $, l'esponenziale
+
+\begin{equation}
+	\exp : T_{I}(GL_{n}(\C)) = M_{n}(\C) \to GL_{n}(\C)
+\end{equation}
+
+è suriettivo; la dimostrazione si avvale della \textit{forma canonica di Jordan}.
+
+\begin{proof}\hfill\break
+	\begin{enumerate}
+		\item Per dimostrare che l'esponenziale sia suriettivo se $ G $ è connesso e compatto si usa la geometria riemanniana.
+		
+		\item Per dimostrare che l'esponenziale sia suriettivo se $ G $ è connesso e abeliano usiamo
+		
+		\begin{equation}
+			G \stackrel{iso.}{\simeq} \R^{k} \times \T^{n-k} \qcomma k \in [0,n], \, \dim(G) = n
+		\end{equation}
+		
+		Abbiamo che $ T_{0}(\R) = \R $, dunque l'esponenziale per $ \R $
+		
+		\begin{equation}
+			\exp = \id_{\R} : \R \to \R
+		\end{equation}
+		
+		mentre, siccome $ T_{1}(\S^{1}) = i \R $, l'esponenziale\footnote{%
+			Questo esponenziale vale anche per $ \T $, in quanto il prodotto diretto di gruppi di Lie connessi e abeliani è ancora un gruppo di Lie connesso e abeliano.%
+		} per $ \S^{1} $
+		
+		\map{\exp}
+			{i \R}{\R}
+			{t}{e^{i t}}
+		
+		da cui si ricava immediatamente che sono suriettivi.
+		
+		\item Per dimostrare che ogni elemento del gruppo possa essere scritto come prodotto finito di esponenziali, usiamo che un gruppo di Lie $ G $ è generato da un qualunque intorno del suo elemento neutro\footnote{%
+			Vedi Lemma \ref{lemma:lie-gr-neut-int}.%
+		}: scegliamo l'intorno che sia diffeomorfo a $ \g $ tramite l'esponenziale\footnote{%
+			Vedi Proposizione \ref{prop:exp-loc-diffeo}.%
+		}, quindi l'esponenziale è suriettivo perciò ogni elemento di $ \g $ è mappato in un solo elemento di $ G $ intorno all'elemento neutro.
+	\end{enumerate}
+\end{proof}
+
+\begin{remark}
+	Nel teorema dimostrato sopra, il punto 3 implica il punto 2, i.e. il poter scrivere ogni elemento di $ G $ come prodotto finito di esponenziali implica il fatto che se $ G $ è connesso e abeliano allora l'esponenziale è suriettivo: essendo $ G $ abeliano, vale l'implicazione
+	
+	\begin{equation}
+		[\xi,\eta] = 0 \implies \exp(\xi + \eta) = \exp(\xi) \cdot \exp(\eta) %
+		\qcomma \forall \xi,\eta \in \g
+	\end{equation}
+
+	Possiamo dunque scrivere un generico elemento del gruppo come
+	
+	\begin{equation}
+		g = \prod_{j=1}^{k} \exp(\xi_{j}) = \exp( \sum_{j=1}^{k} \xi_{j} ) %
+		\qcomma \forall g \in G, \, \xi_{j} \in \g, \, j=1,\dots,k \qq{con} k \in \N
+	\end{equation}
+
+	dove
+	
+	\begin{equation}
+		\sum_{j=1}^{k} \xi_{j} \in \g %
+		\qcomma \xi_{j} \in \g, \, j=1,\dots,k \qq{con} k \in \N
+	\end{equation}
+	
+	quindi l'esponenziale è suriettivo.
+\end{remark}
+
+\subsection{Teorema di corrispondenza di Lie}
+
+Sia $ \g $ un'algebra di Lie (finito-dimensionale) su $ \R $, vogliamo trovare un gruppo di Lie $ G $ tale che la sua algebra di Lie $ (T_{e}(G),[,]) $, che chiameremo $ Lie(G) $, coincida con $ \g $. \\
+Tramite il seguente teorema, otteniamo le condizioni per cui questo sia possibile:
+
+\begin{theorem}[Teoremi di corrispondenza di Lie]\hfill\break
+	\begin{enumerate}
+		\item Per ogni algebra di Lie $ \g $ (finito-dimensionale) su $ \R $ esiste un unico gruppo di Lie semplicemente connesso\footnote{%
+			Uno spazio topologico è semplicemente connesso se è connesso per archi e se ogni curva chiusa può essere deformata fino a ridursi a un singolo punto; dato un gruppo di Lie qualunque, è sempre possibile costruire un gruppo di Lie semplicemente connesso a partire dal primo.%
+		} $ G $ tale che l'algebra di Lie associata a $ G $ coincida con $ \g $, i.e. $ Lie(G) = \g $;
+		
+		\item Siano $ G $ e $ H $ due gruppi di Lie con $ G $ semplicemente connesso, e $ Lie(G) $ e $ Lie(H) $ le corrispondenti algebre di Lie, se esiste un omomorfismo di algebre di Lie $ \varphi : Lie(G) \to Lie(H) $ allora esiste un unico omomorfismo di gruppi di Lie $ F : G \to H $ tale che il suo differenziale sia uguale all'omomorfismo di algebre di Lie, i.e. $ F_{*e} = \varphi $;
+		
+		\item Siano $ G $ un gruppo di Lie connesso e $ \h $ una sottoalgebra dell'algebra di Lie $ Lie(G) $, allora esiste un unico sottogruppo di Lie connesso $ H $ di $ G $ tale che la sua algebra di Lie sia $ \h $, i.e. $ Lie(H) = \h $.
+	\end{enumerate}
+\end{theorem}
+
+\begin{remark}
+	In generale, se due gruppi di Lie sono isomorfi, le algebre di Lie relative sono isomorfe. I primi due punti di questo teorema provano l'implicazione opposta. Segue dunque da questi due punti che due gruppi di Lie $ G $ e $ H $ semplicemente connessi hanno le loro algebre di Lie $ Lie(G) $ e $ Lie(H) $ isomorfe se e solo se i due gruppi di Lie sono isomorfi.
+\end{remark}
+
+\begin{theorem}
+	Considerando l'insieme dei gruppi di Lie semplicemente connessi quozientato per la relazione di equivalenza relativa all'isomorfismo di gruppi di Lie (due gruppi di Lie sono equivalenti se e solo se isomorfi), questo spazio quoziente è in corrispondenza biunivoca con l'insieme delle algebre di Lie finito-dimensionali sui reali quozientato per la relazione di equivalenza relativa all'isomorfismo di algebre di Lie, i.e.
+	
+	\begin{equation}
+		\dfrac{\text{gruppi di Lie semplicemente connessi}}{\sim_{iso.gr.}} %
+		\leftrightarrow %
+		\dfrac{\text{algebre di Lie finito-dimensionali su } \R}{\sim_{iso.al.}}
+	\end{equation}
+	
+	quindi si possono usare risultati di natura topologico-geometrico differenziabile (gruppi di Lie) per trarre conclusioni di natura puramente algebrica (algebre di Lie) e viceversa, a meno di isomorfismi.
+\end{theorem}
+
+\begin{remark}
+	In termini di teoria delle categorie, si dimostra che la categoria dei gruppi di Lie semplicemente connessi è equivalente alla categoria delle algebre di Lie finito-dimensionali su $ \R $.
+\end{remark}
+
+Consideriamo un esempio in cui i gruppi di Lie non sono isomorfi ma le loro algebre di Lie lo sono.
+
+\paragraph{\textit{Esempio}}
+
+Siano i gruppi di Lie
+
+\begin{equation}
+	\begin{cases}
+		G = (\R^{n},+) \\
+		H = (\T^{n},\cdot)
+	\end{cases}
+\end{equation}
+
+questi non sono isomorfi perché, in particolare, dovrebbero essere diffeomorfi ma questo non è possibile perché $ \T^{n} $ è compatto mentre $ \R^{n} $ non lo è. \\
+Nonostante non siano isomorfi, le loro algebre sono identiche e dunque isomorfe
+
+\begin{equation}
+	Lie(G) = Lie(H) = (\R^{n},[,]_{0}) %
+	\implies %
+	Lie(G) \stackrel{iso.}{\simeq} Lie(H)
+\end{equation}
+
+dove $ [,]_{0} $ indica il commutatore nullo (e dunque un'algebra abeliana), ricordando che $ T_{1}(\S^{1}) = i \R $ è abbinato a $ [,]_{0} $ nell'algebra di $ \S^{1} $. \\
+Questo non è in contraddizione con il teorema di corrispondenza di Lie in quanto $ \R^{n} $ è semplicemente connesso mentre il toro non lo è.
+
+\subsubsection{Connessione tra $ SU(2) $ e $ SO(3) $ e le loro algebre di Lie}
+
+Anche in questo caso, i gruppi di Lie $ SU(2) $ e $ SO(3) $ non sono isomorfi ma le loro algebre di Lie $ \su(2) $ e $ \so(3) $ lo sono: questo non contraddice il teorema di corrispondenza di Lie in quanto $ SO(3) $ non è semplicemente connesso. \\
+Entrambi sono compatti e connessi, e hanno la stessa dimensione
+
+\begin{equation}
+	\begin{cases}
+		\dim(SU(n)) = n^{2} - 1 \\
+		\dim(SO(n)) = n(n-1)/2
+	\end{cases}
+	\implies %
+	\dim(SO(3)) = \dim(SU(2)) = 3
+\end{equation}
+
+Analizziamo ora $ SU(2) $: l'insieme è definito come
+
+\begin{equation}
+	SU(2) = \{ A \in GL_{2}(\C) \mid A^{*} A = I_{2} \, \wedge \, \det(A) = 1 \}
+\end{equation}
+
+Possiamo ricavare delle condizioni sulle entrate delle matrici del gruppo: esplicitando quest'ultime
+
+\begin{equation}
+	A = \bmqty{ a & b \\ c & d } \qcomma a,b,c,d \in \C
+\end{equation}
+
+con le condizioni date nella definizione, dunque
+
+\begin{equation}
+	\begin{cases}
+		A^{*} = \bmqty{ \bar{a} & \bar{c} \\ \bar{b} & \bar{d} } %
+		= A^{-1} %
+		= \cancel{\dfrac{1}{\det(A)}} \bmqty{ d & -b \\ -c & a } \\ \\
+		\det(A) = a d - b c = 1
+	\end{cases}
+	\implies %
+	\begin{cases}
+		\bar{a} = d \\
+		c = - \bar{b} \\
+		a d - b c = 1
+	\end{cases}
+	\implies %
+	\begin{cases}
+		A = \bmqty{ a & b \\ - \bar{b} & \bar{a} } \\ \\
+		\abs{a}^{2} + \abs{b}^{2} = 1
+	\end{cases}
+\end{equation}
+
+dunque possiamo riscrivere la definizione
+
+\begin{equation}
+	SU(2) = \left\{ A = \bmqty{ a & b \\ - \bar{b} & \bar{a} } \in GL_{2}(\C) \st \abs{a}^{2} + \abs{b}^{2} = 1 \right\}
+\end{equation}
+
+Esiste un diffeomorfismo\footnote{%
+	Vedi Esercizio \ref{BONUS3-2}.%
+} tra $ SU(2) $ e $ \S^{3} \subset \R^{4} = \C^{2} $
+
+\map{\varphi}
+	{SU(2)}{\S^{3}}
+	{\bmqty{ a & b \\ - \bar{b} & \bar{a} }}{(a,b) \in \C^{2}}
+
+dove il punto $ (a,b) $ appartiene alla sfera $ \S^{3} $ grazie alla condizione $ \abs{a}^{2} + \abs{b}^{2} = 1 $. \\
+Incidentalmente, tramite questo diffeomorfismo, possiamo dotare la sfera della struttura di gruppo di Lie mediante l'operazione associata a $ SU(2) $. \\
+Lo spazio tangente di $ SU(2) $ è composto dalle matrici antihermitiane a traccia nulla
+
+\begin{equation}
+	T_{I}(SU(2)) = \{X \in M_{2}(\C) \mid X^{*} = - X \, \wedge \, \tr(X) = 0 \}
+\end{equation}
+
+Abbinandolo al commutatore matriciale standard otteniamo l'algebra di Lie associata
+
+\begin{equation}
+	\su(2) = Lie(SU(2)) = (T_{I}(SU(2)),[,])
+\end{equation}
+
+Per lo spazio tangente, le matrici hanno la forma:
+
+\begin{equation}
+	X = \bmqty{ %
+				i u_{1} 			& u_{2} + i u_{3} \\ \\
+				- u_{2} + i u_{3} 	& - i u_{1} %
+				} %
+	\qcomma u_{1},u_{2},u_{3} \in \R
+\end{equation}
+
+La base standard\footnote{%
+	La base di $ \su(2) $ è legata alle \textit{matrici di Pauli} $ \sigma_{j} $ da $ \B_{\su(2)} = \{- i \sigma_{j}\}_{j = 1,2,3} $.%
+} di $ \su(2) $ è la seguente
+
+\begin{equation}
+	\B_{\su(2)} = \left\{ %
+		\bmqty{ 0 & 1 \\ -1 & 0 }, %
+		\bmqty{ i & 0 \\ 0 & -i }, %
+		\bmqty{ 0 & i \\ i & 0 } %
+		\right\}
+\end{equation}
+
+Esiste un isomorfismo di spazi vettoriali tra $ T_{I}(SU(2)) $ ed $ \R^{3} $, rappresentato dall'applicazione
+
+\map{\psi}
+	{T_{I}(SU(2))}{\R^{3}}
+	{\bmqty{ i u_{1} & u_{2} + i u_{3} \\ \\ - u_{2} + i u_{3} & - i u_{1} }}{u = \bmqty{ u_{1} \\ u_{2} \\ u_{3} }}
+
+L'inversa di questa applicazione associa a un vettore $ u \in \R^{3} $ una matrice $ M_{u} $ che appartiene a $ T_{I}(SU(2)) $, i.e.
+
+\map{\psi^{-1} = M}
+	{\R^{3}}{T_{I}(SU(2))}
+	{u = \bmqty{ u_{1} \\ u_{2} \\ u_{3} }}
+	{M_{u} = \bmqty{ i u_{1} & u_{2} + i u_{3} \\ \\ - u_{2} + i u_{3} & - i u_{1} }}
+
+Considerando il commutatore di $ \su(2) $ e il prodotto vettoriale\footnote{%
+	Siano due vettori in $ T(\R^{3}) $ rappresentati tramite la loro identificazione con $ \R^{3} $
+	%
+	\begin{equation*}
+		\begin{cases}
+			u = (u_{1},u_{2},u_{3}) \\
+			v = (v_{1},v_{2},v_{3})
+		\end{cases}
+	\end{equation*}
+	%
+	Il prodotto vettoriale tra questi può essere calcolato tramite il determinante tra le componenti dei vettori e i versori $ \hat{i},\hat{j},\hat{k} \in T(\R^{3}) $:
+	%
+	\begin{equation*}
+		u \times v = %
+		\mdet{ %
+				\hat{i} & \hat{j} & \hat{k} \\
+				u_{1} & u_{2} & u_{3} \\
+				v_{1} & v_{2} & v_{3} %
+				} %
+		= (u_{2} v_{3} - u_{3} v_{2}, u_{3} v_{1} - u_{1} v_{3}, u_{1} v_{2} - u_{2} v_{1})
+	\end{equation*} %
+} $ \times $ di vettori di $ \R^{3} $, otteniamo
+
+\begin{equation}
+	[M_{u},M_{v}] = M_{u} M_{v} - M_{v} M_{u} = 2 M_{u \times v}
+\end{equation}
+
+questo induce un isomorfismo di algebre di Lie
+
+\begin{equation}
+	(\R^{3}, 2 \times) \stackrel{iso.}{\simeq} \su(2)
+\end{equation}
+
+in quanto il prodotto vettoriale soddisfa l'antisimmetria, la bilinearità e l'identità di Jacobi, i.e.
+
+\begin{equation}
+	(u \times v) \times w + (v \times w) \times u + (w \times u) \times v = 0
+\end{equation}
+
+Inoltre, considerando il prodotto scalare in $ \R^{3} $
+
+\begin{equation}
+	u \cdot v = - \dfrac{1}{2} \tr(M_{u} M_{v})
+\end{equation}
+
+questo induce un isomorfismo di gruppi di spazi euclidei
+
+\begin{equation}
+	(\R^{3},\cdot) \stackrel{iso.}{\simeq} \left( T_{I}(SU(2)), -\dfrac{1}{2} \tr(\cdot \, \cdot) \right)
+\end{equation}
+
+Per quanto riguarda $ SO(3) $: l'insieme è definito come
+
+\begin{equation}
+	SO(2) = \{ B \in GL_{3}(\R) \mid B^{T} B = I_{3} \, \wedge \, \det(B) = 1 \}
+\end{equation}
+
+La condizione di ortogonalità può essere scritta come
+
+\begin{equation}
+	B^{T} B = I_{3} %
+	\iff %
+	(B u) \cdot (B v) = u \cdot v %
+	\qcomma \forall B \in O(3), \, \forall u,v \in \R^{3}
+\end{equation}
+
+i.e. la moltiplicazione di due vettori per matrici ortogonali speciali rispetta il prodotto scalare tra i due vettori.
+
+\begin{lemma}
+	Siano $ A \in SU(2) $ e $ M_{v} \in \su(2) $, allora $ A M_{v} A^{-1} \in \su(2) $.
+\end{lemma}
+
+\begin{proof}
+	Siccome
+	
+	\begin{equation}
+		\begin{cases}
+			A \in SU(2) \implies A^{-1} = A^{*} \\
+			M_{v} \in \su(2) \implies M_{v}^{*} = - M_{v}
+		\end{cases}
+	\end{equation}
+
+	possiamo scrivere che
+	
+	\begin{equation}
+		(A M_{v} A^{-1})^{*} = (A M_{v} A^{*})^{*} %
+		= A M_{v}^{*} A^{*} %
+		= - A M_{v} A^{*} %
+		= - A M_{v} A^{-1}
+	\end{equation}
+
+	e considerando che
+	
+	\begin{gather}
+		M_{v} \in \su(2) \implies \tr(M_{v}) = 0 \\
+		\tr(A B) = \tr(B A) \qcomma \forall A,B \in M_{n}(\K)
+	\end{gather}
+	
+	abbiamo che
+	
+	\begin{equation}
+		\tr(A M_{v} A^{-1}) = \tr(M_{v} A^{-1} A) %
+		= \tr(M_{v}) %
+		= 0
+	\end{equation}
+
+	dunque
+	
+	\begin{equation}
+		\begin{cases}
+			(A M_{v} A^{-1})^{*} = - A M_{v} A^{-1} \\
+			\tr(A M_{v} A^{-1}) = 0
+		\end{cases}
+		\implies %
+		A M_{v} A^{-1} \in \su(2)
+	\end{equation}
+\end{proof}
+
+Questo lemma implica che
+
+\begin{equation}
+	A M_{v} A^{-1} = M_{w} = M_{R(A) \, v}
+\end{equation}
+
+dove la matrice $ R(A) $ indica una trasformazione lineare; a priori, sappiamo solo che $ R(A) $ sia invertibile, i.e. $ R(A) \in GL_{3}(\R) $. \\
+Facendo un passo oltre, mostriamo che $ R(A) \in O(3) $, i.e.
+
+\begin{equation}
+	(R(A) \, u) \cdot (R(A) \, v) = u \cdot v \qcomma u,v \in \R^{3}
+\end{equation}
+
+tramite l'isomorfismo
+
+\begin{equation}
+	(\R^{3},\cdot) \stackrel{iso.}{\simeq} \left( T_{I}(SU(2)), -\dfrac{1}{2} \tr(\cdot \, \cdot) \right)
+\end{equation}
+
+nel seguente modo:
+
+\begin{align}
+	\begin{split}
+		(R(A) \, u) \cdot (R(A) \, v) &= - \dfrac{1}{2} \tr( M_{R(A) \, u} \, M_{R(A) \, v} ) \\
+		&= - \dfrac{1}{2} \tr( A M_{u} A^{-1} A M_{v} A^{-1} ) \\
+		&= - \dfrac{1}{2} \tr( A M_{u} M_{v} A^{-1} ) \\
+		&= - \dfrac{1}{2} \tr( M_{u} M_{v} A^{-1} A ) \\
+		&= - \dfrac{1}{2} \tr( M_{u} M_{v} ) \\
+		&= u \cdot v
+	\end{split}
+\end{align}
+
+\begin{theorem}
+	L'applicazione
+	
+	\map{R}
+		{SU(2)}{SO(3)}
+		{A}{R(A)}
+	%
+	dove
+	
+	\begin{equation}
+		 M_{R(A) \, v} = A M_{v} A^{-1} \in \su(2) %
+		 \qcomma v \in \R^{3}, \, A \in SU(2), \, M_{v} \in \su(2)
+	\end{equation}
+
+	è un omomorfismo di gruppi di Lie suriettivo tale che
+	
+	\begin{equation}
+		\ker(R) = \{ \pm I_{2} \}
+	\end{equation}
+
+	Conseguentemente, i seguenti gruppi di Lie sono isomorfi:
+	
+	\begin{equation}
+		\sfrac{SU(2)}{\{ \pm I_{2}\}} \stackrel{iso.}{\simeq} SO(3)
+	\end{equation}
+
+	Inoltre il differenziale di $ R $ nell'identità 
+	
+	\begin{equation}
+		R_{*I_{2}} : \su(2) \to \so(3)
+	\end{equation}
+
+	è un isomorfismo di algebre di Lie, i.e.
+	
+	\begin{equation}
+		\su(2) \stackrel{iso.}{\simeq} \so(3)
+	\end{equation}
+\end{theorem}
+
+\begin{proof}
+	Dimostriamo innanzitutto che $ R(A) \in SO(3) $: l'applicazione $ R $ è continua (per costruzione) e $ SU(2) = \S^{3} $ è connesso dunque la sua immagine deve essere contenuta in $ SO(3) $
+	
+	\begin{equation}
+		R(SU(2)) \subset SO(3)
+	\end{equation}
+	
+	in quanto $ SO(3) $ è la componente connessa di $ O(3) $ che contiene l'identità ed essendo $ R $ un omomorfismo
+	
+	\begin{equation}
+		R(\id_{SU(2)}) = \id_{O(3)} \in SO(3)
+	\end{equation}
+
+	Siccome un omomorfismo continuo è anche liscio\footnote{%
+		Vedi Corollario \ref{cor:om-cont-smooth}.%
+	}, è sufficiente mostrare che $ R $ sia un omomorfismo perché sia anche un omomorfismo di gruppi di Lie. \\
+	Per mostrare che $ R $ sia un omomorfismo è necessario che
+	
+	\begin{equation}
+		R(A B) = R(A) \, R(B) \qcomma \forall A,B \in SU(2)
+	\end{equation}
+
+	Usando la definizione di $ M_{R(A) \, v} $, otteniamo che
+	
+	\begin{equation}
+		M_{R(A B) \, v} = (A B) M_{v} (A B)^{-1} %
+		= A B M_{v} B^{-1} A^{-1} %
+		= A M_{R(B) \, v} A^{-1} %
+		= M_{R(A) \, R(B) \, v}
+	\end{equation}
+
+	essendo $ M $ un isomorfismo, i.e.
+	
+	\map{M}
+		{\R^{3}}{T_{I}(SU(2))}
+		{u = \bmqty{ u_{1} \\ u_{2} \\ u_{3} }}
+		{M_{u} = \bmqty{ i u_{1} & u_{2} + i u_{3} \\ \\ - u_{2} + i u_{3} & - i u_{1} }}
+	
+	la condizione per cui $ R $ sia un omomorfismo è verificata. \\
+	Il nucleo\footnote{%
+		Per i gruppi, il nucleo di un'applicazione è dato dagli elementi del dominio che hanno come immagine l'elemento neutro del codominio.%
+	} dell'omomorfismo $ R $ è dato da
+	
+	\begin{equation}
+		\ker(R) = \{ A \in SU(2) \mid R(A) = I_{3} \}
+	\end{equation}
+
+	per cui
+	
+	\begin{equation}
+		A \in \ker(R) %
+		\implies %
+		M_{R(A) \, v} = M_{v} = A M_{v} A^{-1} %
+		\implies %
+		[M_{v},A] = 0 \qcomma \forall v \in \R^{3}
+	\end{equation}
+	
+	in quanto
+	
+	\begin{equation}
+		[M_{v},A] = M_{v} A - A M_{v} %
+		= A M_{v} A^{-1} A - A M_{v} %
+		= A M_{v} - A M_{v} %
+		= 0
+	\end{equation}
+	
+	Le uniche matrici di $ SU(2) $ che commutano con $ M_{v} $ sono $ \pm I_{2} $ dunque $ \ker(R) = \{ \pm I_{2} \} $. \\
+	Per dimostrare che $ R_{*I_{2}} : \su(2) \to \so(3) $ è un isomorfismo di algebre di Lie, scriviamo il differenziale di una matrice $ M_{u} \in \su(2) $ con $ u \in \R^{3} $ tramite la curva\footnote{%
+		In questo caso, essendo il gruppo di Lie in questione un gruppo matriciale, l'applicazione esponenziale $ \exp $ coincide con l'esponenziale di matrici.%
+	} $ \exp(t M_{u}) $
+	
+	\begin{equation}
+		R_{*I_{2}}(M_{u}) = \dot{(R \circ \exp(t M_{u}))}(0) %
+		= \eval{ \dv{t} }_{0} R( \exp(t M_{u}) )
+	\end{equation}
+
+	Siccome $ M_{v} $ è lineare e non dipende da $ t $, possiamo scrivere
+
+	\begin{equation}
+		\eval{ \dv{t} }_{0} M_{R(\exp(t M_{u})) \, v} = M_{\eval{ \dv{t} }_{0} R(\exp(t M_{u})) \, v} %
+		= M_{R_{*I_{2}}(M_{u}) (v)}
+	\end{equation}
+	
+	Tramite la definizione di $ M_{R(A) \, v} $, otteniamo che
+	
+	\begin{equation}
+		M_{R(\exp(t M_{u})) \, v} = \exp(t M_{u}) \, M_{v} \, \exp(-t M_{u}) %
+		\qcomma \forall t \in \R
+	\end{equation}
+	
+	Facendo la derivata rispetto a $ t $ in $ t = 0 $ di entrambi i membri dell'uguaglianza sopra, possiamo anche scrivere
+	
+	\begin{align}
+		\begin{split}
+			\eval{ \dv{t} }_{0} M_{R(\exp(t M_{u})) \, v} &= \eval{ \dv{t} }_{0} \exp(t M_{u}) \, M_{v} \, \exp(-t M_{u}) \\
+			&= \left( \eval{ \dv{t} }_{0} \exp(t M_{u}) \right) M_{v} \cancelto{I_{2}}{ \left( \eval{ \exp(-t M_{u}) }_{t=0} \right) } + \\
+			& \hal + \cancelto{I_{2}}{ \left( \eval{ \exp(t M_{u}) }_{t=0} \right) } M_{v} \left( \eval{ \dv{t} \exp(-t M_{u}) }_{t=0} \right) \\
+			%
+			&= M_{u} M_{v} - M_{v} M_{u} \\
+			&= [M_{u},M_{v}] \\
+			&= 2 M_{u \times v}
+		\end{split}
+	\end{align}
+	
+	A questo punto, essendo $ M $ un isomorfismo, otteniamo che
+	
+	\begin{gather}
+		\eval{ \dv{t} }_{0} M_{R(\exp(t M_{u})) \, v} = M_{R_{*I_{2}}(M_{u}) (v)} %
+		= 2 M_{u \times v} \nonumber \\
+		\Downarrow \\
+		R_{*I_{2}}(M_{u}) (v) = 2 \, u \times v \nonumber
+	\end{gather}
+	
+	Il prodotto vettoriale tra due vettori $ u,v \in \R^{3} $ può essere scritto come
+	
+	\begin{equation}
+		u \times v = %
+		\bmqty{ 0 & - u_{3} & u_{2} \\ u_{3} & 0 & - u_{1} \\ - u_{2} & u_{1} & 0 } %
+		\bmqty{ v_{1} \\ v_{2} \\ v_{3} }
+	\end{equation}
+	
+	dunque
+	
+	\begin{equation}
+		R_{*I_{2}}(M_{u}) = %
+		R_{*I_{2}} \left( \bmqty{ i u_{1} & u_{2} + i u_{3} \\ \\ - u_{2} + i u_{3} & - i u_{1} } \right) = %
+		2 \bmqty{ 0 & - u_{3} & u_{2} \\ u_{3} & 0 & - u_{1} \\ - u_{2} & u_{1} & 0 } \in \so(3)
+	\end{equation}
+	
+	il che rende il differenziale
+	
+	\map{R_{*I_{2}}}
+		{\su(2)}{\so(3)}
+		{M_{u} = \bmqty{ i u_{1} & u_{2} + i u_{3} \\ \\ - u_{2} + i u_{3} & - i u_{1} }}
+		{2 \bmqty{ 0 & - u_{3} & u_{2} \\ u_{3} & 0 & - u_{1} \\ - u_{2} & u_{1} & 0 }}
+	
+	lineare e invertibile, dunque $ R_{*I_{2}} $ è un isomorfismo di algebre di Lie. \\
+	Avendo calcolato il nucleo dell'applicazione (il quale non possiede solo l'elemento neutro del dominio), sappiamo che $ R $ non è iniettiva, però possiamo dimostrare che sia suriettiva: consideriamo il fatto che $ R $ sia un omomorfismo, i.e.
+	
+	\begin{equation}
+		R \circ L_{A} = L_{R(A)} \circ R \qcomma \forall A \in SU(2)
+	\end{equation}
+
+	se differenziamo entrambi i membri in $ I_{2} $ e applichiamo la regola della catena
+	
+	\begin{align}
+		\begin{split}
+			(R \circ L_{A})_{*I_{2}} &= (L_{R(A)} \circ R)_{*I_{2}} \\
+			R_{*L_{A}(I_{2})} \circ (L_{A})_{*I_{2}} &= (L_{R(A)})_{*R(I_{2})} \circ R_{*I_{2}} \\
+			R_{*A} \circ (L_{A})_{*I_{2}} &= (L_{R(A)})_{*I_{3}} \circ R_{*I_{2}} \\
+			R_{*A} &= (L_{R(A)})_{*I_{3}} \circ R_{*I_{2}} \circ ((L_{A})_{*I_{2}})^{-1}
+		\end{split}
+	\end{align}
+
+	in quanto
+	
+	\begin{equation}
+		\ker(R) = \{\pm I_{2}\} \subset SU(2) %
+		\implies %
+		R(\pm I_{2}) = I_{3} \in SO(3)
+	\end{equation}
+	
+	Questo rende il differenziale in un punto qualsiasi $ A \in SU(2) $ un isomorfismo in quanto composizione di isomorfismi: a questo punto $ R $ è una sommersione (in quanto il suo differenziale, essendo un isomorfismo, è suriettivo) da cui, per il corollario del teorema di sommersione locale\footnote{%
+		Vedi Corollario \ref{cor:sub-open}.%
+	}, abbiamo che $ R $ è un'applicazione aperta\footnote{%
+		Alternativamente, per il teorema della funzione inversa (vedi Teorema \ref{thm:ift}) $ R $ è un diffeomorfismo locale e dunque un'applicazione aperta.%
+	}. Questa applicazione però è anche chiusa per il lemma dell'applicazione chiusa\footnote{%
+		Vedi Lemma \ref{lemma:clos-app}.%
+	}, in quanto bigezione continua, $ SU(2) $ compatto ed $ SO(3) $ di Hausdorff: l'immagine di $ SU(2) $ tramite un'applicazione sia aperta che chiusa è sia aperta che chiusa e, siccome $ SO(3) $ è connesso, l'immagine del dominio deve coincidere con il codominio, i.e.
+
+	\begin{equation}
+		R(SU(2)) = SO(3)
+	\end{equation}
+	
+	dunque $ R : SU(2) \to SO(3) $ è suriettiva.
+\end{proof}
+
+\begin{remark}
+	Questo teorema prova l'esistenza di un isomorfismo tra le algebre di Lie dei gruppi di Lie $ SU(2) $ e $ SO(3) $, nonostante questi non siano essi stessi isomorfi tra loro in quanto $ SO(3) $ non è semplicemente connesso (per il teorema di corrispondenza di Lie) e anche perché il loro centro\footnote{%
+		Il centro $ Z(G) $ di un gruppo $ G $ è l'insieme degli elementi del gruppo che commutano con tutti gli altri elementi.%
+	} ha un numero diverso di elementi
+	
+	\begin{equation}
+		Z(SU(2)) = \{ \pm I_{2} \} \neq \{ I_{3} \} = Z(SO(3))
+	\end{equation}
+\end{remark}
+
+\subsubsection{Il toro e sua algebra di Lie}
+
+L'ultimo punto del teorema di corrispondenza di Lie asserisce che, presi un gruppo di Lie connesso $ G $ e la sua algebra di Lie $ \g = Lie(G) $, allora per ogni sottoalgebra di Lie $ \h < \g $ di $ \g $ esiste un sottogruppo di Lie connesso $ H \subset G $ di $ G $ tale che $ Lie(H) = \h $. Segue che, dati un gruppo di Lie connesso $ G $ e la sua algebra di Lie $ \g $, esiste una corrispondenza biunivoca tra sottoalgebre di Lie di $ \g $ e i sottogruppi connessi di $ G $: sappiamo che un sottogruppo di Lie $ H $ di $ G $ induce una sottoalgebra $ \h $ di $ \g $ tramite il suo spazio tangente, i.e.
+
+\begin{equation}
+	H \subset G \longrightarrow T_{e}(H) \subset T_{e}(G) \longrightarrow \h < \g
+\end{equation}
+
+in quanto l'inclusione è un omomorfismo di gruppi di Lie, ma il teorema di corrispondenza di Lie asserisce il viceversa (con la condizione che i gruppi di siano connessi). \\ \\
+%
+Consideriamo ora il gruppo di Lie del toro bidimensionale $ \T^{2} = \S^{1} \times \S^{1} $ e la sua algebra di Lie $ (\R^{2},[,]) $: le sottoalgebre di $ (\R^{2},[,]) $ hanno come insieme dei sottospazi vettoriali di $ \R^{2} $, dunque tutte le rette passanti per l'origine (oltre $ \R^{2} $ stesso, di dimensione 2, e l'origine, di dimensione 0). \\
+Consideriamo l'esponenziale
+
+\map{\exp}
+	{\R^{2}}{\T^{2}}
+	{(t,s)}{(e^{i t}, e^{i s})}
+
+La retta identificata dai punti $ (0,s) \simeq \R $ viene mappata in $ (1,e^{i s}) \in \S^{1} \subset \T^{2} $: tutte le altre rette possono essere descritte dai punti $ (t,\alpha t) $ con $ \alpha \in \R $, la cui immagine
+
+\begin{equation}
+	\exp(t,\alpha t) = (e^{i t}, e^{i \alpha t}) = S_{\alpha}
+\end{equation}
+
+dipende da $ \alpha $ nel seguente modo
+
+\begin{equation}
+	\begin{cases}
+		S_{\alpha} = \S^{1} & \qq*{se} \alpha \in \Q \\
+		S_{\alpha} = \R & \qq*{se} \alpha \in \R \setminus \Q
+	\end{cases}
+\end{equation}
+
+cioè se $ \alpha $ è razionale allora $ S_{\alpha} $ torna al punto di partenza e si chiude, mentre se è irrazionale $ S_{\alpha} $ non si chiude e sarà isomorfa a una retta. \\
+Questi sottoinsiemi del toro sono sottovarietà immerse in quanto l'esponenziale è un'immersione\footnote{%
+	Il differenziale dell'esponenziale è l'identità dello spazio tangente al gruppo di Lie, dunque iniettivo.%
+}: quando si definiscono i sottogruppi di Lie, si richiede che questi siano solo sottovarietà immerse (e non embedded) del gruppo di Lie associato in modo tale da non escludere sottogruppi di Lie (e.g. quelli isomorfi a $ \R $) di alcuni gruppi di Lie, come il toro. \\ \\
+%
+L'ultima parte della dimostrazione (non riportata in questo testo) del teorema di corrispondenza di Lie utilizza il seguente teorema:
+
+\begin{theorem}[Teorema di Ado]
+	Una qualunque algebra di Lie è isomorfa a una sottoalgebra delle matrici quadrate a entrate reali, i.e.
+	
+	\begin{equation}
+		\forall \g, \E  \g' \mid \g \simeq \g' \leqslant (M_{n}(\R),[,])
+	\end{equation}
+\end{theorem}
+
+In linea teorica, studiare l'algebra di Lie delle matrici è dunque sufficiente per ottenere risultati su ogni algebra di Lie, a patto di conoscere l'isomorfismo tra l'algebra considerata e una sottoalgebra di $ M_{n}(\R) $, il quale potrebbe essere arbitrariamente complicato (il teorema di Ado non dà alcuna indicazione su come trovare l'isomorfismo in questione).
